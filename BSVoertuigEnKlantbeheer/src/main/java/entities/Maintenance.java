@@ -4,15 +4,18 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Sander on 22-11-2016.
  */
 @Data
-@NoArgsConstructor
 @Entity(name = "maintenance")
+@Builder
+@AllArgsConstructor
 public class Maintenance implements Serializable{
 
     @Id
@@ -28,6 +31,9 @@ public class Maintenance implements Serializable{
     private MaintenanceState state = MaintenanceState.PLANNED;
 
     private String description;
+
+    public Maintenance() {
+    }
 
     public void present() throws StateException {
         state.present(this);
