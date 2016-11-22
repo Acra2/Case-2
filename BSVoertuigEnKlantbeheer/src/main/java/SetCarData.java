@@ -1,22 +1,23 @@
 import entities.Car;
-import entities.Customer;
-import interfaces.CarInterface;
+import services.impl.CarService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.ejb.Stateful;
 import java.io.Serializable;
 
 /**
  * Created by paisanrietbroek on 22/11/2016.
  */
+
 @Singleton
 @Startup
-public class SetCarData implements Serializable {
+public class SetCarData implements Serializable{
 
     @EJB
-    private CarInterface carInterface;
+    private CarService carService;
 
     @PostConstruct
     public void setData() {
@@ -28,6 +29,7 @@ public class SetCarData implements Serializable {
         car.setLicensePlate("license plate");
         car.setMileage(4200);
 
-        carInterface.add(car);
+        carService.add(car);
     }
+
 }
