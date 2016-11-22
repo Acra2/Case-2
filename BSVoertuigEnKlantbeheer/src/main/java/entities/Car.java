@@ -15,7 +15,19 @@ import java.util.List;
  */
 @Entity(name = "car")
 @Data
-@NamedQuery(name = "getAll", query = "SELECT c from car c")
+@NamedQueries({
+    @NamedQuery(name = "getAll", query = "SELECT c from car c"),
+    @NamedQuery(name = "update", query = "UPDATE car  c " +
+            "SET " +
+            "c.driverEmail = :mail," +
+            "c.driverName = :name, " +
+            "c.driverPhoneNumber = :phonenumber, " +
+            "c.licensePlate = :licenseplate, " +
+            "c.mileage = :mileage, " +
+            "c.customer = :customer " +
+            "WHERE c.vehicleNumber = :vehicleNumber")
+})
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

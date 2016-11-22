@@ -21,7 +21,7 @@ public class SetCarData implements Serializable {
     public void setData() {
         Car car = new Car();
         car.setVehicleNumber("test number");
-        car.setDriverEmail(("test@mail.com"));
+        car.setDriverEmail("test@mail.com");
         car.setDriverName("test name");
         car.setDriverPhoneNumber("1234567897");
         car.setLicensePlate("license plate");

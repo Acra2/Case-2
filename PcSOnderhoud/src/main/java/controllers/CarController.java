@@ -37,6 +37,13 @@ public class CarController implements CarInterface {
 
     @Override
     public void update(Car car) {
-
+        em.createNamedQuery("update")
+                .setParameter("mail", car.getDriverEmail())
+                .setParameter("name", car.getDriverName())
+                .setParameter("phonenumber", car.getDriverPhoneNumber())
+                .setParameter("licenseplate", car.getLicensePlate())
+                .setParameter("mileage", car.getMileage())
+                .setParameter("customer", car.getCustomer())
+                .executeUpdate();
     }
 }
