@@ -26,7 +26,7 @@ public class Customer implements Serializable{
     private String phonenumber;
     private String btwnumber;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Car> cars;
 
     public Customer() {

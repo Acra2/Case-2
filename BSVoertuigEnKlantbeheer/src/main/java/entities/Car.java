@@ -44,7 +44,7 @@ public class Car implements Serializable {
     @ManyToOne
     private Customer customer;
 
-    @OneToMany
+    @OneToMany(mappedBy = "car")
     private List<Maintenance> maintenanceList;
 
 
