@@ -1,5 +1,6 @@
 package entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,11 @@ import java.util.List;
 @Entity(name = "car")
 @Data
 @NamedQuery(name = "getAll", query = "SELECT c from car c")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Car implements Serializable {
+
     @Id
     private String vehicleNumber;
     private String licensePlate;
