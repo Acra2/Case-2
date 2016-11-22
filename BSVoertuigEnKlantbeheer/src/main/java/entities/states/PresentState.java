@@ -6,9 +6,9 @@ import entities.MaintenanceState;
 import entities.StateException;
 
 /**
- * Created by Sander on 21-11-2016.
+ * Created by Sander on 22-11-2016.
  */
-public class PausedState extends AbstractState {
+public class PresentState extends AbstractState {
     public void startMaintenace(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.INMAINTENANCE);
     }

@@ -1,30 +1,34 @@
 package entities;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Sander on 22-11-2016.
  */
-@Entity
-@Data
+
+
+@Entity(name = "customer")
 @Builder
-@NoArgsConstructor
-public class Customer {
+@Data
+@AllArgsConstructor
+public class Customer implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     public Long id;
-    private String Name;
+    private String name;
     private String email;
     private String adress;
     private String phonenumber;
     private String btwnumber;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Car> cars;
+
+    public Customer() {
+    }
 }
