@@ -31,5 +31,4 @@ public class SetCarData implements Serializable{
 
         carService.add(car);
     }
-
 }
