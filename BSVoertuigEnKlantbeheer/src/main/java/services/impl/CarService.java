@@ -1,6 +1,7 @@
 package services.impl;
 
 import entities.Car;
+import services.ICarService;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import java.util.List;
  */
 
 @Stateful
-public class CarService {
+public class CarService implements ICarService {
 
     @PersistenceContext
     private EntityManager em;
