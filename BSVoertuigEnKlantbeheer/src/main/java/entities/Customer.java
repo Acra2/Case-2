@@ -1,8 +1,6 @@
 package entities;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,15 +9,15 @@ import java.util.List;
  * Created by Sander on 22-11-2016.
  */
 @Entity
-@Data
 @Builder
-@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class Customer {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     public Long id;
-    private String Name;
+    private String name;
     private String email;
     private String adress;
     private String phonenumber;
@@ -27,4 +25,7 @@ public class Customer {
 
     @OneToMany
     private List<Car> cars;
+
+    public Customer() {
+    }
 }
