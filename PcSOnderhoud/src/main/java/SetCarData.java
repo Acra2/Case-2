@@ -1,4 +1,5 @@
 import entities.Car;
+import entities.Customer;
 import interfaces.CarInterface;
 
 import javax.annotation.PostConstruct;
