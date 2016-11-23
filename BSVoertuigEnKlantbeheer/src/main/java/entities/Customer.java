@@ -14,7 +14,7 @@ import java.util.List;
 @Entity(name = "customer")
 @Builder
 @NamedQueries({
-        @NamedQuery(name = "getAllCustomer", query = "SELECT c from customer c"),
+        @NamedQuery(name = "getAllCustomers", query = "SELECT c from customer c"),
         @NamedQuery(name = "updateCustomer", query = "UPDATE customer c " +
                 "SET " +
                 "c.adress = :adress," +

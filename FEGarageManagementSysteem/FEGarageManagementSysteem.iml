@@ -22,6 +22,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
+    <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="module" module-name="PcSOnderhoud" />
     <orderEntry type="module" module-name="ISRijksdienstWegverkeer" />
     <orderEntry type="module" module-name="BSVoertuigEnKlantbeheer" />

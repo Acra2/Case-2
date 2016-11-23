@@ -31,7 +31,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public List getAll() {
-        return em.createNamedQuery("getAllCustomer").getResultList();
+        return em.createNamedQuery("getAllCustomers").getResultList();
     }
 
     @Override

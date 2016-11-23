@@ -1,13 +1,11 @@
 package setup;
 
 import entities.Car;
-import services.impl.CarService;
-
+import services.ICarService;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.ejb.Stateful;
 import java.io.Serializable;
 
 /**
@@ -19,7 +17,7 @@ import java.io.Serializable;
 public class SetCarData implements Serializable{
 
     @EJB
-    private CarService carService;
+    private ICarService carService;
 
     @PostConstruct
     public void setData() {
