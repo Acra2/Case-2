@@ -52,7 +52,7 @@ public class MaintenanceService implements Serializable {
     public boolean checkMechanic() {
         boolean b = mechanicInput.equals(mainte.getMechanic().getId().toString());
         if (!b) {
-            FacesMessage message = new FacesMessage("Verkeerde monteurscode");
+            FacesMessage message = new FacesMessage("Monteurscode incorrect");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(btCheckMechanicCodeInput.getClientId(context), message);
         }
