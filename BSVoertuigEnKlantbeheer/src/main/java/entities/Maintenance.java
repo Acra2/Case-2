@@ -31,34 +31,58 @@ public class Maintenance implements Serializable {
     @ManyToOne
     private Car car;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinColumn
     private Mechanic mechanic;
 
     public Maintenance() {
     }
 
-    public void present() throws StateException {
-        state.present(this);
+    public void present() {
+        try {
+            state.present(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void start() throws StateException {
-        state.startMaintenace(this);
+    public void start() {
+        try {
+            state.startMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void pause() throws StateException {
-        state.pauseMaintenace(this);
+    public void pause(){
+        try {
+            state.pauseMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void finish() throws StateException {
-        state.finishMaintenace(this);
+    public void finish(){
+        try {
+            state.finishMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void needInspections() throws StateException {
-        state.needInspections(this);
+    public void needInspections() {
+        try {
+            state.needInspections(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void readyForPickUp() throws StateException {
-        state.readyForPickUp(this);
+    public void readyForPickUp(){
+        try {
+            state.readyForPickUp(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 }

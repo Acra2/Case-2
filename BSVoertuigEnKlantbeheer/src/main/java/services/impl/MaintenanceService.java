@@ -25,7 +25,7 @@ public class MaintenanceService implements IMaintenanceService {
     }
 
     public Maintenance getOne(Long id) {
-        return null;
+       return em.find(Maintenance.class, id);
     }
 
     public void add(Maintenance maintenance) {

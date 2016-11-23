@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+<ui:composition template="template.xhtml">
+
+    <ui:define name="title">
+        Garage Management System
+    </ui:define>
+
+    <ui:define name="header">
+        Garage Management System
+    </ui:define>
+
+    <ui:define name="content">
+
+        <div class="container">
+            <div>
+                <div class="col-sm-6">
+                    <h:form>
+                        <h:outputLabel value="Onderhoudscode"></h:outputLabel>
+                        <h:messages for="maintenanceId" autoUpdate="true"/>
+                        <div class="input-group" style="max-width: 300px">
+                            <h:inputText
+                                    id="maintenanceId"
+                                    title="maintenance code"
+                                    value="#{maintenance.maintenanceInput}"
+                                    required="true"
+                                    requiredMessage="Vul onderhoudsnummer in."
+                                    styleClass="form-control input-sm"
+                                    binding="#{maintenance.btMaintenanceInput}"></h:inputText>
+                            <span class="input-group-btn">
+                            <h:commandButton
+                                    action="#{maintenance.setMaintenance()}"
+                                    styleClass="btn btn-success btn-sm"
+                                    value="Search"/>
+                        </span>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <h:panelGroup rendered="#{not empty maintenance.mainte}">
+            <hr/>
+            <div class="container">
+                <div class="col-sm-6">
+                    <h4>Onderhoud</h4>
+                    <div class="col-sm-3">
+                        Description:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel value="#{maintenance.mainte.description}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Status:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel value="#{maintenance.mainte.state.toString()}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Monteur:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel
+                                value="#{maintenance.mainte.mechanic.id} #{maintenance.mainte.mechanic.name}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Geplande tijd:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel
+                                value="#{maintenance.mainte.startDateTime.dayOfMonth}-#{maintenance.mainte.startDateTime.monthValue}-#{maintenance.mainte.startDateTime.year} #{maintenance.mainte.startDateTime.hour}:#{maintenance.mainte.startDateTime.minute}"></h:outputLabel>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Auto</h4>
+                    <div class="col-sm-3">
+                        Klant:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel value="#{maintenance.mainte.car.customer.name}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Nummerplaat:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel value="#{maintenance.mainte.car.licensePlate}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Chassisnummer:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel value="#{maintenance.mainte.car.vehicleNumber}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Kilometerstand:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel value="#{maintenance.mainte.car.mileage}"></h:outputLabel>
+                    </div>
+                    <div class="col-sm-3">
+                        Model auto:
+                    </div>
+                    <div class="col-sm-9">
+                        <h:outputLabel
+                                value="#{maintenance.mainte.car.model.brand.name} #{maintenance.mainte.car.model.name}"></h:outputLabel>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <h:panelGroup rendered="#{maintenance.actions()}">
+                <div class="container">
+
+                    <div class="col-sm-6">
+                        <h:form>
+                            <h:outputLabel value="Monteursnummer"></h:outputLabel>
+                            <h:messages for="mechanicCode" autoUpdate="true"/>
+                            <div class="input-group">
+                                <h:inputText
+                                        id="mechanicCode"
+                                        title="mechanic code"
+                                        value="#{maintenance.mechanicInput}"
+                                        required="true"
+                                        requiredMessage="Bevestig doormiddel van monteurscode"
+                                        styleClass="form-control input-sm"
+                                        binding="#{maintenance.btCheckMechanicCodeInput}"></h:inputText>
+                                <span class="input-group-btn">
+                                <h:panelGroup rendered="#{maintenance.showButton('start')}">
+                                    <h:commandButton value="Start Onderhoud"
+                                                     action="#{maintenance.start()}"
+                                                     styleClass="btn btn-success btn-sm"></h:commandButton>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{maintenance.showButton('pause')}">
+                                    <h:commandButton value="Pauzeer Onderhoud"
+                                                     action="#{maintenance.pause()}"
+                                                     styleClass="btn btn-success btn-sm"></h:commandButton>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{maintenance.showButton('finish')}">
+                                    <h:commandButton value="Onderhoud afsluiten"
+                                                     action="#{maintenance.finish()}"
+                                                     styleClass="btn btn-success btn-sm"></h:commandButton>
+                                </h:panelGroup>
+                            </span>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </h:panelGroup>
+            <hr/>
+            <div class="container">
+                <div class="col-sm-6">
+                    <h:form>
+                        <h:outputLabel value="Wissel monteur"></h:outputLabel>
+                        <h:messages for="changeMechanic" autoUpdate="true"/>
+                        <div class="input-group" style="max-width: 300px">
+                            <h:inputText
+                                    id="changeMechanic"
+                                    title="maintenance code"
+                                    value="#{maintenance.changeMechanicInput}"
+                                    required="true"
+                                    requiredMessage="Vul monteurscode in"
+                                    styleClass="form-control input-sm"></h:inputText>
+                            <span class="input-group-btn">
+                            <h:commandButton
+                                    action="#{maintenance.changeMechanic()}"
+                                    styleClass="btn btn-success btn-sm"
+                                    value="Wissel"/>
+                        </span>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </h:panelGroup>
+
+    </ui:define>
+
+</ui:composition>
+</html>

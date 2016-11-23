@@ -6,4 +6,7 @@ import entities.AbstractState;
  * Created by Sander on 22-11-2016.
  */
 public class ReadyForPickUpState extends AbstractState {
+    public String toString() {
+        return "Klaar voor uitleveren";
+    }
 }

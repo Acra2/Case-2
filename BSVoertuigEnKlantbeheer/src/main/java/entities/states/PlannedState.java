@@ -13,4 +13,8 @@ public class PlannedState extends AbstractState {
     public void present(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.PRESENT);
     }
+
+    public String toString(){
+        return "Gepland";
+    }
 }

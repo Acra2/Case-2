@@ -1,7 +1,7 @@
 package setup;
 
-import entities.Maintenance;
-import entities.Mechanic;
+import entities.*;
+import services.ICarService;
 import services.IMaintenanceService;
 import services.IMechanicService;
 
@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 
 /**
  * Created by Sander on 22-11-2016.
@@ -17,6 +18,8 @@ import javax.inject.Inject;
 @Singleton
 @Startup
 public class SetMaintenanceData {
+    @EJB
+    private ICarService carService;
 
     @EJB
     private IMaintenanceService maintenanceService;
@@ -29,8 +32,25 @@ public class SetMaintenanceData {
         Mechanic henk = Mechanic.builder().Name("henk").build();
         mechanicService.add(henk);
 
+        Brand brand = Brand.builder().name("Seat").build();
+        Model model = Model.builder().name("Altea").brand(brand).build();
+        Car car = new Car();
+        car.setVehicleNumber("11234");
+        car.setDriverEmail("test@mail.com");
+        car.setDriverName("test name");
+        car.setDriverPhoneNumber("1234567897");
+        car.setLicensePlate("license plate");
+        car.setMileage(4200);
+        car.setModel(model);
+        carService.addCar(car);
+
         Maintenance maintenance = new Maintenance();
+        maintenance.setId(1L);
+        maintenance.setStartDateTime(LocalDateTime.now());
+        maintenance.setDescription("dit is de beschrijving");
         maintenance.setMechanic(henk);
+        maintenance.setCar(car);
+        maintenance.present();
         maintenanceService.add(maintenance);
     }
 }

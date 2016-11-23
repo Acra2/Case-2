@@ -24,17 +24,6 @@ public class SetCarData implements Serializable{
 
     @PostConstruct
     public void setData() {
-        //Brand brand = Brand.builder().name("Seat").build();
-        Model model = Model.builder().name("Altea").build();
-        Car car = new Car();
-        car.setVehicleNumber("11234");
-        car.setDriverEmail("test@mail.com");
-        car.setDriverName("test name");
-        car.setDriverPhoneNumber("1234567897");
-        car.setLicensePlate("license plate");
-        car.setMileage(4200);
-        car.setModel(model);
-
         Car car1 = new Car();
         car1.setVehicleNumber("22345");
         car1.setDriverEmail("test@mail.com");
@@ -51,7 +40,6 @@ public class SetCarData implements Serializable{
         car2.setLicensePlate("license plate");
         car2.setMileage(4200);
 
-        carService.addCar(car);
         carService.addCar(car1);
         carService.addCar(car2);
     }
