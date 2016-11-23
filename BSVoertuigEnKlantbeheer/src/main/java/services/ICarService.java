@@ -10,11 +10,11 @@ import java.util.List;
  */
 @Remote
 public interface ICarService {
-    void add(Car car);
+    void addCar(Car car);
 
-    Car get(String vehicleNumber);
+    Car getCar(String vehicleNumber);
 
-    List getAll();
+    List getAllCars();
 
-    void update(Car car);
+    void updateCar(Car car);
 }
