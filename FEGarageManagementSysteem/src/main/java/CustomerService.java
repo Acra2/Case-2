@@ -20,10 +20,16 @@ import java.util.List;
 @NoArgsConstructor
 public class CustomerService implements Serializable {
 
+    private Customer temp = new Customer();
+
     @EJB
     private ICustomerService customerService;
 
     public List<Customer> getData(){
         return customerService.getAllCustomers();
+    }
+
+    public void addCustomer(Customer customer){
+        customerService.addCustomer(customer);
     }
 }

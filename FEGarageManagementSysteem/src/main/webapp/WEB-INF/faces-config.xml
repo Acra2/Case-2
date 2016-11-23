@@ -12,7 +12,11 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>customer</from-outcome>
-            <to-view-id>/customer.xhtml</to-view-id>
+            <to-view-id>/customerIndex.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>customerCreate</from-outcome>
+            <to-view-id>/customerCreate.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>car</from-outcome>
@@ -28,7 +32,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>customer</from-outcome>
-            <to-view-id>/customer.xhtml</to-view-id>
+            <to-view-id>/customer.customerIndex.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>car</from-outcome>
@@ -37,14 +41,14 @@
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/customer.xhtml</from-view-id>
+        <from-view-id>/customer.customerIndex.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>home</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>customer</from-outcome>
-            <to-view-id>/customer.xhtml</to-view-id>
+            <to-view-id>/customer.customerIndex.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>car</from-outcome>
