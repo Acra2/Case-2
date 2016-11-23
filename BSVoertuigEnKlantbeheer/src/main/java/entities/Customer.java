@@ -7,12 +7,23 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Sander on 22-11-2016.
+ * Created by Kai on 22-11-2016.
  */
 
 
 @Entity(name = "customer")
 @Builder
+@NamedQueries({
+        @NamedQuery(name = "getAllCustomer", query = "SELECT c from customer c"),
+        @NamedQuery(name = "updateCustomer", query = "UPDATE customer c " +
+                "SET " +
+                "c.adress = :adress," +
+                "c.btwnumber = :btwnumber, " +
+                "c.email = :email, " +
+                "c.name = :name, " +
+                "c.phonenumber = :phonenumber " +
+                "WHERE c.id = :id")
+})
 @Data
 @AllArgsConstructor
 public class Customer implements Serializable{
