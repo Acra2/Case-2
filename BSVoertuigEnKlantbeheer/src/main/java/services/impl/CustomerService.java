@@ -20,22 +20,22 @@ public class CustomerService implements ICustomerService {
     private EntityManager em;
 
     @Override
-    public void add(Customer customer) {
+    public void addCustomer(Customer customer) {
         em.persist(customer);
     }
 
     @Override
-    public Customer get(Long customerNumber) {
+    public Customer getCustomer(Long customerNumber) {
         return null;
     }
 
     @Override
-    public List getAll() {
+    public List getAllCustomers() {
         return em.createNamedQuery("getAllCustomers").getResultList();
     }
 
     @Override
-    public void update(Customer customer) {
+    public void updateCustomer(Customer customer) {
         em.createNamedQuery("updateCustomer")
                 .setParameter("name", customer.getName())
                 .setParameter("email", customer.getEmail())

@@ -19,7 +19,39 @@
 
     <ui:define name="content">
 
-        // put content here
+        <h:dataTable value="#{customer.data}" var="c">
+
+            <h:column>
+                <f:facet name="header">naam</f:facet>
+                #{c.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">klantnr.</f:facet>
+                #{c.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">email</f:facet>
+                #{c.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">adres</f:facet>
+                #{c.adress}
+            </h:column>
+            <h:column>
+                <f:facet name="header">telefoonnummer</f:facet>
+                #{c.phonenumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">btw-nummer</f:facet>
+                #{c.btwnumber}
+            </h:column>
+            <h:column>
+                <h:commandButton value="details" />
+            </h:column>
+
+        </h:dataTable>
+
+
 
     </ui:define>
 
