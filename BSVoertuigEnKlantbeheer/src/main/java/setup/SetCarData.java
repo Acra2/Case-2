@@ -27,7 +27,7 @@ public class SetCarData implements Serializable{
         //Brand brand = Brand.builder().name("Seat").build();
         Model model = Model.builder().name("Altea").build();
         Car car = new Car();
-        car.setVehicleNumber("test number");
+        car.setVehicleNumber("11234");
         car.setDriverEmail("test@mail.com");
         car.setDriverName("test name");
         car.setDriverPhoneNumber("1234567897");
@@ -36,7 +36,7 @@ public class SetCarData implements Serializable{
         car.setModel(model);
 
         Car car1 = new Car();
-        car1.setVehicleNumber("test2 number");
+        car1.setVehicleNumber("22345");
         car1.setDriverEmail("test@mail.com");
         car1.setDriverName("test name");
         car1.setDriverPhoneNumber("1234567897");
@@ -44,7 +44,7 @@ public class SetCarData implements Serializable{
         car1.setMileage(4200);
 
         Car car2 = new Car();
-        car2.setVehicleNumber("test3 number");
+        car2.setVehicleNumber("33445");
         car2.setDriverEmail("test@mail.com");
         car2.setDriverName("test name");
         car2.setDriverPhoneNumber("1234567897");

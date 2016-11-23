@@ -4,24 +4,24 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>home</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>customer</from-outcome>
-            <to-view-id>/customer.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>car</from-outcome>
-            <to-view-id>/car.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    <!--<navigation-rule>-->
+        <!--<from-view-id>/index.xhtml</from-view-id>-->
+        <!--<navigation-case>-->
+            <!--<from-outcome>home</from-outcome>-->
+            <!--<to-view-id>/index.xhtml</to-view-id>-->
+        <!--</navigation-case>-->
+        <!--<navigation-case>-->
+            <!--<from-outcome>customer</from-outcome>-->
+            <!--<to-view-id>/customer.xhtml</to-view-id>-->
+        <!--</navigation-case>-->
+        <!--<navigation-case>-->
+            <!--<from-outcome>car</from-outcome>-->
+            <!--<to-view-id>/car.xhtml</to-view-id>-->
+        <!--</navigation-case>-->
+    <!--</navigation-rule>-->
 
     <navigation-rule>
-        <from-view-id>/car.xhtml</from-view-id>
+        <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>home</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
@@ -38,22 +38,28 @@
             <from-outcome>add_car</from-outcome>
             <to-view-id>/add_car.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>update</from-outcome>
+            <to-view-id>/update_car.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 
-    <navigation-rule>
-        <from-view-id>/customer.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>home</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>customer</from-outcome>
-            <to-view-id>/customer.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>car</from-outcome>
-            <to-view-id>/car.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    <!--<navigation-rule>-->
+        <!--<from-view-id>/customer.xhtml</from-view-id>-->
+        <!--<navigation-case>-->
+            <!--<from-outcome>home</from-outcome>-->
+            <!--<to-view-id>/index.xhtml</to-view-id>-->
+        <!--</navigation-case>-->
+        <!--<navigation-case>-->
+            <!--<from-outcome>customer</from-outcome>-->
+            <!--<to-view-id>/customer.xhtml</to-view-id>-->
+        <!--</navigation-case>-->
+        <!--<navigation-case>-->
+            <!--<from-outcome>car</from-outcome>-->
+            <!--<to-view-id>/car.xhtml</to-view-id>-->
+        <!--</navigation-case>-->
+    <!--</navigation-rule>-->
+
+
   
 </faces-config>

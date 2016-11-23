@@ -22,8 +22,7 @@ import java.util.List;
                 "c.driverName = :name, " +
                 "c.driverPhoneNumber = :phonenumber, " +
                 "c.licensePlate = :licenseplate, " +
-                "c.mileage = :mileage, " +
-                "c.customer = :customer " +
+                "c.mileage = :mileage " +
                 "WHERE c.vehicleNumber = :vehicleNumber")
 })
 

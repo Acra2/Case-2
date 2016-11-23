@@ -15,6 +15,7 @@ import java.util.List;
 @Builder
 @Data
 @AllArgsConstructor
+@NamedQuery(name = "getAllModels", query = "SELECT m from model m")
 public class Model implements Serializable {
 
     @Id

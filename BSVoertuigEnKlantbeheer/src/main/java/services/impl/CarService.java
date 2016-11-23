@@ -29,7 +29,7 @@ public class CarService implements ICarService {
 
     @Override
     public Car getCar(String vehicleNumber) {
-        return null;
+        return em.find(Car.class, vehicleNumber);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class CarService implements ICarService {
                 .setParameter("phonenumber", car.getDriverPhoneNumber())
                 .setParameter("licenseplate", car.getLicensePlate())
                 .setParameter("mileage", car.getMileage())
-                .setParameter("customer", car.getCustomer())
+                .setParameter("vehicleNumber", car.getVehicleNumber())
                 .executeUpdate();
     }
 }

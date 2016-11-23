@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<f:metadata>
+    <f:viewParam name="id" value="#{car.updateKey}"/>
+    <f:event type="preRenderView" listener="#{car.setSpecificCar(car.updateKey)}" />
+</f:metadata>
+
+<ui:composition template="template.xhtml">
+
+    <ui:define name="title">
+        Car Management
+    </ui:define>
+
+    <ui:define name="header">
+        Update car
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form styleClass="form-horizontal">
+
+            <h:outputLabel id="vehicleNumber" value="#{car.car.vehicleNumber}" />
+            <h:inputText id="driverEmail" value="#{car.car.driverEmail}" />
+            <h:inputText id="driverPhonenumber" value="#{car.car.driverPhoneNumber}" />
+            <h:inputText id="driverName" value="#{car.car.driverName}" />
+            <h:inputText id="licensePlate" value="#{car.car.licensePlate}" />
+            <h:inputText id="mileAge" value="#{car.car.mileage}" />
+
+
+            <!--<h:inputText id="customer" value="#{car.car.customer}" />-->
+            <!--<h:inputText id="model" value="#{car.car.model}" />-->
+
+
+            <div class="col-sm-offset-2 col-sm-10">
+                <h:commandLink styleClass="btn btn-primary" value="update" actionListener="#{car.updateCar()}"/>
+                <h:link styleClass="btn btn-danger" value="cancel" outcome="car" />
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+</html>
