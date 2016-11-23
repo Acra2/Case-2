@@ -20,18 +20,19 @@ import java.util.Date;
 public class Maintenance implements Serializable{
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.TABLE)
     private long id;
-
-    @ManyToOne
-    private Car car;
-
     private LocalDateTime startDateTime;
+    private String description;
 
     @Enumerated(EnumType.STRING)
     private MaintenanceState state = MaintenanceState.PLANNED;
 
-    private String description;
+    @ManyToOne
+    private Car car;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Mechanic mechanic;
 
     public Maintenance() {
     }

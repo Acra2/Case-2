@@ -6,6 +6,8 @@ import services.ICarService;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -20,22 +22,18 @@ public class CarService implements ICarService {
     @PersistenceContext
     private EntityManager em;
 
-    @Override
     public void add(Car car) {
         em.persist(car);
     }
 
-    @Override
     public Car get(String vehicleNumber) {
-        return null;
+        return em.find(Car.class,vehicleNumber);
     }
 
-    @Override
     public List getAll() {
         return em.createNamedQuery("getAll").getResultList();
     }
 
-    @Override
     public void update(Car car) {
         em.createNamedQuery("update")
                 .setParameter("mail", car.getDriverEmail())
