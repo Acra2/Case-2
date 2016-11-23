@@ -28,7 +28,11 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>customer</from-outcome>
-            <to-view-id>/customer.xhtml</to-view-id>
+            <to-view-id>/customerIndex.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>customerCreate</from-outcome>
+            <to-view-id>/customerCreate.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>car</from-outcome>
