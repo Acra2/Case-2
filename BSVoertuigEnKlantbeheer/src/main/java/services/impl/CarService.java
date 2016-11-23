@@ -3,6 +3,7 @@ package services.impl;
 import entities.Car;
 import services.ICarService;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 
 @Stateful
+@Remote(ICarService.class)
 public class CarService implements ICarService {
 
     @PersistenceContext

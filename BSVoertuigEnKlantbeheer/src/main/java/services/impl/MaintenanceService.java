@@ -12,7 +12,9 @@ import java.util.List;
 /**
  * Created by Sander on 22-11-2016.
  */
+
 @Stateful
+@Remote(IMaintenanceService.class)
 public class MaintenanceService implements IMaintenanceService {
 
     @PersistenceContext
