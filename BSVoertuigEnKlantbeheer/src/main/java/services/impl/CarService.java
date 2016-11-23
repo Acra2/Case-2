@@ -22,19 +22,23 @@ public class CarService implements ICarService {
     @PersistenceContext
     private EntityManager em;
 
-    public void add(Car car) {
+    @Override
+    public void addCar(Car car) {
         em.persist(car);
     }
 
-    public Car get(String vehicleNumber) {
-        return em.find(Car.class,vehicleNumber);
+    @Override
+    public Car getCar(String vehicleNumber) {
+        return null;
     }
 
-    public List getAll() {
+    @Override
+    public List getAllCars() {
         return em.createNamedQuery("getAll").getResultList();
     }
 
-    public void update(Car car) {
+    @Override
+    public void updateCar(Car car) {
         em.createNamedQuery("update")
                 .setParameter("mail", car.getDriverEmail())
                 .setParameter("name", car.getDriverName())

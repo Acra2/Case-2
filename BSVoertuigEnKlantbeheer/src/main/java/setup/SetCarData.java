@@ -35,11 +35,24 @@ public class SetCarData implements Serializable{
         car.setMileage(4200);
         car.setModel(model);
 
-        carService.add(car);
+        Car car1 = new Car();
+        car1.setVehicleNumber("test2 number");
+        car1.setDriverEmail("test@mail.com");
+        car1.setDriverName("test name");
+        car1.setDriverPhoneNumber("1234567897");
+        car1.setLicensePlate("license plate");
+        car1.setMileage(4200);
 
-//        Model model2 = Model.builder().name("Leon").build();
-        Car car2 = Car.builder().vehicleNumber("test nember2").model(model).build();
-        carService.add(car2);
-//        System.out.println(carService.get("test number").getDriverEmail());
+        Car car2 = new Car();
+        car2.setVehicleNumber("test3 number");
+        car2.setDriverEmail("test@mail.com");
+        car2.setDriverName("test name");
+        car2.setDriverPhoneNumber("1234567897");
+        car2.setLicensePlate("license plate");
+        car2.setMileage(4200);
+
+        carService.addCar(car);
+        carService.addCar(car1);
+        carService.addCar(car2);
     }
 }

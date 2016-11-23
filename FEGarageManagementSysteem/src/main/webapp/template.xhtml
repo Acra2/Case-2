@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+
+    <title><ui:insert name="title">title</ui:insert></title>
+</h:head>
+<h:body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="header">
+                    <div class="well well-lg">
+                        <h2>
+                            <ui:insert name="header">Header Section</ui:insert>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#">Garage Management System</a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li><h:link value="Home" outcome="home" /></li>
+                                <li><h:link value="Customer management" outcome="customer" /></li>
+                                <li><h:link value="Car management" outcome="car" /></li>
+                            </ul>
+                        </div>
+                    </nav>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-body">
+                        <ui:insert name="content">Content Section</ui:insert>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-footer">Garage Management System</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h:outputScript name="js/jquery.js" target="#{param.location}" />
+    <h:outputScript name="js/bootstrap.js" target="#{param.location}" />
+
+</h:body>
+</html>
