@@ -29,7 +29,7 @@ public class MaintenanceService implements IMaintenanceService {
     }
 
     public void add(Maintenance maintenance) {
-        em.persist(maintenance);
+        em.merge(maintenance);
 
     }
 }

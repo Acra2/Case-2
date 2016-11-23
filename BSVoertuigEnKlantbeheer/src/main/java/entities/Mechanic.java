@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Sander on 23-11-2016.
@@ -16,11 +15,14 @@ import javax.persistence.Id;
 @Data
 @Builder
 @AllArgsConstructor
-public class Mechanic {
+public class Mechanic implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String Name;
+
+    @OneToMany(mappedBy = "mechanic")
+    private List<Maintenance> maintenance;
 
     public Mechanic() {
     }

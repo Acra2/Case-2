@@ -38,6 +38,10 @@
             <from-outcome>car</from-outcome>
             <to-view-id>/car.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>add_car</from-outcome>
+            <to-view-id>/add_car.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 
     <navigation-rule>

@@ -17,7 +17,7 @@ import java.util.Date;
 @NamedQuery(name = "getAllMaintenance", query = "SELECT m from maintenance m")
 @Builder
 @AllArgsConstructor
-public class Maintenance implements Serializable{
+public class Maintenance implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.TABLE)
@@ -31,7 +31,8 @@ public class Maintenance implements Serializable{
     @ManyToOne
     private Car car;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn
     private Mechanic mechanic;
 
     public Maintenance() {
