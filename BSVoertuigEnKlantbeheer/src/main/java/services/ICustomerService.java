@@ -11,11 +11,11 @@ import java.util.List;
 @Remote
 public interface ICustomerService {
 
-    void add(Customer customer);
+    void addCustomer(Customer customer);
 
-    Customer get(Long CustomerNumber);
+    Customer getCustomer(Long CustomerNumber);
 
-    List getAll();
+    List getAllCustomers();
 
-    void update(Customer customer);
+    void updateCustomer(Customer customer);
 }

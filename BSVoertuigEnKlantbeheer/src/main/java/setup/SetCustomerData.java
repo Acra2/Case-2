@@ -30,6 +30,6 @@ public class SetCustomerData implements Serializable{
         customer.setAdress("Leerpark 100 3320 AR Dordrecht");
         customer.setName("Piet Jansen");
 
-        customerService.add(customer);
+        customerService.addCustomer(customer);
     }
 }
