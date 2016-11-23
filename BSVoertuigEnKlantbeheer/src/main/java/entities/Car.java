@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.interceptor.Interceptor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -16,16 +15,16 @@ import java.util.List;
 @Entity(name = "car")
 @Data
 @NamedQueries({
-    @NamedQuery(name = "getAll", query = "SELECT c from car c"),
-    @NamedQuery(name = "update", query = "UPDATE car  c " +
-            "SET " +
-            "c.driverEmail = :mail," +
-            "c.driverName = :name, " +
-            "c.driverPhoneNumber = :phonenumber, " +
-            "c.licensePlate = :licenseplate, " +
-            "c.mileage = :mileage, " +
-            "c.customer = :customer " +
-            "WHERE c.vehicleNumber = :vehicleNumber")
+        @NamedQuery(name = "getAll", query = "SELECT c from car c"),
+        @NamedQuery(name = "update", query = "UPDATE car  c " +
+                "SET " +
+                "c.driverEmail = :mail," +
+                "c.driverName = :name, " +
+                "c.driverPhoneNumber = :phonenumber, " +
+                "c.licensePlate = :licenseplate, " +
+                "c.mileage = :mileage, " +
+                "c.customer = :customer " +
+                "WHERE c.vehicleNumber = :vehicleNumber")
 })
 
 @Builder
@@ -41,7 +40,10 @@ public class Car implements Serializable {
     private String driverEmail;
     private String driverPhoneNumber;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Model model;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Customer customer;
 
     @OneToMany(mappedBy = "car")

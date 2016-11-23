@@ -18,7 +18,47 @@
     </ui:define>
 
     <ui:define name="content">
+        <h:dataTable id="car_table"
+                     value="#{car.getAllCars()}"
+                     var="c"
+                     styleClass="table table-bordered table-responsive">
 
+            <h:column>
+                <f:facet name="header">Vehincle #</f:facet>
+                #{c.vehicleNumber}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">License plate</f:facet>
+                #{c.licensePlate}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Driver e-mail</f:facet>
+                #{c.driverEmail}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Mile age</f:facet>
+                #{c.mileage}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Driver name</f:facet>
+                #{c.mileage}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Driver phonenumber</f:facet>
+                #{c.driverPhoneNumber}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Customer</f:facet>
+                <h:link value="Customer" outcome="#" />
+            </h:column>
+
+        </h:dataTable>
     </ui:define>
 
 </ui:composition>

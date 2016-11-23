@@ -29,7 +29,7 @@ import java.util.List;
 public class Customer implements Serializable{
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.TABLE)
     public Long id;
     private String name;
     private String email;
