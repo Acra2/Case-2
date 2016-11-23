@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 @Builder
 @Data
 @AllArgsConstructor
-public class Model {
+public class Model implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.TABLE)
