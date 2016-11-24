@@ -28,7 +28,7 @@ public class MaintenanceController implements IMaintenanceController {
     @EJB
     private IMechanicService mechanicService;
 
-    @Inject
+    //@Inject
     private RDWSteekproefWebService_PortType rdwSteekproefWebService_portType;
 
     @Override

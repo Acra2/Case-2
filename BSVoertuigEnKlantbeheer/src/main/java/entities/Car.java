@@ -10,10 +10,8 @@ import java.util.List;
  * Created by Sander on 22-11-2016.
  */
 
-@Getter
-@Setter
+
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @NamedQueries({
         @NamedQuery(name = "getAll", query = "SELECT c from car c"),
@@ -27,6 +25,7 @@ import java.util.List;
                 "WHERE c.vehicleNumber = :vehicleNumber")
 })
 @Entity(name = "car")
+@Data
 public class Car implements Serializable {
 
     @Id
@@ -47,4 +46,6 @@ public class Car implements Serializable {
     @OneToMany(mappedBy = "car")
     private List<Maintenance> maintenanceList;
 
+    public Car() {
+    }
 }
