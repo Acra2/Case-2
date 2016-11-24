@@ -14,7 +14,8 @@ import java.util.Date;
  */
 @Data
 @Entity(name = "maintenance")
-@NamedQuery(name = "getAllMaintenance", query = "SELECT m from maintenance m")
+@NamedQueries({@NamedQuery(name = "getAllMaintenance", query = "SELECT m from maintenance m"),
+        @NamedQuery(name = "getMaintenanceForMechanicAndState", query = "SELECT m from maintenance m WHERE m.mechanic.id = :mechanicId and m.state = entities.MaintenanceState.INMAINTENANCE")})
 @Builder
 @AllArgsConstructor
 public class Maintenance implements Serializable {
@@ -31,34 +32,58 @@ public class Maintenance implements Serializable {
     @ManyToOne
     private Car car;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinColumn
     private Mechanic mechanic;
 
     public Maintenance() {
     }
 
-    public void present() throws StateException {
-        state.present(this);
+    public void present() {
+        try {
+            state.present(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void start() throws StateException {
-        state.startMaintenace(this);
+    public void start() {
+        try {
+            state.startMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void pause() throws StateException {
-        state.pauseMaintenace(this);
+    public void pause(){
+        try {
+            state.pauseMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void finish() throws StateException {
-        state.finishMaintenace(this);
+    public void finish(){
+        try {
+            state.finishMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void needInspections() throws StateException {
-        state.needInspections(this);
+    public void needInspections() {
+        try {
+            state.needInspections(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void readyForPickUp() throws StateException {
-        state.readyForPickUp(this);
+    public void readyForPickUp(){
+        try {
+            state.readyForPickUp(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 }

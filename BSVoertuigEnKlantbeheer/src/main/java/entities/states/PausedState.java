@@ -12,4 +12,10 @@ public class PausedState extends AbstractState {
     public void startMaintenace(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.INMAINTENANCE);
     }
+    public String[] getOperations(){
+        return new String[]{"start"};
+    }
+    public String toString() {
+        return "Gepauzeerd";
+    }
 }

@@ -2,11 +2,8 @@ package setup;
 
 import entities.Brand;
 import entities.Car;
-import entities.Customer;
 import entities.Model;
 import services.ICarService;
-import services.ICustomerService;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -20,7 +17,7 @@ import java.io.Serializable;
 
 @Singleton
 @Startup
-public class SetCarData implements Serializable {
+public class SetCarData implements Serializable{
 
     @EJB
     private ICarService carService;

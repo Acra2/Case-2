@@ -7,6 +7,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * Created by paisanrietbroek on 23/11/2016.
@@ -21,5 +22,15 @@ public class MechanicService implements IMechanicService {
     @Override
     public void add(Mechanic mechanic) {
         em.persist(mechanic);
+    }
+
+    @Override
+    public List<Mechanic> getAllMechanics() {
+        return em.createNamedQuery("getAllMechanics").getResultList();
+    }
+
+    @Override
+    public Mechanic getMechanic(Long id) {
+        return em.find(Mechanic.class, id);
     }
 }
