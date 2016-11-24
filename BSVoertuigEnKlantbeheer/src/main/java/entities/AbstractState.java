@@ -28,4 +28,12 @@ public abstract class AbstractState {
     public void readyForPickUp(Maintenance maintenance) throws StateException {
         throw new StateException("Invalid state transition");
     }
+
+    public String[] getOperations(){
+        return new String[]{};
+    }
+
+    public String toString() {
+        return "";
+    }
 }

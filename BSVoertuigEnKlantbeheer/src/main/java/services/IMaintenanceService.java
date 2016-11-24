@@ -1,6 +1,7 @@
 package services;
 
 import entities.Maintenance;
+import entities.Mechanic;
 import sun.applet.Main;
 
 import javax.ejb.Remote;
@@ -15,4 +16,5 @@ public interface IMaintenanceService {
     List<Maintenance> getAll();
     Maintenance getOne(Long id);
     void add(Maintenance maintenance);
+    Maintenance getInMaintenanceForMechanic(Mechanic mechanic);
 }

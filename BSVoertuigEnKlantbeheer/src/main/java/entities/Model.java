@@ -15,6 +15,7 @@ import java.util.List;
 @Builder
 @Data
 @AllArgsConstructor
+@NamedQuery(name = "getAllModels", query = "SELECT m from model m")
 public class Model implements Serializable {
 
     @Id
@@ -22,7 +23,8 @@ public class Model implements Serializable {
     private Long id;
     private String name;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @JoinColumn
     private Brand brand;
 
     public Model() {

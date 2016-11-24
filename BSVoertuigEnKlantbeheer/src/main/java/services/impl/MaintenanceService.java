@@ -1,6 +1,8 @@
 package services.impl;
 
 import entities.Maintenance;
+import entities.MaintenanceState;
+import entities.Mechanic;
 import services.ICarService;
 import services.IMaintenanceService;
 
@@ -25,11 +27,23 @@ public class MaintenanceService implements IMaintenanceService {
     }
 
     public Maintenance getOne(Long id) {
-        return null;
+       return em.find(Maintenance.class, id);
     }
 
     public void add(Maintenance maintenance) {
         em.merge(maintenance);
 
+    }
+
+    @Override
+    public Maintenance getInMaintenanceForMechanic(Mechanic mechanic) {
+        List resultList = em.createNamedQuery("getMaintenanceForMechanicAndState")
+                .setParameter("mechanicId", mechanic.getId())
+                .getResultList();
+
+        if (!resultList.isEmpty())
+            return (Maintenance) resultList.get(0);
+        else
+            return null;
     }
 }

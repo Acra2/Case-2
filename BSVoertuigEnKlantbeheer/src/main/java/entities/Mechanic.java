@@ -11,13 +11,15 @@ import java.util.List;
 /**
  * Created by Sander on 23-11-2016.
  */
-@Entity
+@Entity(name = "mechanic")
 @Data
 @Builder
+@NamedQueries({
+        @NamedQuery(name = "getAllMechanics", query = "SELECT m from mechanic m")})
 @AllArgsConstructor
 public class Mechanic implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.TABLE)
     private Long id;
     private String Name;
 

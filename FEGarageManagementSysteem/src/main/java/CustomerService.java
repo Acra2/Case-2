@@ -25,7 +25,7 @@ public class CustomerService implements Serializable {
     @EJB
     private ICustomerService customerService;
 
-    public List<Customer> getData(){
+    public List getData(){
         return customerService.getAllCustomers();
     }
 

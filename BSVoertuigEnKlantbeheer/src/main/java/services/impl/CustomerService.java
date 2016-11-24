@@ -5,6 +5,7 @@ import entities.Customer;
 import services.ICarService;
 import services.ICustomerService;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,7 +14,9 @@ import java.util.List;
 /**
  * Created by Gebruiker on 22-11-2016.
  */
+
 @Stateful
+@Remote(ICustomerService.class)
 public class CustomerService implements ICustomerService {
 
     @PersistenceContext
@@ -44,5 +47,18 @@ public class CustomerService implements ICustomerService {
                 .setParameter("phonenumber", customer.getPhonenumber())
                 .setParameter("id", customer.getId())
                 .executeUpdate();
+    }
+
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        try {
+            Customer singleResult = em.createNamedQuery("getCustomerByEmail", Customer.class)
+                    .setParameter("email", email).getSingleResult();
+
+            return singleResult;
+        } catch (Exception ex) {
+            System.out.println("customer not found: " + ex.getMessage());
+        }
+        return null;
     }
 }

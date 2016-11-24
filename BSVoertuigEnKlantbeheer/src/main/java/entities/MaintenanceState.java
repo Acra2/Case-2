@@ -45,4 +45,12 @@ public enum MaintenanceState {
         state.readyForPickUp(maintenance);
     }
 
+    public String[] getOperations(){
+        return state.getOperations();
+    }
+
+    public String toString(){
+        return state.toString();
+    }
+
 }
