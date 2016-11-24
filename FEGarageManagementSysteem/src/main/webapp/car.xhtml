@@ -10,15 +10,15 @@
 <ui:composition template="template.xhtml">
 
     <ui:define name="title">
-        Car Management
+        Auto beheer
     </ui:define>
 
     <ui:define name="header">
-        Car management
+        Auto beheer
     </ui:define>
 
     <ui:define name="content">
-        <h:form><h:outputLabel value="Show:"></h:outputLabel>
+        <h:form><h:outputLabel value="Filteren:"></h:outputLabel>
             <h:selectOneMenu value="#{carService.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
                 <f:selectItem itemLabel="Allemaal" itemValue="-9"/>
                 <f:selectItem itemLabel="Gisteren" itemValue="-1"/>
@@ -32,42 +32,42 @@
                      styleClass="table table-bordered table-responsive">
 
             <h:column>
-                <f:facet name="header">Vehincle #</f:facet>
+                <f:facet name="header">Auto #</f:facet>
                 #{c.vehicleNumber}
             </h:column>
 
             <h:column>
-                <f:facet name="header">License plate</f:facet>
+                <f:facet name="header">Nummerbord</f:facet>
                 #{c.licensePlate}
             </h:column>
 
             <h:column>
-                <f:facet name="header">Driver e-mail</f:facet>
+                <f:facet name="header">Bestuurders e-mail</f:facet>
                 #{c.driverEmail}
             </h:column>
 
             <h:column>
-                <f:facet name="header">Mile age</f:facet>
+                <f:facet name="header">Kilometers</f:facet>
                 #{c.mileage}
             </h:column>
 
             <h:column>
-                <f:facet name="header">Driver name</f:facet>
+                <f:facet name="header">Bestuurders-naam</f:facet>
                 #{c.driverName}
             </h:column>
 
             <h:column>
-                <f:facet name="header">Driver phonenumber</f:facet>
+                <f:facet name="header">Bestuurders-telefoonnummer</f:facet>
                 #{c.driverPhoneNumber}
             </h:column>
 
             <h:column>
-                <f:facet name="header">Customer</f:facet>
+                <f:facet name="header">Klant e-mail</f:facet>
                 <h:link value="#{c.customer.email}" outcome="#" />
             </h:column>
 
             <h:column>
-                <f:facet name="header">Edit</f:facet>
+                <f:facet name="header">Wijzigen</f:facet>
                 <h:link value="Edit" outcome="updateCar" includeViewParams="true">
                     <f:param name="id" value="#{c.vehicleNumber}" />
                 </h:link>

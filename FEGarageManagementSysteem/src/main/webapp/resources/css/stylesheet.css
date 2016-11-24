@@ -1,0 +1,13 @@
+.main_menu {
+    display: block;
+    float: left;
+    width: 400px;
+    margin: 8px;
+    height: 200px;
+    line-height: 240px;
+    -webkit-transition: line-height 0.8s; /* Safari */
+    transition: line-height 0.8s;
+}
+.main_menu:hover {
+    line-height: 200px;
+}
