@@ -1,18 +1,19 @@
 import entities.Car;
 import entities.Customer;
+import entities.Maintenance;
 import lombok.Getter;
 import lombok.Setter;
 import services.ICarService;
 import services.ICustomerService;
 import services.IModelService;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class CarService implements Serializable {
 
     private String updateKey;
 
+    private Integer filterIndex = -9;
     @EJB
     private ICarService carService;
 
@@ -59,7 +61,50 @@ public class CarService implements Serializable {
 
 
     public List getAllCars() {
-        return carService.getAllCars();
+
+        List<Car> allCars = carService.getAllCars();
+        List<Car> tempCars = new ArrayList<>();
+        switch (filterIndex) {
+            case -1:
+                for (Car car : allCars) {
+                    if (hasMaintenance(car, LocalDateTime.now().minusDays(1)))
+                        tempCars.add(car);
+                }
+                break;
+            case 0:
+                for (Car car : allCars) {
+                    if (hasMaintenance(car, LocalDateTime.now()))
+                        tempCars.add(car);
+                }
+                break;
+            case 1:
+                for (Car car : allCars) {
+                    breakLoop:
+                    if (car.getMaintenanceList().size() > 0)
+                        for (Maintenance m : car.getMaintenanceList()) {
+                            if (m.getStartDateTime().toLocalDate().isAfter(LocalDate.now())) {
+                                tempCars.add(car);
+                            }
+                        }
+
+                }
+
+                break;
+            default:
+                tempCars = allCars;
+        }
+        return tempCars;
+    }
+
+    private boolean hasMaintenance(Car car, LocalDateTime date) {
+
+        if (car.getMaintenanceList().size() > 0)
+            for (Maintenance m : car.getMaintenanceList()) {
+                if (m.getStartDateTime().toLocalDate().equals(LocalDateTime.now())) {
+                    return true;
+                }
+            }
+        return false;
     }
 
     public void addCar() {
