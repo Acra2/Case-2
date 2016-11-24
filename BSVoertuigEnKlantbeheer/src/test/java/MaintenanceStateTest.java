@@ -20,7 +20,7 @@ public class MaintenanceStateTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void correctProcessWithInspection() throws StateException {
+    public void correctProcessWithInspection() {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.start();
@@ -33,7 +33,7 @@ public class MaintenanceStateTest {
     }
 
     @Test
-    public void correctProcessWithoutInspection() throws StateException {
+    public void correctProcessWithoutInspection() {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.start();
@@ -43,27 +43,28 @@ public class MaintenanceStateTest {
     }
 
     @Test
-    public void inCorrectEarlyFinish() throws StateException {
-        thrown.expect(StateException.class);
+    public void inCorrectEarlyFinish() {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.finish();
+        assertThat(maintenance.getState(), is(MaintenanceState.PRESENT));
     }
 
     @Test
-    public void inCorrectEarlyPickup() throws StateException {
-        thrown.expect(StateException.class);
+    public void inCorrectEarlyPickup() {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.readyForPickUp();
+        assertThat(maintenance.getState(), is(MaintenanceState.PRESENT));
     }
 
     @Test
-    public void inCorrectLatePause() throws StateException {
-        thrown.expect(StateException.class);
+    public void inCorrectLatePause() {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
+        maintenance.start();
         maintenance.finish();
         maintenance.pause();
+        assertThat(maintenance.getState(), is(MaintenanceState.READYFORSAMPLE));
     }
 }
