@@ -29,6 +29,9 @@ public class Maintenance implements Serializable {
     @Enumerated(EnumType.STRING)
     private MaintenanceState state = MaintenanceState.PLANNED;
 
+    @Enumerated(EnumType.STRING)
+    private MaintenanceType type;
+
     @ManyToOne
     private Car car;
 
