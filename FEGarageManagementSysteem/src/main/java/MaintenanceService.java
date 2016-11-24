@@ -23,10 +23,11 @@ public class MaintenanceService implements Serializable {
     private IMaintenanceController maintenanceController;
 
     private UIComponent btCheckMechanicCodeInput;
+    private UIComponent btChanceMechanicCodeInput;
     private UIComponent btMaintenanceInput;
 
     private Maintenance mainte;
-
+    private Maintenance otherMaintenance;
     private String maintenanceInput = "";
     private String mechanicInput = "";
     private String changeMechanicInput = "";
@@ -34,6 +35,7 @@ public class MaintenanceService implements Serializable {
     public void setMaintenance() {
         Long maintenanceId = Long.parseLong(maintenanceInput);
         mainte = maintenanceController.getMaintenance(maintenanceId);
+        otherMaintenance = null;
         if (mainte == null) {
             FacesMessage message = new FacesMessage("Onderhoudsopdracht niet gevonden");
             FacesContext context = FacesContext.getCurrentInstance();
@@ -60,15 +62,25 @@ public class MaintenanceService implements Serializable {
     }
 
     public void changeMechanic() {
-        mainte = maintenanceController.changeMechanic(mainte, changeMechanicInput);
-        changeMechanicInput = "";
+        Maintenance maintenance = maintenanceController.changeMechanic(mainte, changeMechanicInput);
+        if (maintenance == null){
+            FacesMessage message = new FacesMessage("Monteurscode incorrect");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(btChanceMechanicCodeInput.getClientId(context), message);
+        }else{
+            mainte = maintenance;
+            changeMechanicInput = "";
+        }
     }
 
     public void start() {
         if (checkMechanic()) {
-            mainte.start();
-            maintenanceController.persistMaintenace(mainte);
-            clearView();
+            otherMaintenance = maintenanceController.checkInMaintenance(mainte.getMechanic());
+            if (otherMaintenance == null) {
+                mainte.start();
+                maintenanceController.persistMaintenace(mainte);
+                clearView();
+            }
         }
     }
 
@@ -86,6 +98,18 @@ public class MaintenanceService implements Serializable {
             maintenanceController.persistMaintenace(mainte);
             clearView();
         }
+    }
+
+    public void pauseOtherMaintenace(){
+        otherMaintenance.pause();
+        maintenanceController.persistMaintenace(otherMaintenance);
+        start();
+    }
+
+    public void finishOtherMaintenace(){
+        otherMaintenance.finish();
+        maintenanceController.persistMaintenace(otherMaintenance);
+        start();
     }
 
     public void clearView() {

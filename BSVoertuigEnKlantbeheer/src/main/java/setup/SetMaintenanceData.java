@@ -45,12 +45,19 @@ public class SetMaintenanceData {
         carService.addCar(car);
 
         Maintenance maintenance = new Maintenance();
-        maintenance.setId(1L);
         maintenance.setStartDateTime(LocalDateTime.now());
         maintenance.setDescription("dit is de beschrijving");
         maintenance.setMechanic(henk);
         maintenance.setCar(car);
         maintenance.present();
         maintenanceService.add(maintenance);
+
+        Maintenance maintenance2 = new Maintenance();
+        maintenance2.setStartDateTime(LocalDateTime.now());
+        maintenance2.setDescription("dit is de beschrijving2");
+        maintenance2.setMechanic(henk);
+        maintenance2.setCar(car);
+        maintenance2.present();
+        maintenanceService.add(maintenance2);
     }
 }

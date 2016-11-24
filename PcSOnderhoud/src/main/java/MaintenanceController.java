@@ -39,10 +39,12 @@ public class MaintenanceController implements IMaintenanceController {
             System.out.println("mechanics: "+m.getId());
         }
         Mechanic mechanic = mechanicService.getMechanic(Long.parseLong(id));
-        maintenance.setMechanic(mechanic);
-        maintenanceService.add(maintenance);
-        return maintenance;
-
+        if (mechanic != null) {
+            maintenance.setMechanic(mechanic);
+            maintenanceService.add(maintenance);
+            return maintenance;
+        }else
+            return null;
     }
 
     @Override
@@ -63,6 +65,12 @@ public class MaintenanceController implements IMaintenanceController {
     @Override
     public boolean actions(Maintenance maintenance) {
         return maintenance.getState().getOperations().length > 0;
+    }
+
+    @Override
+    public Maintenance checkInMaintenance(Mechanic mechanic ){
+        Maintenance inMaintenanceForMechanic = maintenanceService.getInMaintenanceForMechanic(mechanic);
+        return inMaintenanceForMechanic;
     }
 
 }

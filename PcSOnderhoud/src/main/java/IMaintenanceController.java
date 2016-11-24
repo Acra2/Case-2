@@ -13,4 +13,5 @@ public interface IMaintenanceController {
     boolean showButton(Maintenance maintenance, String state);
     void persistMaintenace(Maintenance maintenance);
     boolean actions(Maintenance maintenance);
+    Maintenance checkInMaintenance(Mechanic mechanic);
 }

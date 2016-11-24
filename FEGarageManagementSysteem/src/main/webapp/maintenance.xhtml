@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-sm-9">
                         <h:outputLabel
-                                value="#{maintenance.mainte.mechanic.name}"></h:outputLabel>
+                                value="#{maintenance.mainte.mechanic.id} #{maintenance.mainte.mechanic.name}"></h:outputLabel>
                     </div>
                     <div class="col-sm-3">
                         Geplande tijd:
@@ -111,8 +111,8 @@
                     </div>
                 </div>
             </div>
-            <br/>
-            <h:panelGroup rendered="#{maintenance.actions()}">
+            <h:panelGroup rendered="#{maintenance.actions() and maintenance.otherMaintenance == null}">
+                <br/>
                 <div class="container">
 
                     <div class="col-sm-6">
@@ -150,6 +150,63 @@
                     </div>
                 </div>
             </h:panelGroup>
+            <h:panelGroup rendered="#{maintenance.otherMaintenance != null}">
+                <hr/>
+                <div class="container">
+                    <div class="col-sm-12">
+                        <h4>Je kan maar aan 1 onderhoudsopdracht te gelijk werken!</h4>
+                        <h6>Momenteel ben je ook met de voldende onderhoudsopdracht bezig</h6>
+                        <div class="col-sm-6">
+                            <h4>Onderhoud</h4>
+                            <div class="col-sm-3">
+                                Description:
+                            </div>
+                            <div class="col-sm-9">
+                                <h:outputLabel value="#{maintenance.otherMaintenance.description}"></h:outputLabel>
+                            </div>
+                            <div class="col-sm-3">
+                                Status:
+                            </div>
+                            <div class="col-sm-9">
+                                <h:outputLabel value="#{maintenance.otherMaintenance.state.toString()}"></h:outputLabel>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>Auto</h4>
+                            <div class="col-sm-3">
+                                Klant:
+                            </div>
+                            <div class="col-sm-9">
+                                <h:outputLabel
+                                        value="#{maintenance.otherMaintenance.car.customer.name}"></h:outputLabel>
+                            </div>
+                            <div class="col-sm-3">
+                                Nummerplaat:
+                            </div>
+                            <div class="col-sm-9">
+                                <h:outputLabel value="#{maintenance.otherMaintenance.car.licensePlate}"></h:outputLabel>
+                            </div>
+                            <div class="col-sm-3">
+                                Model auto:
+                            </div>
+                            <div class="col-sm-9">
+                                <h:outputLabel
+                                        value="#{maintenance.otherMaintenance.car.model.brand.name} #{maintenance.otherMaintenance.car.model.name}"></h:outputLabel>
+                            </div>
+                        </div>
+                        <h:form>
+                            <h:commandButton
+                                    action="#{maintenance.pauseOtherMaintenace()}"
+                                    styleClass="btn btn-success btn-sm"
+                                    value="pauzeer"/>
+                            <h:commandButton
+                                    action="#{maintenance.finishOtherMaintenace()}"
+                                    styleClass="btn btn-success btn-sm"
+                                    value="afsluiten"/>
+                        </h:form>
+                    </div>
+                </div>
+            </h:panelGroup>
             <hr/>
             <div class="container">
                 <div class="col-sm-6">
@@ -163,7 +220,8 @@
                                     value="#{maintenance.changeMechanicInput}"
                                     required="true"
                                     requiredMessage="Vul monteurscode in"
-                                    styleClass="form-control input-sm"></h:inputText>
+                                    styleClass="form-control input-sm"
+                                    binding="#{maintenance.btChanceMechanicCodeInput}"></h:inputText>
                             <span class="input-group-btn">
                             <h:commandButton
                                     action="#{maintenance.changeMechanic()}"
@@ -175,8 +233,6 @@
                 </div>
             </div>
         </h:panelGroup>
-
     </ui:define>
-
 </ui:composition>
 </html>
