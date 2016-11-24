@@ -94,8 +94,7 @@ public class MaintenanceService implements Serializable {
 
     public void finish() {
         if (checkMechanic()) {
-            mainte.finish();
-            maintenanceController.persistMaintenace(mainte);
+            maintenanceController.finish(mainte);
             clearView();
         }
     }
@@ -107,8 +106,7 @@ public class MaintenanceService implements Serializable {
     }
 
     public void finishOtherMaintenace(){
-        otherMaintenance.finish();
-        maintenanceController.persistMaintenace(otherMaintenance);
+        maintenanceController.finish(mainte);
         start();
     }
 

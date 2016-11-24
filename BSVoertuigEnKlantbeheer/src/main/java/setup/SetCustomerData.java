@@ -23,13 +23,13 @@ public class SetCustomerData implements Serializable{
 
     @PostConstruct
     public void setData() {
-        Customer customer = new Customer();
-        customer.setPhonenumber("0543658587");
-        customer.setEmail("paj.jansen@jansen.nl");
-        customer.setBtwnumber("56587987");
-        customer.setAdress("Leerpark 100 3320 AR Dordrecht");
-        customer.setName("Piet Jansen");
-
-        customerService.addCustomer(customer);
+//        Customer customer = new Customer();
+//        customer.setPhonenumber("0543658587");
+//        customer.setEmail("paj.jansen@jansen.nl");
+//        customer.setBtwnumber("56587987");
+//        customer.setAdress("Leerpark 100 3320 AR Dordrecht");
+//        customer.setName("Piet Jansen");
+//
+//        customerService.addCustomer(customer);
     }
 }

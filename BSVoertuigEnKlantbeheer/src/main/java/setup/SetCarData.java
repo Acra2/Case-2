@@ -31,14 +31,28 @@ public class SetCarData implements Serializable{
     @PostConstruct
     public void setData() {
 
+        Customer customer = new Customer();
+        customer.setPhonenumber("0543658587");
+        customer.setEmail("paj.jansen@jansen.nl");
+        customer.setBtwnumber("56587987");
+        customer.setAdress("Leerpark 100 3320 AR Dordrecht");
+        customer.setName("Piet Jansen");
+
         Car car = new Car();
         car.setVehicleNumber("11234");
         car.setDriverEmail("test@mail.com");
         car.setDriverName("test name");
         car.setDriverPhoneNumber("1234567897");
         car.setLicensePlate("license plate");
-        car.setCustomer(Customer.builder().email("email").name("name").build());
+        car.setCustomer(customer);
         car.setMileage(4200);
+
+        Customer customer2 = new Customer();
+        customer2.setPhonenumber("123");
+        customer2.setEmail("email@test.nl");
+        customer2.setBtwnumber("321");
+        customer2.setAdress("Ergens");
+        customer2.setName("Jan");
 
         Car car1 = new Car();
         car1.setVehicleNumber("22345");
@@ -46,18 +60,10 @@ public class SetCarData implements Serializable{
         car1.setDriverName("test name");
         car1.setDriverPhoneNumber("1234567897");
         car1.setLicensePlate("license plate");
+        car1.setCustomer(customer2);
         car1.setMileage(4200);
-
-        Car car2 = new Car();
-        car2.setVehicleNumber("33445");
-        car2.setDriverEmail("test@mail.com");
-        car2.setDriverName("test name");
-        car2.setDriverPhoneNumber("1234567897");
-        car2.setLicensePlate("license plate");
-        car2.setMileage(4200);
 
         carService.addCar(car);
         carService.addCar(car1);
-        carService.addCar(car2);
     }
 }
