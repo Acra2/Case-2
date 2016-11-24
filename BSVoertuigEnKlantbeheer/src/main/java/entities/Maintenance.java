@@ -14,8 +14,11 @@ import java.util.Date;
  */
 @Data
 @Entity(name = "maintenance")
-@NamedQueries({@NamedQuery(name = "getAllMaintenance", query = "SELECT m from maintenance m"),
-        @NamedQuery(name = "getMaintenanceForMechanicAndState", query = "SELECT m from maintenance m WHERE m.mechanic.id = :mechanicId and m.state = entities.MaintenanceState.INMAINTENANCE")})
+@NamedQueries({
+        @NamedQuery(name = "getAllMaintenance", query = "SELECT m from maintenance m"),
+        @NamedQuery(name = "getMaintenanceForMechanicAndState", query = "SELECT m from maintenance m WHERE m.mechanic.id = :mechanicId and m.state = entities.MaintenanceState.INMAINTENANCE"),
+        @NamedQuery(name = "getMaintenanceForCar", query = "SELECT m from maintenance m WHERE m.car.vehicleNumber = :vehiclenumber")
+})
 @Builder
 @AllArgsConstructor
 public class Maintenance implements Serializable {

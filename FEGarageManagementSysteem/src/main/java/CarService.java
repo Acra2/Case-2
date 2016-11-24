@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import services.ICarService;
 import services.ICustomerService;
+import services.IMaintenanceService;
 import services.IModelService;
 
 import javax.annotation.PostConstruct;
@@ -37,6 +38,9 @@ public class CarService implements Serializable {
 
     @EJB
     private IModelService modelService;
+
+    @EJB
+    private IMaintenanceService maintenanceService;
 
     public CarService() {
         car = new Car();
@@ -86,4 +90,5 @@ public class CarService implements Serializable {
         return customerService.getAllCustomers();
     }
 
+    public List getMaintenceForCar() { return maintenanceService.getMaintenanceForCar(car); }
 }
