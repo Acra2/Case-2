@@ -39,7 +39,7 @@ public class SetCarData implements Serializable{
         customer.setName("Piet Jansen");
 
         Car car = new Car();
-        car.setVehicleNumber("11234");
+        car.setVehicleNumber("112345");
         car.setDriverEmail("test@mail.com");
         car.setDriverName("test name");
         car.setDriverPhoneNumber("1234567897");

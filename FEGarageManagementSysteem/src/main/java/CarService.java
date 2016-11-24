@@ -86,7 +86,7 @@ public class CarService implements Serializable {
                     breakLoop:
                     if (car.getMaintenanceList().size() > 0)
                         for (Maintenance m : car.getMaintenanceList()) {
-                            if (m.getStartDateTime().toLocalDate().isAfter(LocalDate.now())) {
+                            if (m.getStartDateTime().toLocalDate().isAfter(LocalDateTime.now().toLocalDate())) {
                                 tempCars.add(car);
                             }
                         }
@@ -104,7 +104,7 @@ public class CarService implements Serializable {
 
         if (car.getMaintenanceList().size() > 0)
             for (Maintenance m : car.getMaintenanceList()) {
-                if (m.getStartDateTime().toLocalDate().equals(LocalDateTime.now())) {
+                if (m.getStartDateTime().toLocalDate().isEqual(date.toLocalDate())) {
                     return true;
                 }
             }

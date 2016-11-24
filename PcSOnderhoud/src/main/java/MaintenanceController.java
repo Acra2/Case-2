@@ -4,7 +4,6 @@ import entities.Mechanic;
 import services.IMaintenanceService;
 import services.IMechanicService;
 import services.impl.MaintenanceService;
-
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
