@@ -10,7 +10,8 @@ import java.util.List;
  * Created by Kai on 22-11-2016.
  */
 
-
+@Getter
+@Setter
 @Entity(name = "customer")
 @Builder
 @NamedQueries({
@@ -22,15 +23,15 @@ import java.util.List;
                 "c.email = :email, " +
                 "c.name = :name, " +
                 "c.phonenumber = :phonenumber " +
-                "WHERE c.id = :id")
+                "WHERE c.id = :id") ,
+        @NamedQuery(name = "getCustomerByEmail", query = "SELECT c FROM customer  c WHERE c.email = :email")
 })
-@Data
 @AllArgsConstructor
 public class Customer implements Serializable{
 
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
-    public Long id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String email;
     private String adress;

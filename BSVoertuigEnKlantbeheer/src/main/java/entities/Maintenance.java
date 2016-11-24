@@ -31,7 +31,7 @@ public class Maintenance implements Serializable {
     @ManyToOne
     private Car car;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn
     private Mechanic mechanic;
 

@@ -24,7 +24,7 @@ public class CarService implements ICarService {
 
     @Override
     public void addCar(Car car) {
-        em.persist(car);
+        em.merge(car);
     }
 
     @Override

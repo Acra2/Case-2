@@ -2,8 +2,11 @@ package setup;
 
 import entities.Brand;
 import entities.Car;
+import entities.Customer;
 import entities.Model;
 import services.ICarService;
+import services.ICustomerService;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -17,23 +20,25 @@ import java.io.Serializable;
 
 @Singleton
 @Startup
-public class SetCarData implements Serializable{
+public class SetCarData implements Serializable {
 
     @EJB
     private ICarService carService;
 
+    @EJB
+    private ICustomerService customerService;
+
     @PostConstruct
     public void setData() {
-        //Brand brand = Brand.builder().name("Seat").build();
-        Model model = Model.builder().name("Altea").build();
+
         Car car = new Car();
         car.setVehicleNumber("11234");
         car.setDriverEmail("test@mail.com");
         car.setDriverName("test name");
         car.setDriverPhoneNumber("1234567897");
         car.setLicensePlate("license plate");
+        car.setCustomer(Customer.builder().email("email").name("name").build());
         car.setMileage(4200);
-        car.setModel(model);
 
         Car car1 = new Car();
         car1.setVehicleNumber("22345");
