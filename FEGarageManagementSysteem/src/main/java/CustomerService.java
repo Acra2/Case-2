@@ -29,7 +29,23 @@ public class CustomerService implements Serializable {
         return customerService.getAllCustomers();
     }
 
-    public void addCustomer(Customer customer){
-        customerService.addCustomer(customer);
+    public void addCustomer(){
+        customerService.addCustomer(temp);
+    }
+
+    public void updateCustomer() {
+        customerService.addCustomer(temp);
+    }
+
+    public void clearCustomer(){
+        temp=new Customer();
+    }
+
+    public void setSpecificCustomer(Long id) {
+
+        temp = customerService.getCustomer(id);
+        if (temp == null){
+            temp=new Customer();
+        }
     }
 }

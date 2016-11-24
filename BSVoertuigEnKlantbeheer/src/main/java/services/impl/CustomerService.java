@@ -26,7 +26,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer getCustomer(Long customerNumber) {
-        return null;
+        return em.find(Customer.class, customerNumber);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class CustomerService implements ICustomerService {
                 .setParameter("adress", customer.getAdress())
                 .setParameter("btwnumber", customer.getBtwnumber())
                 .setParameter("phonenumber", customer.getPhonenumber())
+                .setParameter("id", customer.getId())
                 .executeUpdate();
     }
 }

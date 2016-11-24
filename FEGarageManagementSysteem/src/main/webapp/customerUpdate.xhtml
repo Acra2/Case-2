@@ -6,18 +6,22 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-
+<f:metadata>
+    <f:viewParam name="id" value="#{customer.temp.id}"/>
+    <f:event type="preRenderComponent" listener="#{customer.setSpecificCustomer(customer.temp.id)}" />
+</f:metadata>
 <ui:composition template="template.xhtml">
 
     <ui:define name="title">
-        Klant toevoegen
+        Klant bewerken
     </ui:define>
 
     <ui:define name="header">
-        Klant toevoegen
+        Klant bewerken
     </ui:define>
 
     <ui:define name="content">
+        <h:outputLabel value="#{customer.temp.id}" />
         <h:form>
             <div class="form-group">
                 Naam:
@@ -40,9 +44,10 @@
                 <h:inputText value="#{customer.temp.email}" />
             </div>
 
-            <h:commandLink type="submit" value="Klant toevoegen" p:class="btn btn-primary"
-                           action="customerService" actionListener="#{customer.addCustomer()}" />
+            <h:commandLink type="submit" value="Klant aanpassen" p:class="btn btn-primary"
+                           action="customerService" actionListener="#{customer.updateCustomer()}" />
         </h:form>
+
     </ui:define>
 
 </ui:composition>
