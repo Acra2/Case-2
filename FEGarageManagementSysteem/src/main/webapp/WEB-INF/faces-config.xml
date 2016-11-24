@@ -35,7 +35,7 @@
             <to-view-id>/customerCreate.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>customerUpdate</from-outcome>
+            <from-outcome>updateCustomer</from-outcome>
             <to-view-id>/customerUpdate.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
@@ -47,7 +47,7 @@
             <to-view-id>/add_car.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>update</from-outcome>
+            <from-outcome>updateCar</from-outcome>
             <to-view-id>/update_car.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

@@ -4,7 +4,9 @@
 
 import entities.Customer;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import services.ICustomerService;
 
 import javax.ejb.EJB;
@@ -14,13 +16,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named("customer")
+@Getter
+@Setter
+@Named("customerService")
 @SessionScoped
-@Data
-@NoArgsConstructor
 public class CustomerService implements Serializable {
 
-    private Customer temp = new Customer();
+    private Customer customer;
+
+    private CustomerService() {
+        customer = new Customer();
+    }
 
     @EJB
     private ICustomerService customerService;
@@ -29,23 +35,23 @@ public class CustomerService implements Serializable {
         return customerService.getAllCustomers();
     }
 
-    public void addCustomer(){
-        customerService.addCustomer(temp);
+    public void updateCustomer() {
+        customerService.updateCustomer(customer);
     }
 
-    public void updateCustomer() {
-        customerService.addCustomer(temp);
+    public void addCustomer(){
+        customerService.addCustomer(customer);
     }
 
     public void clearCustomer(){
-        temp=new Customer();
+        customer=new Customer();
     }
 
     public void setSpecificCustomer(Long id) {
 
-        temp = customerService.getCustomer(id);
-        if (temp == null){
-            temp=new Customer();
+        customer = customerService.getCustomer(id);
+        if (customer == null){
+            customer=new Customer();
         }
     }
 }
