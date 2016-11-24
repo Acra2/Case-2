@@ -1,11 +1,14 @@
 import entities.Car;
+import entities.Customer;
 import lombok.Getter;
 import lombok.Setter;
 import services.ICarService;
+import services.ICustomerService;
 import services.IModelService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
@@ -15,9 +18,10 @@ import java.util.List;
 /**
  * Created by paisanrietbroek on 23/11/2016.
  */
+
 @Getter
 @Setter
-@Named("car")
+@Named("carService")
 @SessionScoped
 public class CarService implements Serializable {
 
@@ -28,36 +32,58 @@ public class CarService implements Serializable {
     @EJB
     private ICarService carService;
 
-    public void setSpecificCar(String key) {
-        car = carService.getCar(key);
-        System.out.println(car.getDriverEmail());
-    }
+    @EJB
+    private ICustomerService customerService;
 
     @EJB
     private IModelService modelService;
 
-    public void updateCar() {
-        carService.updateCar(car);
+    public CarService() {
+        car = new Car();
     }
 
-    public CarService() {
-        this.car = new Car();
+    public void setSpecificCar(String key) {
+        car = carService.getCar(key);
+        if (car.getCustomer() == null) {
+            car.setCustomer(new Customer());
+        }
     }
+
+    public void updateCar() {
+        Customer customerByEmail = customerService.getCustomerByEmail(car.getCustomer().getEmail());
+        if (customerByEmail != null) {
+            car.setCustomer(customerByEmail);
+        }
+        carService.addCar(car);
+    }
+
 
     public List getAllCars() {
         return carService.getAllCars();
     }
 
     public void addCar() {
+        Customer customer = customerService.getCustomerByEmail(car.getCustomer().getEmail());
+        if (customer == null) {
+            customer = new Customer();
+            customer.setEmail(car.getCustomer().getEmail());
+        }
+        car.setCustomer(customer);
         carService.addCar(car);
+    }
+
+    public void clearCar() {
+        Customer customer = new Customer();
+        this.car = new Car();
+        car.setCustomer(customer);
     }
 
     public List getAllModels() {
         return modelService.getAllModels();
     }
 
-    public void testmethod() {
-        System.out.println("parameter method");
+    public List getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
 }

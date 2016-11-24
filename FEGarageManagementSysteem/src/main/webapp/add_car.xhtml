@@ -7,8 +7,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
-
-
 <ui:composition template="template.xhtml">
 
     <ui:define name="title">
@@ -24,23 +22,28 @@
         <h:form styleClass="form-horizontal">
 
             <div class="form-group">
-                <h:inputText id="vehincleNumber" value="#{car.car.vehicleNumber}" p:placeholder="Vehincle number" />
+                <h:inputText id="vehincleNumber" value="#{carService.car.vehicleNumber}" p:placeholder="Vehincle number" />
             </div>
 
             <div class="form-group">
-                <h:inputText id="driverEmail" value="#{car.car.driverEmail}" p:placeholder="Driver e-mail"/>
+                <h:inputText id="driverEmail" value="#{carService.car.driverEmail}" p:placeholder="Driver e-mail"/>
             </div>
             <div class="form-group">
-                <h:inputText id="driverName" value="#{car.car.driverName}" p:placeholder="Driver name"/>
+                <h:inputText id="driverName" value="#{carService.car.driverName}" p:placeholder="Driver name"/>
             </div>
             <div class="form-group">
-                <h:inputText id="driverPhoneNumber" value="#{car.car.driverPhoneNumber}" p:placeholder="Driver phonenumber"/>
+                <h:inputText id="driverPhoneNumber"
+                             value="#{carService.car.driverPhoneNumber}" p:placeholder="Driver phonenumber"/>
             </div>
             <div class="form-group">
-                <h:inputText id="licenseplate" value="#{car.car.licensePlate}" p:placeholder="Licenseplate"/>
+                <h:inputText id="licenseplate" value="#{carService.car.licensePlate}" p:placeholder="Licenseplate"/>
             </div>
             <div class="form-group">
-                <h:inputText id="mileage" value="#{car.car.mileage}" p:placeholder="Mile age"/>
+                <h:inputText id="mileage" value="#{carService.car.mileage}" p:placeholder="Mile age"/>
+            </div>
+
+            <div class="form-group">
+                <h:inputText id="customer" value="#{carService.car.customer.email}" p:placeholder="customer e-mail"/>
             </div>
 
             <!--fix this when the relations are working-->
@@ -54,7 +57,7 @@
             <!--</div>-->
 
             <div class="col-sm-offset-2 col-sm-10">
-                <h:commandLink styleClass="btn btn-primary" value="add" action="#{car.addCar()}" />
+                <h:commandLink styleClass="btn btn-primary" value="add" action="#{carService.addCar()}" />
                 <h:link styleClass="btn btn-danger" value="cancel" outcome="car" />
             </div>
         </h:form>

@@ -22,16 +22,16 @@ public class setModelData implements Serializable {
     @EJB
     private IModelService modelService;
 
-    @PostConstruct
-    public void setup() {
-        Model model = new Model();
-        Model model1 = new Model();
-
-        model.setName("model 1");
-        model1.setName("model 2");
-
-        modelService.add(model);
-        modelService.add(model1);
-    }
+//    @PostConstruct
+//    public void setup() {
+//        Model model = new Model();
+//        Model model1 = new Model();
+//
+//        model.setName("model 1");
+//        model1.setName("model 2");
+//
+//        modelService.add(model);
+//        modelService.add(model1);
+//    }
 
 }

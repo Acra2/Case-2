@@ -1,9 +1,6 @@
 package entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +9,12 @@ import java.util.List;
 /**
  * Created by Sander on 22-11-2016.
  */
-@Entity(name = "car")
-@Data
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @NamedQueries({
         @NamedQuery(name = "getAll", query = "SELECT c from car c"),
         @NamedQuery(name = "update", query = "UPDATE car  c " +
@@ -25,10 +26,7 @@ import java.util.List;
                 "c.mileage = :mileage " +
                 "WHERE c.vehicleNumber = :vehicleNumber")
 })
-
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity(name = "car")
 public class Car implements Serializable {
 
     @Id
@@ -42,11 +40,11 @@ public class Car implements Serializable {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Model model;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn
     private Customer customer;
 
     @OneToMany(mappedBy = "car")
     private List<Maintenance> maintenanceList;
-
 
 }

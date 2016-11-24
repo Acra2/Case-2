@@ -18,4 +18,6 @@ public interface ICustomerService {
     List getAllCustomers();
 
     void updateCustomer(Customer customer);
+
+    Customer getCustomerByEmail(String email);
 }

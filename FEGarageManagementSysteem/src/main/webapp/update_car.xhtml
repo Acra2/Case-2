@@ -8,8 +8,8 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <f:metadata>
-    <f:viewParam name="id" value="#{car.updateKey}"/>
-    <f:event type="preRenderView" listener="#{car.setSpecificCar(car.updateKey)}" />
+    <f:viewParam name="id" value="#{carService.updateKey}"/>
+    <f:event type="preRenderView" listener="#{carService.setSpecificCar(carService.updateKey)}" />
 </f:metadata>
 
 <ui:composition template="template.xhtml">
@@ -19,28 +19,49 @@
     </ui:define>
 
     <ui:define name="header">
-        Update car
+        Update car: #{carService.car.vehicleNumber}
     </ui:define>
 
     <ui:define name="content">
 
         <h:form styleClass="form-horizontal">
+            <div class="form-group">
+                <label for="driverEmail">Driver e-mail</label>
+                <h:inputText styleClass="form-control" id="driverEmail" value="#{carService.car.driverEmail}" />
+            </div>
 
-            <h:outputLabel id="vehicleNumber" value="#{car.car.vehicleNumber}" />
-            <h:inputText id="driverEmail" value="#{car.car.driverEmail}" />
-            <h:inputText id="driverPhonenumber" value="#{car.car.driverPhoneNumber}" />
-            <h:inputText id="driverName" value="#{car.car.driverName}" />
-            <h:inputText id="licensePlate" value="#{car.car.licensePlate}" />
-            <h:inputText id="mileAge" value="#{car.car.mileage}" />
+            <div class="form-group">
+                <label for="driverPhonenumber">Driver phone number</label>
+                <h:inputText styleClass="form-control" id="driverPhonenumber" value="#{carService.car.driverPhoneNumber}" />
+            </div>
 
+            <div class="form-group">
+                <label for="driverName">Driver name</label>
+                <h:inputText styleClass="form-control" id="driverName" value="#{carService.car.driverName}" />
+            </div>
+            <div class="form-group">
+                <label for="licensePlate">License plate</label>
+                <h:inputText styleClass="form-control" id="licensePlate" value="#{carService.car.licensePlate}" />
+            </div>
+            <div class="form-group">
+                <label for="mileAge">Mile age</label>
+                <h:inputText styleClass="form-control" id="mileAge" value="#{carService.car.mileage}" />
+            </div>
+            <div class="form-group">
+                <label for="customer">Customer e-mail</label>
+                <h:inputText styleClass="form-control" id="customer" value="#{carService.car.customer.email}" />
+            </div>
 
-            <!--<h:inputText id="customer" value="#{car.car.customer}" />-->
-            <!--<h:inputText id="model" value="#{car.car.model}" />-->
-
+            <!--<div class="form-group">-->
+                <!--<label for="model">Model</label>-->
+                <!--<h:inputText styleClass="form-control" id="model" value="#{car.car.model}" />-->
+            <!--</div>-->
 
             <div class="col-sm-offset-2 col-sm-10">
-                <h:commandLink styleClass="btn btn-primary" value="update" actionListener="#{car.updateCar()}"/>
-                <h:link styleClass="btn btn-danger" value="cancel" outcome="car" />
+                <h:commandLink styleClass="btn btn-primary" value="update" actionListener="#{carService.updateCar()}">
+                </h:commandLink>
+                <h:link styleClass="btn btn-danger" value="cancel" outcome="car">
+                </h:link>
             </div>
         </h:form>
 

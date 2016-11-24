@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Mechanic implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.TABLE)
     private Long id;
     private String Name;
 
