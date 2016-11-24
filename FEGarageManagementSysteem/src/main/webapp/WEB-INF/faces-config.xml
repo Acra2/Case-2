@@ -50,6 +50,12 @@
             <from-outcome>updateCar</from-outcome>
             <to-view-id>/update_car.xhtml</to-view-id>
         </navigation-case>
+
+        <navigation-case>
+            <from-outcome>customerOverview</from-outcome>
+            <to-view-id>/customer_overview.xhtml</to-view-id>
+        </navigation-case>
+
     </navigation-rule>
 
     <!--<navigation-rule>-->

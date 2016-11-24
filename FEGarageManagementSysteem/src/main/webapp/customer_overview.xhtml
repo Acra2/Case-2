@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<f:metadata>
+    <f:viewParam name="id" value="#{customerService.customer.id}"/>
+    <f:event type="preRenderView" listener="#{customerService.setSpecificCustomer(customerService.customer.id)}" />
+</f:metadata>
+
+<ui:composition template="template.xhtml">
+
+    <ui:define name="title">
+        Customer Overview
+    </ui:define>
+
+    <ui:define name="header">
+        Customer id: #{customerService.customer.id}
+    </ui:define>
+
+    <ui:define name="content">
+
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <h:outputLabel value="Naam: #{customerService.customer.name}" />
+                    </div>
+                    <div class="col-md-12">
+                        <h:outputLabel value="E-mail: #{customerService.customer.email}" />
+                    </div>
+                    <div class="col-md-12">
+                        <h:outputLabel value="Adres: #{customerService.customer.adress}" />
+                    </div>
+                    <div class="col-md-12">
+                        <h:outputLabel value="Telefoon nummer: #{customerService.customer.phonenumber}" />
+                    </div>
+                    <div class="col-md-12">
+                        <h:outputLabel value="BTW-nummer: #{customerService.customer.btwnumber}" />
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="col-md-12">
+                        <h:dataTable id="carTable"
+                                     styleClass="table table-bordered table-responsive"
+                                     value="#{customerService.carListOfSpecificCustomer}" var="c">
+                            <h:column>
+                                <f:facet name="header">auto-nummer</f:facet>
+                                #{c.vehicleNumber}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">bestuurders-email</f:facet>
+                                #{c.driverEmail}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">bestuurder</f:facet>
+                                #{c.driverName}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">bestuurders-telefoon</f:facet>
+                                #{c.driverPhoneNumber}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">nummer-bord</f:facet>
+                                #{c.licensePlate}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">kilometers</f:facet>
+                                #{c.mileage}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">model</f:facet>
+                                #{c.model}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+</html>

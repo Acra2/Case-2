@@ -58,6 +58,12 @@
                 </h:link>
             </h:column>
 
+            <h:column>
+                <h:link value="Details" outcome="customerOverview" includeViewParams="true">
+                    <f:param name="id" value="#{c.id}" />
+                </h:link>
+            </h:column>
+
         </h:dataTable>
 
         <h:form>

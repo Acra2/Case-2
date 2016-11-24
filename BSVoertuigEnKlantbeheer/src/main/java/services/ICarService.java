@@ -17,4 +17,6 @@ public interface ICarService {
     List getAllCars();
 
     void updateCar(Car car);
+
+    List getCarsOfSpecificCustomer(long id);
 }

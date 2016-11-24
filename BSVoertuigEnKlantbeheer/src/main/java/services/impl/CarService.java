@@ -1,6 +1,7 @@
 package services.impl;
 
 import entities.Car;
+import entities.Customer;
 import services.ICarService;
 
 import javax.ejb.Remote;
@@ -47,5 +48,11 @@ public class CarService implements ICarService {
                 .setParameter("mileage", car.getMileage())
                 .setParameter("vehicleNumber", car.getVehicleNumber())
                 .executeUpdate();
+    }
+
+    @Override
+    public List getCarsOfSpecificCustomer(long id) {
+        Customer customer = em.find(Customer.class, id);
+        return em.createNamedQuery("getCarsOfSpecificCustomer", Car.class).setParameter("customer", customer).getResultList();
     }
 }

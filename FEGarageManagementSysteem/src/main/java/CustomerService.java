@@ -2,11 +2,13 @@
  * Created by Gebruiker on 23-11-2016.
  */
 
+import entities.Car;
 import entities.Customer;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import services.ICarService;
 import services.ICustomerService;
 
 import javax.ejb.EJB;
@@ -23,6 +25,7 @@ import java.util.List;
 public class CustomerService implements Serializable {
 
     private Customer customer;
+    private List carListOfSpecificCustomer;
 
     private CustomerService() {
         customer = new Customer();
@@ -30,6 +33,9 @@ public class CustomerService implements Serializable {
 
     @EJB
     private ICustomerService customerService;
+
+    @EJB
+    private ICarService carService;
 
     public List getData(){
         return customerService.getAllCustomers();
@@ -53,5 +59,11 @@ public class CustomerService implements Serializable {
         if (customer == null){
             customer=new Customer();
         }
+        setCarsForSpecificCustomer(id);
     }
+
+    public void setCarsForSpecificCustomer(long id) {
+        carListOfSpecificCustomer = carService.getCarsOfSpecificCustomer(id);
+    }
+
 }
