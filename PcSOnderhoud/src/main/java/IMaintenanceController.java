@@ -14,4 +14,5 @@ public interface IMaintenanceController {
     void persistMaintenace(Maintenance maintenance);
     boolean actions(Maintenance maintenance);
     Maintenance checkInMaintenance(Mechanic mechanic);
+    void finish(Maintenance maintenance);
 }

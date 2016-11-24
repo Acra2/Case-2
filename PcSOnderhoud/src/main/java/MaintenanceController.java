@@ -1,5 +1,7 @@
 import entities.Maintenance;
+import entities.MaintenanceType;
 import entities.Mechanic;
+import mypackage.RDWSteekproefWebService_PortType;
 import services.IMaintenanceService;
 import services.IMechanicService;
 import services.impl.MaintenanceService;
@@ -10,6 +12,7 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NamedQuery;
+import java.rmi.RemoteException;
 import java.util.Arrays;
 
 /**
@@ -24,6 +27,9 @@ public class MaintenanceController implements IMaintenanceController {
 
     @EJB
     private IMechanicService mechanicService;
+
+    //@Inject
+    private RDWSteekproefWebService_PortType rdwSteekproefWebService_portType;
 
     @Override
     public Maintenance getMaintenance(Long id) {
@@ -71,6 +77,30 @@ public class MaintenanceController implements IMaintenanceController {
     public Maintenance checkInMaintenance(Mechanic mechanic ){
         Maintenance inMaintenanceForMechanic = maintenanceService.getInMaintenanceForMechanic(mechanic);
         return inMaintenanceForMechanic;
+    }
+
+    @Override
+    public void finish(Maintenance maintenance) {
+        maintenance.finish();
+        persistMaintenace(maintenance);
+        if (maintenance.getType() == MaintenanceType.APKKEURING){
+            try {
+                Boolean steekproef = false;
+
+                //TODO fix wsdl
+                //steekproef = rdwSteekproefWebService_portType.steekproef(maintenance.getCar().getLicensePlate());
+
+                if (steekproef) {
+                    maintenance.needInspections();
+                }else{
+                    maintenance.readyForPickUp();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 }
