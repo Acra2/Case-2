@@ -4,6 +4,7 @@
 
 import entities.Car;
 import entities.Customer;
+import entities.Maintenance;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,15 +34,66 @@ public class CustomerService implements Serializable {
         customer = new Customer();
     }
 
+    private Integer filterIndex = -9;
     @EJB
     private ICustomerService customerService;
 
+    private List<Customer> allCustomers;
     @EJB
     private ICarService carService;
+    public List getData() {
 
-    public List getData(){
-        return customerService.getAllCustomers();
+        allCustomers = customerService.getAllCustomers();
+        List<Customer> tempCustomers = new ArrayList<>();
+        switch (filterIndex) {
+            case -1:
+                for (Customer customer : allCustomers) {
+                    if (hasMaintenance(customer, LocalDateTime.now().minusDays(1)))
+                        tempCustomers.add(customer);
+                }
+                break;
+            case 0:
+                for (Customer customer : allCustomers) {
+                    if (hasMaintenance(customer, LocalDateTime.now()))
+                        tempCustomers.add(customer);
+                }
+                break;
+            case 1:
+                for (Customer customer : allCustomers) {
+                    if (customer.getCars().size() > 0)
+                        for (Car car : customer.getCars()) {
+                            if (car.getMaintenanceList().size() > 0)
+                                for (Maintenance m : car.getMaintenanceList()) {
+                                    if (m.getStartDateTime().toLocalDate().isAfter(LocalDate.now())) {
+                                        tempCustomers.add(customer);
+                                    }
+                                }
+
+                        }
+                }
+                break;
+            default:
+                tempCustomers = allCustomers;
+        }
+        return tempCustomers;
     }
+
+    private boolean hasMaintenance(Customer customer, LocalDateTime date) {
+
+        if (customer.getCars().size() > 0)
+            for (Car car : customer.getCars()) {
+                if (car.getMaintenanceList().size() > 0)
+                    for (Maintenance m : car.getMaintenanceList()) {
+                        if (m.getStartDateTime().toLocalDate().equals(LocalDateTime.now())) {
+                            return true;
+                        }
+                    }
+
+            }
+
+        return false;
+    }
+
 
     public void updateCustomer() {
         customerService.updateCustomer(customer);
@@ -54,6 +108,7 @@ public class CustomerService implements Serializable {
     }
 
     public void setSpecificCustomer(Long id) {
+
 
         customer = customerService.getCustomer(id);
         if (customer == null){

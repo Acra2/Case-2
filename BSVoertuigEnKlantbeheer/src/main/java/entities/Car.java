@@ -44,7 +44,7 @@ public class Car implements Serializable {
     @JoinColumn
     private Customer customer;
 
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
     private List<Maintenance> maintenanceList;
 
     public Car() {

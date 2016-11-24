@@ -1,7 +1,6 @@
 import entities.Maintenance;
 import entities.MaintenanceType;
 import entities.Mechanic;
-import mypackage.RDWSteekproefWebService_PortType;
 import services.IMaintenanceService;
 import services.IMechanicService;
 import services.impl.MaintenanceService;
@@ -29,7 +28,7 @@ public class MaintenanceController implements IMaintenanceController {
     private IMechanicService mechanicService;
 
     //@Inject
-    private RDWSteekproefWebService_PortType rdwSteekproefWebService_portType;
+    //private RDWSteekproefWebService_PortType rdwSteekproefWebService_portType;
 
     @Override
     public Maintenance getMaintenance(Long id) {

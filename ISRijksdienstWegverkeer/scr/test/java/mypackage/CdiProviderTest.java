@@ -20,7 +20,5 @@ public class CdiProviderTest {
 
         provide = cdiProvider.provide();
         assertNotNull(provide);
-        Boolean abc = provide.steekproef("abc");
-        assertNotNull(abc);
     }
 }

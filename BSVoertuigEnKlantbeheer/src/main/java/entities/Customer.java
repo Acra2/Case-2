@@ -38,7 +38,7 @@ public class Customer implements Serializable{
     private String phonenumber;
     private String btwnumber;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Car> cars;
 
     public Customer() {

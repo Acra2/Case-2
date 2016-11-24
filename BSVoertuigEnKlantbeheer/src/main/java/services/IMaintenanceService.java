@@ -1,5 +1,6 @@
 package services;
 
+import entities.Car;
 import entities.Maintenance;
 import entities.Mechanic;
 import sun.applet.Main;
@@ -17,4 +18,6 @@ public interface IMaintenanceService {
     Maintenance getOne(Long id);
     void add(Maintenance maintenance);
     Maintenance getInMaintenanceForMechanic(Mechanic mechanic);
+
+    List getMaintenanceForCar(Car car);
 }

@@ -1,5 +1,6 @@
 package services.impl;
 
+import entities.Car;
 import entities.Maintenance;
 import entities.MaintenanceState;
 import entities.Mechanic;
@@ -45,5 +46,13 @@ public class MaintenanceService implements IMaintenanceService {
             return (Maintenance) resultList.get(0);
         else
             return null;
+    }
+
+    @Override
+    public List getMaintenanceForCar(Car car) {
+        List resultList = em.createNamedQuery("getMaintenanceForCar")
+                .setParameter("vehiclenumber", car.getVehicleNumber())
+                .getResultList();
+        return resultList;
     }
 }
