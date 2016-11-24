@@ -18,8 +18,9 @@
     </ui:define>
 
     <ui:define name="content">
-
-        <h:dataTable value="#{customer.data}" var="c">
+        <h:dataTable value="#{customer.getData()}"
+                     var="c"
+                     styleClass="table table-bordered table-responsive">
 
             <h:column>
                 <f:facet name="header">naam</f:facet>
@@ -45,8 +46,19 @@
                 <f:facet name="header">btw-nummer</f:facet>
                 #{c.btwnumber}
             </h:column>
+            <h:column>
+                <h:form>
+                    <h:link outcome="customerUpdate" type="submit" value="Klant aanpassen" action="customerService"
+                            actionListener="#{customer.setTemp(c)}" includeViewParams="true">
+                        <f:param name="id" value="#{c.id}"/>
+                    </h:link>
+
+                </h:form>
+            </h:column>
         </h:dataTable>
-        <h:link outcome="customerCreate" value="Nieuwe klant" />
+        <h:link outcome="customerUpdate" value="Nieuwe klant">
+            <f:param name="id" value="-1"/>
+        </h:link>
 
     </ui:define>
 

@@ -45,6 +45,7 @@ public class CustomerService implements ICustomerService {
                 .setParameter("adress", customer.getAdress())
                 .setParameter("btwnumber", customer.getBtwnumber())
                 .setParameter("phonenumber", customer.getPhonenumber())
+                .setParameter("id", customer.getId())
                 .executeUpdate();
     }
 
