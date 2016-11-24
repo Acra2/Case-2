@@ -6,7 +6,10 @@ import entities.Car;
 import entities.Customer;
 import entities.Maintenance;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import services.ICarService;
 import services.ICustomerService;
 
 import javax.ejb.EJB;
@@ -18,20 +21,26 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named("customer")
+@Getter
+@Setter
+@Named("customerService")
 @SessionScoped
-@Data
-@NoArgsConstructor
 public class CustomerService implements Serializable {
 
-    private Customer temp = new Customer();
+    private Customer customer;
+    private List carListOfSpecificCustomer;
+
+    private CustomerService() {
+        customer = new Customer();
+    }
 
     private Integer filterIndex = -9;
     @EJB
     private ICustomerService customerService;
 
     private List<Customer> allCustomers;
-
+    @EJB
+    private ICarService carService;
     public List getData() {
 
         allCustomers = customerService.getAllCustomers();
@@ -56,7 +65,7 @@ public class CustomerService implements Serializable {
                             if (car.getMaintenanceList().size() > 0)
                                 for (Maintenance m : car.getMaintenanceList()) {
                                     if (m.getStartDateTime().toLocalDate().isAfter(LocalDate.now())) {
-                                        tempCustomers.add(temp);
+                                        tempCustomers.add(customer);
                                     }
                                 }
 
@@ -85,23 +94,31 @@ public class CustomerService implements Serializable {
         return false;
     }
 
-    public void addCustomer() {
-        customerService.addCustomer(temp);
-    }
 
     public void updateCustomer() {
-        customerService.addCustomer(temp);
+        customerService.updateCustomer(customer);
     }
 
-    public void clearCustomer() {
-        temp = new Customer();
+    public void addCustomer(){
+        customerService.addCustomer(customer);
+    }
+
+    public void clearCustomer(){
+        customer=new Customer();
     }
 
     public void setSpecificCustomer(Long id) {
 
-        temp = customerService.getCustomer(id);
-        if (temp == null) {
-            temp = new Customer();
+
+        customer = customerService.getCustomer(id);
+        if (customer == null){
+            customer=new Customer();
         }
+        setCarsForSpecificCustomer(id);
     }
+
+    public void setCarsForSpecificCustomer(long id) {
+        carListOfSpecificCustomer = carService.getCarsOfSpecificCustomer(id);
+    }
+
 }

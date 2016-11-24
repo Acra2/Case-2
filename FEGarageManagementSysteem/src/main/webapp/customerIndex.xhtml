@@ -19,29 +19,32 @@
 
     <ui:define name="content">
         <h:form><h:outputLabel value="Show:"></h:outputLabel>
-            <h:selectOneMenu value="#{customer.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
+            <h:selectOneMenu value="#{customerService.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
                 <f:selectItem itemLabel="Allemaal" itemValue="-9"/>
                 <f:selectItem itemLabel="Gisteren" itemValue="-1"/>
                 <f:selectItem itemLabel="Vanddag" itemValue="0"/>
                 <f:selectItem itemLabel="Binnenkort" itemValue="1"/>
             </h:selectOneMenu>
         </h:form>
-        <h:dataTable value="#{customer.getData()}"
+        <h:dataTable value="#{customerService.getData()}"
                      var="c"
                      styleClass="table table-bordered table-responsive">
+
+            <h:column>
+                <f:facet name="header">id</f:facet>
+                #{c.id}
+            </h:column>
 
             <h:column>
                 <f:facet name="header">naam</f:facet>
                 #{c.name}
             </h:column>
-            <h:column>
-                <f:facet name="header">klantnr.</f:facet>
-                #{c.id}
-            </h:column>
+
             <h:column>
                 <f:facet name="header">email</f:facet>
                 #{c.email}
             </h:column>
+
             <h:column>
                 <f:facet name="header">adres</f:facet>
                 #{c.adress}
@@ -50,23 +53,31 @@
                 <f:facet name="header">telefoonnummer</f:facet>
                 #{c.phonenumber}
             </h:column>
+
             <h:column>
                 <f:facet name="header">btw-nummer</f:facet>
                 #{c.btwnumber}
             </h:column>
-            <h:column>
-                <h:form>
-                    <h:link outcome="customerUpdate" type="submit" value="Klant aanpassen" action="customerService"
-                            actionListener="#{customer.setTemp(c)}" includeViewParams="true">
-                        <f:param name="id" value="#{c.id}"/>
-                    </h:link>
 
-                </h:form>
+            <h:column>
+                <f:facet name="header">Wijzigen</f:facet>
+                <h:link value="Edit" outcome="updateCustomer" includeViewParams="true">
+                    <f:param name="id" value="#{c.id}" />
+                </h:link>
             </h:column>
+
+            <h:column>
+                <h:link value="Details" outcome="customerOverview" includeViewParams="true">
+                    <f:param name="id" value="#{c.id}" />
+                </h:link>
+            </h:column>
+
         </h:dataTable>
-        <h:link outcome="customerUpdate" value="Nieuwe klant">
-            <f:param name="id" value="-1"/>
-        </h:link>
+
+        <h:form>
+            <h:commandLink styleClass="btn btn-primary"
+                           value="Add" action="customerCreate" actionListener="#{customerService.clearCustomer()}"/>
+        </h:form>
 
     </ui:define>
 

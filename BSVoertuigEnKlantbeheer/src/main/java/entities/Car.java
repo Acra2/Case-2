@@ -22,7 +22,8 @@ import java.util.List;
                 "c.driverPhoneNumber = :phonenumber, " +
                 "c.licensePlate = :licenseplate, " +
                 "c.mileage = :mileage " +
-                "WHERE c.vehicleNumber = :vehicleNumber")
+                "WHERE c.vehicleNumber = :vehicleNumber"),
+        @NamedQuery(name = "getCarsOfSpecificCustomer", query = "SELECT c FROM car c WHERE c.customer = :customer")
 })
 @Entity(name = "car")
 @Data

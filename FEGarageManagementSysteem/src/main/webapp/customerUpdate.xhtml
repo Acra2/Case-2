@@ -7,8 +7,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <f:metadata>
-    <f:viewParam name="id" value="#{customer.temp.id}"/>
-    <f:event type="preRenderComponent" listener="#{customer.setSpecificCustomer(customer.temp.id)}" />
+    <f:viewParam name="id" value="#{customerService.customer.id}"/>
+    <f:event type="preRenderComponent" listener="#{customerService.setSpecificCustomer(customerService.customer.id)}" />
 </f:metadata>
 <ui:composition template="template.xhtml">
 
@@ -21,31 +21,31 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:outputLabel value="#{customer.temp.id}" />
+        <h:outputLabel value="#{customerService.customer.id}" />
         <h:form>
             <div class="form-group">
                 Naam:
-                <h:inputText value="#{customer.temp.name}" />
+                <h:inputText value="#{customerService.customer.name}" />
             </div>
             <div class="form-group">
                 Adres:
-                <h:inputText value="#{customer.temp.adress}" />
+                <h:inputText value="#{customerService.customer.adress}" />
             </div>
             <div class="form-group">
                 BTW-nr.:
-                <h:inputText value="#{customer.temp.btwnumber}" />
+                <h:inputText value="#{customerService.customer.btwnumber}" />
             </div>
             <div class="form-group">
                 Telefoon:
-                <h:inputText value="#{customer.temp.phonenumber}" />
+                <h:inputText value="#{customerService.customer.phonenumber}" />
             </div>
             <div class="form-group">
                 Email:
-                <h:inputText value="#{customer.temp.email}" />
+                <h:inputText value="#{customerService.customer.email}" />
             </div>
 
             <h:commandLink type="submit" value="Klant aanpassen" p:class="btn btn-primary"
-                           action="customerService" actionListener="#{customer.updateCustomer()}" />
+                           action="customerIndex" actionListener="#{customerService.updateCustomer()}" />
         </h:form>
 
     </ui:define>
