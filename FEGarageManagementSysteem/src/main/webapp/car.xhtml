@@ -29,7 +29,7 @@
         <h:dataTable id="car_table"
                      value="#{carService.getAllCars()}"
                      var="c"
-                     styleClass="table table-bordered table-responsive">
+                     styleClass="table table-bordered table-responsive table-striped">
 
             <h:column>
                 <f:facet name="header">Auto #</f:facet>
@@ -63,12 +63,12 @@
 
             <h:column>
                 <f:facet name="header">Klant e-mail</f:facet>
-                <h:link value="#{c.customer.email}" outcome="#" />
+                #{c.customer.email}
             </h:column>
 
             <h:column>
                 <f:facet name="header">Wijzigen</f:facet>
-                <h:link value="Edit" outcome="updateCar" includeViewParams="true">
+                <h:link value="Wijzigen" outcome="updateCar" includeViewParams="true">
                     <f:param name="id" value="#{c.vehicleNumber}" />
                 </h:link>
             </h:column>
@@ -81,7 +81,7 @@
 
         </h:dataTable>
 <h:form>
-    <h:commandLink styleClass="btn btn-primary" value="Add" action="add_car" actionListener="#{carService.clearCar()}"/>
+    <h:commandLink styleClass="btn btn-primary" value="Add" action="car_registration"/>
 </h:form>
 
     </ui:define>

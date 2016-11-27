@@ -5,8 +5,9 @@
     margin: 8px;
     height: 200px;
     line-height: 240px;
-    -webkit-transition: line-height 0.8s; /* Safari */
-    transition: line-height 0.8s;
+    -webkit-transition: line-height 0.2s; /* Safari */
+    transition: line-height 0.2s;
+    font-size: 24px;
 }
 .main_menu:hover {
     line-height: 200px;
