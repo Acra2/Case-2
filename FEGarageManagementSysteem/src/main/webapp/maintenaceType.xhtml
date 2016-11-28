@@ -51,6 +51,10 @@
                     </h:link>
                 </h:column>
             </h:dataTable>
+            <h:form>
+                <h:commandLink styleClass="btn btn-primary" value="Add" action="update_maintenancetype"
+                               actionListener="#{maintenancetype.clearType()}"/>
+            </h:form>
         </div>
     </ui:define>
 </ui:composition>

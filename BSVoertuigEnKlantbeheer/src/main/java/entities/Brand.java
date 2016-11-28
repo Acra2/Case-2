@@ -1,5 +1,6 @@
 package entities;
 
+import interceptors.LogInterceptorBinding;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.util.List;
 @Builder
 @Data
 @AllArgsConstructor
+@LogInterceptorBinding
 public class Brand implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.TABLE)

@@ -2,6 +2,7 @@ package services.impl;
 
 import entities.Car;
 import entities.Customer;
+import interceptors.LogInterceptorBinding;
 import services.ICarService;
 import services.ICustomerService;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Stateful
 @Remote(ICustomerService.class)
+@LogInterceptorBinding
 public class CustomerService implements ICustomerService {
 
     @PersistenceContext

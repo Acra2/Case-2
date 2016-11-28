@@ -2,6 +2,7 @@ package services.impl;
 
 import entities.Maintenance;
 import entities.MaintenanceType;
+import interceptors.LogInterceptorBinding;
 import services.IMaintenanceService;
 import services.IMaintenanceTypeService;
 
@@ -27,7 +28,7 @@ public class MaintenanceTypeService implements IMaintenanceTypeService {
     }
 
     public void add(MaintenanceType maintenanceType){
-        em.persist(maintenanceType);
+        em.merge(maintenanceType);
     }
 
     @Override

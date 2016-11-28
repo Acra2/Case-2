@@ -2,10 +2,14 @@ package services.impl;
 
 import entities.Car;
 import entities.Customer;
+import interceptors.LogInterceptor;
+import interceptors.LogInterceptorBinding;
 import services.ICarService;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.interceptor.Interceptor;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,6 +22,7 @@ import java.util.List;
 
 @Stateful
 @Remote(ICarService.class)
+@LogInterceptorBinding
 public class CarService implements ICarService {
 
     @PersistenceContext

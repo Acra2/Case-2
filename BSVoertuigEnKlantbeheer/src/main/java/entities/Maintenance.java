@@ -1,5 +1,6 @@
 package entities;
 
+import interceptors.LogInterceptorBinding;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Sander on 22-11-2016.
@@ -22,10 +24,11 @@ import java.util.Date;
 })
 @Builder
 @AllArgsConstructor
+@LogInterceptorBinding
 public class Maintenance implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
     private LocalDateTime startDateTime;
     private String description;
@@ -54,15 +57,12 @@ public class Maintenance implements Serializable {
         }
     }
 
-    public void start() {
-        try {
-            state.startMaintenace(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void start() throws Exception {
+        state.startMaintenace(this);
+        throw new Exception("test exception");
     }
 
-    public void pause(){
+    public void pause() {
         try {
             state.pauseMaintenace(this);
         } catch (StateException e) {
@@ -70,7 +70,7 @@ public class Maintenance implements Serializable {
         }
     }
 
-    public void finish(){
+    public void finish() {
         try {
             state.finishMaintenace(this);
         } catch (StateException e) {
@@ -86,7 +86,7 @@ public class Maintenance implements Serializable {
         }
     }
 
-    public void readyForPickUp(){
+    public void readyForPickUp() {
         try {
             state.readyForPickUp(this);
         } catch (StateException e) {

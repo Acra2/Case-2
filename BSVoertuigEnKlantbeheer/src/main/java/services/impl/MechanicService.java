@@ -1,6 +1,7 @@
 package services.impl;
 
 import entities.Mechanic;
+import interceptors.LogInterceptorBinding;
 import services.IMechanicService;
 
 import javax.ejb.Remote;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 @Stateful
 @Remote(IMechanicService.class)
+@LogInterceptorBinding
 public class MechanicService implements IMechanicService {
 
     @PersistenceContext
