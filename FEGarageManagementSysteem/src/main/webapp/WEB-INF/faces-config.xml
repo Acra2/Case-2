@@ -39,13 +39,20 @@
             <to-view-id>/details_car.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>BrandModel</from-outcome>
-            <to-view-id>/BrandsModels.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>maintenance</from-outcome>
             <to-view-id>/maintenance.xhtml</to-view-id>
         </navigation-case>
-
+        <navigation-case>
+            <from-outcome>inMaintenance</from-outcome>
+            <to-view-id>/inMaintenance.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>maintenanceTypes</from-outcome>
+            <to-view-id>/maintenaceType.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>updateMaintenanceType</from-outcome>
+            <to-view-id>/update_maintenancetype.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

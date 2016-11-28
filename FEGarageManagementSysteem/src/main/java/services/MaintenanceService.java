@@ -76,7 +76,7 @@ public class MaintenanceService implements Serializable {
         }
     }
 
-    public void start() {
+    public void start() throws Exception {
         if (checkMechanic()) {
             otherMaintenance = maintenanceController.checkInMaintenance(mainte.getMechanic());
             if (otherMaintenance == null) {
@@ -102,13 +102,13 @@ public class MaintenanceService implements Serializable {
         }
     }
 
-    public void pauseOtherMaintenace(){
+    public void pauseOtherMaintenace() throws Exception {
         otherMaintenance.pause();
         maintenanceController.persistMaintenace(otherMaintenance);
         start();
     }
 
-    public void finishOtherMaintenace(){
+    public void finishOtherMaintenace() throws Exception {
         maintenanceController.finish(mainte);
         start();
     }

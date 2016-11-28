@@ -20,7 +20,7 @@ public class MaintenanceStateTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void correctProcessWithInspection() {
+    public void correctProcessWithInspection() throws Exception {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.start();
@@ -33,7 +33,7 @@ public class MaintenanceStateTest {
     }
 
     @Test
-    public void correctProcessWithoutInspection() {
+    public void correctProcessWithoutInspection() throws Exception {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.start();
@@ -59,7 +59,7 @@ public class MaintenanceStateTest {
     }
 
     @Test
-    public void inCorrectLatePause() {
+    public void inCorrectLatePause() throws Exception {
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.start();
