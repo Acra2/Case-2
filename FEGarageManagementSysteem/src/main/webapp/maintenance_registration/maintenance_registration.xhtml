@@ -44,10 +44,7 @@
                                      value="#{maintenanceRegistrationService.car.vehicleNumber}" >
                         <f:selectItems styleClass="form-control"
                                        value="#{maintenanceRegistrationService.carService.getAllCars()}"
-                                       var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.driverName} : #{c.vehincleNumber}" />
-
-                        <!--<f:ajax event="change" execute="selectCustomer" render="customerInformation"-->
-                                <!--listener="#{carRegisterService.setCustomer()}" />-->
+                                       var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.driverName} : #{c.vehicleNumber}" />
 
                     </h:selectOneMenu>
                 </div>

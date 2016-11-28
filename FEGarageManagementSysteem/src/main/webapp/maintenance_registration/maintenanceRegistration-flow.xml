@@ -9,12 +9,5 @@
             <from-outcome>/index</from-outcome>
         </flow-return>
     </flow-definition>
-    
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <to-flow-document-id>/maintenance</to-flow-document-id>
-        </navigation-case>
-    </navigation-rule>
 
 </faces-config>
