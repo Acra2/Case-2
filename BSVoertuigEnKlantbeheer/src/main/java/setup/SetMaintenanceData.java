@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Singleton
 @Startup
-public class SetMaintenanceData {
+public class SetMaintenanceData implements Serializable {
     @EJB
     private ICarService carService;
 
