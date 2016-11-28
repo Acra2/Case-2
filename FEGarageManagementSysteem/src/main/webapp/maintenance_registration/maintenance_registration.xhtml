@@ -18,18 +18,48 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <h:form styleClass="form-horizontal">
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectCar"
                                          value="#{maintenanceRegistrationService.car.vehicleNumber}" >
-                            <f:selectItem styleClass="form-control" value="#{null}" itemLabel="-- Selecteer een auto-nummer --" />
+                            <f:selectItem styleClass="form-control" value="#{null}"
+                                          itemLabel="-- Selecteer een auto-nummer --" />
                             <f:selectItems styleClass="form-control"
                                            value="#{maintenanceRegistrationService.carService.getAllCars()}"
                                            var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.vehicleNumber}" />
-                            <f:ajax event="change" execute="@form" render="car_data customer_data" listener="#{maintenanceRegistrationService.setCarData()}" />
+                            <f:ajax event="change" execute="@form" render="result"
+                                    listener="#{maintenanceRegistrationService.setCarData()}" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h:selectOneMenu styleClass="form-control" id="selectMechanic"
+                                         value="#{maintenanceRegistrationService.mechanicID}" >
+                            <f:selectItem styleClass="form-control" value="#{null}"
+                                          itemLabel="-- Selecteer een monteur --" />
+                            <f:selectItems styleClass="form-control"
+                                           value="#{maintenanceRegistrationService.mechanicService.getAllMechanics()}"
+                                           var="m" itemValue="#{m.id}" itemLabel="#{m.name}" />
+                            <f:ajax event="change" execute="@form" render="result"
+                                    listener="#{maintenanceRegistrationService.setMechanicData()}" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h:selectOneMenu styleClass="form-control" id="selectMaintenanceType"
+                                         value="#{maintenanceRegistrationService.maintenanceType.id}" >
+                            <f:selectItem styleClass="form-control" value="#{null}" itemLabel="-- Selecteer onderhoudstype --" />
+                            <f:selectItems styleClass="form-control"
+                                           value="#{maintenanceRegistrationService.maintenanceTypeService.getAllTypes()}"
+                                           var="t" itemValue="#{t.id}" itemLabel="#{t.name}" />
+                            <f:ajax event="change" execute="@form" render="result"
+                                    listener="#{maintenanceRegistrationService.setMaintenanceTypeData()}" />
                         </h:selectOneMenu>
                     </div>
                 </div>
@@ -39,7 +69,7 @@
                         <h:inputTextarea styleClass="form-control"
                                          id="description"
                                          value="#{maintenanceRegistrationService.description}"
-                                         p:placeholder="Beschrijving..." />
+                                         p:placeholder="Beschrijving..." rows="10" />
                     </div>
                 </div>
 
@@ -48,49 +78,77 @@
                         <div class="btn-group">
                             <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
                             <h:commandLink styleClass="btn btn-primary" value="volgende"
-                                           action="#" />
+                                           action="#{maintenanceRegistrationService.goToConfirmPage()}" />
                         </div>
                     </div>
                 </div>
             </h:form>
         </div>
 
-            <div class="col-md-6">
+        <div class="col-md-9">
+            <h:panelGroup id="result">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="container">
-                            <div class="jumbotron">
-                                <h:panelGroup id="car_data">
-                                <div class="col-md-12"><h3>Auto gegevens</h3></div>
-                                <div class="col-md-12"><h:outputLabel value="Auto-nummer: #{maintenanceRegistrationService.car.vehicleNumber}" /></div>
-                                <div class="col-md-12"><h:outputLabel value="Nummerbord: #{maintenanceRegistrationService.car.licensePlate}" /></div>
-                                <div class="col-md-12"><h:outputLabel value="Kilometers: #{maintenanceRegistrationService.car.mileage}" /></div>
-                                <div class="col-md-12"><h:outputLabel value="Model: #{maintenanceRegistrationService.car.model.name}" /></div>
-                                <div class="col-md-12"><h:outputLabel value="Bestuurder: #{maintenanceRegistrationService.car.driverName}" /></div>
-                                <div class="col-md-12"><h:outputLabel value="Bestuurder e-mail: #{maintenanceRegistrationService.car.driverEmail}" /></div>
-                                <div class="col-md-12"><h:outputLabel value="Bestuurder telefoon: #{maintenanceRegistrationService.car.driverPhoneNumber}" /></div>
-                                </h:panelGroup>
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Auto</div>
+                            <div class="panel-body">
+                                <p>Auto-nummer: #{maintenanceRegistrationService.car.vehicleNumber} </p>
+                                <p>Nummerbord: #{maintenanceRegistrationService.car.licensePlate} </p>
+                                <p>Kilometers: #{maintenanceRegistrationService.car.mileage} </p>
+                                <p>Model: #{maintenanceRegistrationService.car.model.name} </p>
+                                <p>Bestuurder: #{maintenanceRegistrationService.car.driverName} </p>
+                                <p>Bestuurder e-mail: #{maintenanceRegistrationService.car.driverEmail} </p>
+                                <p>Bestuurder telefoon: #{maintenanceRegistrationService.car.driverPhoneNumber} </p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="container">
-                            <div class="jumbotron">
-                                <h:panelGroup id="customer_data">
-                                    <div class="col-md-12"><h3>Klant gegevens</h3></div>
-                                    <div class="col-md-12"><h:outputLabel value="ID: #{maintenanceRegistrationService.car.customer.id}" /></div>
-                                    <div class="col-md-12"><h:outputLabel value="Naam: #{maintenanceRegistrationService.car.customer.name}" /></div>
-                                    <div class="col-md-12"><h:outputLabel value="E-mail: #{maintenanceRegistrationService.car.customer.email}" /></div>
-                                    <div class="col-md-12"><h:outputLabel value="Adres: #{maintenanceRegistrationService.car.customer.adress}" /></div>
-                                    <div class="col-md-12"><h:outputLabel value="Telefoon: #{maintenanceRegistrationService.car.customer.phonenumber}" /></div>
-                                    <div class="col-md-12"><h:outputLabel value="BTW-nummer: #{maintenanceRegistrationService.car.customer.btwnumber}" /></div>
-                                </h:panelGroup>
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Klant</div>
+                            <div class="panel-body">
+                                <p>ID: #{maintenanceRegistrationService.car.customer.id} </p>
+                                <p>Naam: #{maintenanceRegistrationService.car.customer.name} </p>
+                                <p>Adres: #{maintenanceRegistrationService.car.customer.adress} </p>
+                                <p>E-mail: #{maintenanceRegistrationService.car.customer.email} </p>
+                                <p>Telefoon: #{maintenanceRegistrationService.car.customer.phonenumber} </p>
+                                <p>BTW-nummer: #{maintenanceRegistrationService.car.customer.btwnumber} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Monteur</div>
+                            <div class="panel-body">
+                                <p>ID: #{maintenanceRegistrationService.mechanic.id} </p>
+                                <p>Naam: #{maintenanceRegistrationService.mechanic.name} </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Onderhoudstype</div>
+                            <div class="panel-body">
+                                <p>ID: #{maintenanceRegistrationService.maintenanceType.id} </p>
+                                <p>Naam: #{maintenanceRegistrationService.maintenanceType.name} </p>
+                                <p>Taken: #{maintenanceRegistrationService.maintenanceType.tasks} </p>
+                                <p>Tijd: #{maintenanceRegistrationService.maintenanceType.time} </p>
+                                <p>Prijs: #{maintenanceRegistrationService.maintenanceType.price} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Datum</div>
+                            <div class="panel-body">
+                                <p>Datum...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:panelGroup>
+        </div>
     </ui:define>
 </ui:composition>
 </html>

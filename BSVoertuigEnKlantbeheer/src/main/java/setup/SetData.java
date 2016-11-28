@@ -39,17 +39,19 @@ public class SetData implements Serializable {
     @PostConstruct
     public void setData() {
         Mechanic h1 = Mechanic.builder().Name("Henk").build();
-        mechanicService.add(h1);
         Mechanic h2 = Mechanic.builder().Name("Arie").build();
-        mechanicService.add(h2);
         Mechanic h3 = Mechanic.builder().Name("Lotte").build();
+
+        mechanicService.add(h1);
+        mechanicService.add(h2);
         mechanicService.add(h3);
 
         MaintenanceType maintenanceType1 = MaintenanceType.builder().name("apk-keuring").build();
-        maintenanceTypeService.add(maintenanceType1);
-
         MaintenanceType maintenanceType2 = MaintenanceType.builder().name("grote beurt").build();
+
+        maintenanceTypeService.add(maintenanceType1);
         maintenanceTypeService.add(maintenanceType2);
+
 
         Brand b1 = Brand.builder().name("Opel").build();
         Brand b2 = Brand.builder().name("Volkswagen").build();
@@ -62,36 +64,40 @@ public class SetData implements Serializable {
         Brand b9 = Brand.builder().name("Citroën").build();
 
         Model m1a = Model.builder().brand(b1).name("Adam").build();
-        modelService.add(m1a);
         Model m1b = Model.builder().brand(b1).name("Astra").build();
-        modelService.add(m1b);
         Model m1c = Model.builder().brand(b1).name("Monza").build();
-        modelService.add(m1c);
         Model m1d = Model.builder().brand(b1).name("Olympia").build();
-        modelService.add(m1d);
         Model m1e = Model.builder().brand(b1).name("Zafira").build();
+
+        modelService.add(m1a);
+        modelService.add(m1b);
+        modelService.add(m1c);
+        modelService.add(m1d);
         modelService.add(m1e);
 
+
         Model m2a = Model.builder().brand(b2).name("Eos").build();
-        modelService.add(m2a);
         Model m2b = Model.builder().brand(b2).name("Passat").build();
-        modelService.add(m2b);
         Model m2c = Model.builder().brand(b2).name("K70").build();
-        modelService.add(m2c);
         Model m2d = Model.builder().brand(b2).name("Kever").build();
-        modelService.add(m2d);
         Model m2e = Model.builder().brand(b2).name("Passat CC").build();
-        modelService.add(m2e);
         Model m2f = Model.builder().brand(b2).name("Polo").build();
-        modelService.add(m2f);
         Model m2g = Model.builder().brand(b2).name("Tiguan").build();
-        modelService.add(m2g);
         Model m2h = Model.builder().brand(b2).name("Jetta").build();
-        modelService.add(m2h);
         Model m2i = Model.builder().brand(b2).name("Golf").build();
-        modelService.add(m2i);
         Model m2j = Model.builder().brand(b2).name("Lupo").build();
+
+        modelService.add(m2a);
+        modelService.add(m2b);
+        modelService.add(m2c);
+        modelService.add(m2d);
+        modelService.add(m2e);
+        modelService.add(m2f);
+        modelService.add(m2g);
+        modelService.add(m2h);
+        modelService.add(m2i);
         modelService.add(m2j);
+
 
         Model m3a = Model.builder().brand(b3).name("Boxter").build();
         modelService.add(m3a);

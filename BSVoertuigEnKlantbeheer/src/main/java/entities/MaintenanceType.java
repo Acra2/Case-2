@@ -13,14 +13,14 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NamedQueries({
-        @NamedQuery(name = "getAllMaintenanceTypes", query = "SELECT m from maintenancetype m"),
+        @NamedQuery(name = "getAllMaintenanceTypes", query = "SELECT m from maintenancetype m")
 })
 @Entity(name = "maintenancetype")
 @Data
 public class MaintenanceType implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String name;
     private int time;
     private String tasks;
