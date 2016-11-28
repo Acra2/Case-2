@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 @Inherited
 @InterceptorBinding
-@Target({TYPE, METHOD})
 @Retention(RUNTIME)
+@Target({TYPE, METHOD})
 public @interface LogInterceptorBinding {
 }

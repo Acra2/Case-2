@@ -4,6 +4,7 @@ import entities.Car;
 import entities.Maintenance;
 import entities.MaintenanceState;
 import entities.Mechanic;
+import interceptors.LogInterceptorBinding;
 import services.ICarService;
 import services.IMaintenanceService;
 
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @Stateful
 @Remote(IMaintenanceService.class)
+@LogInterceptorBinding
 public class MaintenanceService implements IMaintenanceService {
 
     @PersistenceContext
@@ -54,5 +56,10 @@ public class MaintenanceService implements IMaintenanceService {
                 .setParameter("vehiclenumber", car.getVehicleNumber())
                 .getResultList();
         return resultList;
+    }
+
+    @Override
+    public List getCarsInMaintenance() {
+        return em.createNamedQuery("CarsInMaintenance").getResultList();
     }
 }

@@ -5,16 +5,11 @@ import entities.Customer;
 import entities.Maintenance;
 import lombok.Getter;
 import lombok.Setter;
-import services.ICarService;
-import services.ICustomerService;
-import services.IMaintenanceService;
-import services.IModelService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +60,9 @@ public class CarService implements Serializable {
         carService.addCar(car);
     }
 
+    public List getCarsInMaintenance() {
+        return maintenanceService.getCarsInMaintenance();
+    }
 
     public List getAllCars() {
 
@@ -137,5 +135,7 @@ public class CarService implements Serializable {
         return customerService.getAllCustomers();
     }
 
-    public List getMaintenceForCar() { return maintenanceService.getMaintenanceForCar(car); }
+    public List getMaintenceForCar() {
+        return maintenanceService.getMaintenanceForCar(car);
+    }
 }

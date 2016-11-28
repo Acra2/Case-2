@@ -1,13 +1,12 @@
 package interceptors;
 
-import entities.Log;
+import entities.ErrorLog;
+import services.ILogService;
 
+import javax.ejb.EJB;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
-import javax.interceptor.InterceptorBinding;
 import javax.interceptor.InvocationContext;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 
 /**
@@ -18,25 +17,20 @@ import java.time.LocalDateTime;
 @LogInterceptorBinding
 public class LogInterceptor {
 
-    @PersistenceContext
-    private EntityManager em;
+    @EJB
+    private ILogService logService;
 
     @AroundInvoke
     public Object intercept(InvocationContext context) throws Exception {
-        Log log1 = new Log();
-        log1.setMessage("log called");
-        log1.setDateTime(LocalDateTime.now());
-
-        em.persist(log1);
         Object result = null;
         try {
             result = context.proceed();
         } catch (Exception e) {
-            Log log = new Log();
-            log.setMessage(context.getMethod().toString());
-            log.setDateTime(LocalDateTime.now());
+            ErrorLog errorLog = new ErrorLog();
+            errorLog.setMessage(context.getMethod().toString());
+            errorLog.setDateTime(LocalDateTime.now());
 
-            em.persist(log);
+            logService.log(errorLog);
         }
         return result;
 

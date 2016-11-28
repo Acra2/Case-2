@@ -78,7 +78,7 @@ public class MaintenanceController implements IMaintenanceController {
     public void finish(Maintenance maintenance) {
         maintenance.finish();
         persistMaintenace(maintenance);
-        if (maintenance.getType() == MaintenanceType.APKKEURING){
+        if (maintenance.getType().getName().toLowerCase().equals("apk-keuring")){
             try {
                 Boolean steekproef = false;
 

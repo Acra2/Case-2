@@ -1,6 +1,7 @@
 package services.impl;
 
 import entities.Model;
+import interceptors.LogInterceptorBinding;
 import services.IModelService;
 
 import javax.ejb.Remote;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 @Stateful
 @Remote(IModelService.class)
+@LogInterceptorBinding
 public class ModelService implements IModelService {
 
     @PersistenceContext

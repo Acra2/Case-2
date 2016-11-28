@@ -34,6 +34,9 @@ public class SetData implements Serializable {
     @EJB
     private IModelService modelService;
 
+    @EJB
+    private IMaintenanceTypeService maintenanceTypeService;
+
     @PostConstruct
     public void setData() {
         Mechanic h1 = Mechanic.builder().Name("Henk").build();
@@ -42,6 +45,12 @@ public class SetData implements Serializable {
         mechanicService.add(h2);
         Mechanic h3 = Mechanic.builder().Name("Lotte").build();
         mechanicService.add(h3);
+
+        MaintenanceType maintenanceType1 = MaintenanceType.builder().name("apk-keuring").build();
+        maintenanceTypeService.add(maintenanceType1);
+
+        MaintenanceType maintenanceType2 = MaintenanceType.builder().name("grote beurt").build();
+        maintenanceTypeService.add(maintenanceType2);
 
         Brand b1 = Brand.builder().name("Opel").build();
         Brand b2 = Brand.builder().name("Volkswagen").build();
@@ -186,13 +195,13 @@ public class SetData implements Serializable {
         Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").customer(c5).build();
         carService.addCar(a6);
 
-        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).car(a2).mechanic(h1).state(MaintenanceState.READYFORPICKUP).type(MaintenanceType.GROOTONDERHOUD).description("Remschoenen vervangen").build();
+        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).car(a2).mechanic(h1).state(MaintenanceState.READYFORPICKUP).type(maintenanceType1).description("Remschoenen vervangen").build();
         maintenanceService.add(m1);
-        Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  8,  5, 10, 40)).car(a2).mechanic(h2).state(MaintenanceState.READYFORPICKUP).type(MaintenanceType.APKKEURING).description("Linker zijruit vervangen").build();
+        Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  8,  5, 10, 40)).car(a2).mechanic(h2).state(MaintenanceState.PRESENT).type(maintenanceType1).description("Linker zijruit vervangen").build();
         maintenanceService.add(m2);
-        Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2015, 12, 18, 16, 35)).car(a1).mechanic(h3).state(MaintenanceState.READYFORPICKUP).type(MaintenanceType.KLEINONDERHOUD).description("Accu vervangen").build();
+        Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2015, 12, 18, 16, 35)).car(a1).mechanic(h3).state(MaintenanceState.PAUSED).type(maintenanceType2).description("Accu vervangen").build();
         maintenanceService.add(m3);
-        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12,  5, 12, 10)).car(a5).mechanic(h3).state(MaintenanceState.PRESENT).type(MaintenanceType.GROOTONDERHOUD).description("Koplampen opnieuw afstellen").build();
+        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12,  5, 12, 10)).car(a5).mechanic(h3).state(MaintenanceState.PRESENT).type(maintenanceType2).description("Koplampen opnieuw afstellen").build();
         maintenanceService.add(m4);
     }
 }

@@ -20,4 +20,5 @@ public interface IMaintenanceService {
     Maintenance getInMaintenanceForMechanic(Mechanic mechanic);
 
     List getMaintenanceForCar(Car car);
+    List getCarsInMaintenance();
 }

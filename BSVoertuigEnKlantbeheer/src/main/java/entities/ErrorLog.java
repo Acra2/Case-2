@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -17,12 +14,14 @@ import java.time.LocalDateTime;
 
 @Entity(name = "log")
 @Data
-public class Log implements Serializable{
+public class ErrorLog implements Serializable{
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private String id;
 
-    public Log(){}
-
     private String Message;
+
     private LocalDateTime DateTime;
+
+    public ErrorLog(){}
 }
