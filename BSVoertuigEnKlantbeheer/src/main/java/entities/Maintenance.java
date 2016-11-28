@@ -3,6 +3,7 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.swing.plaf.nimbus.State;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -55,8 +56,11 @@ public class Maintenance implements Serializable {
     }
 
     public void start() throws Exception {
-        state.startMaintenace(this);
-        throw new Exception("test exception");
+        try {
+            state.startMaintenace(this);
+        } catch (StateException e) {
+            e.printStackTrace();
+        }
     }
 
     public void pause() {

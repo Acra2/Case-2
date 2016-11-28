@@ -48,7 +48,30 @@
             <div class=" col-sm-4">
                 <h:link styleClass="btn btn-default main_menu col-sm-4" outcome="#" value="Maintenance jobs"/>
             </div>
+            <div id="externalbox" style="width:4in">
+                <div id="inputdata">123456</div>
+            </div>
+
+            <br />
+            <h:outputScript name="js/code39.js" target="#{param.location}" />
+            <script type="text/javascript">
+                /* <![CDATA[ */
+                function get_object(id) {
+                    var object = null;
+                    if (document.layers) {
+                        object = document.layers[id];
+                    } else if (document.all) {
+                        object = document.all[id];
+                    } else if (document.getElementById) {
+                        object = document.getElementById(id);
+                    }
+                    return object;
+                }
+                get_object("inputdata").innerHTML=DrawCode39Barcode(get_object("inputdata").innerHTML,1);
+                /* ]]> */
+            </script>
         </div>
     </ui:define>
 </ui:composition>
+
 </html>
