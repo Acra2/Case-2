@@ -30,4 +30,7 @@ public class MaintenanceRegistrationService implements Serializable {
         this.car = new Car();
     }
 
+    public void setCarData() {
+        car = carService.getCar(car.getVehicleNumber());
+    }
 }

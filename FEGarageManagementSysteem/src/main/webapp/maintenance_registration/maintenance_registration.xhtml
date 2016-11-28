@@ -18,39 +18,79 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form styleClass="form-horizontal">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <h:inputTextarea styleClass="form-control"
-                                 id="description"
-                                 value="#{maintenanceRegistrationService.description}"
-                                 p:placeholder="Beschrijving..." />
-                </div>
-            </div>
+        <div class="col-md-6">
+            <h:form styleClass="form-horizontal">
 
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div class="btn-group">
-                        <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
-                        <h:commandLink styleClass="btn btn-primary" value="volgende"
-                                       action="#" />
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h:selectOneMenu styleClass="form-control" id="selectCar"
+                                         value="#{maintenanceRegistrationService.car.vehicleNumber}" >
+                            <f:selectItem styleClass="form-control" value="#{null}" itemLabel="-- Selecteer een auto-nummer --" />
+                            <f:selectItems styleClass="form-control"
+                                           value="#{maintenanceRegistrationService.carService.getAllCars()}"
+                                           var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.vehicleNumber}" />
+                            <f:ajax event="change" execute="@form" render="car_data customer_data" listener="#{maintenanceRegistrationService.setCarData()}" />
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h:inputTextarea styleClass="form-control"
+                                         id="description"
+                                         value="#{maintenanceRegistrationService.description}"
+                                         p:placeholder="Beschrijving..." />
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
+                            <h:commandLink styleClass="btn btn-primary" value="volgende"
+                                           action="#" />
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div class="jumbotron">
+                                <h:panelGroup id="car_data">
+                                <div class="col-md-12"><h3>Auto gegevens</h3></div>
+                                <div class="col-md-12"><h:outputLabel value="Auto-nummer: #{maintenanceRegistrationService.car.vehicleNumber}" /></div>
+                                <div class="col-md-12"><h:outputLabel value="Nummerbord: #{maintenanceRegistrationService.car.licensePlate}" /></div>
+                                <div class="col-md-12"><h:outputLabel value="Kilometers: #{maintenanceRegistrationService.car.mileage}" /></div>
+                                <div class="col-md-12"><h:outputLabel value="Model: #{maintenanceRegistrationService.car.model.name}" /></div>
+                                <div class="col-md-12"><h:outputLabel value="Bestuurder: #{maintenanceRegistrationService.car.driverName}" /></div>
+                                <div class="col-md-12"><h:outputLabel value="Bestuurder e-mail: #{maintenanceRegistrationService.car.driverEmail}" /></div>
+                                <div class="col-md-12"><h:outputLabel value="Bestuurder telefoon: #{maintenanceRegistrationService.car.driverPhoneNumber}" /></div>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div class="jumbotron">
+                                <h:panelGroup id="customer_data">
+                                    <div class="col-md-12"><h3>Klant gegevens</h3></div>
+                                    <div class="col-md-12"><h:outputLabel value="ID: #{maintenanceRegistrationService.car.customer.id}" /></div>
+                                    <div class="col-md-12"><h:outputLabel value="Naam: #{maintenanceRegistrationService.car.customer.name}" /></div>
+                                    <div class="col-md-12"><h:outputLabel value="E-mail: #{maintenanceRegistrationService.car.customer.email}" /></div>
+                                    <div class="col-md-12"><h:outputLabel value="Adres: #{maintenanceRegistrationService.car.customer.adress}" /></div>
+                                    <div class="col-md-12"><h:outputLabel value="Telefoon: #{maintenanceRegistrationService.car.customer.phonenumber}" /></div>
+                                    <div class="col-md-12"><h:outputLabel value="BTW-nummer: #{maintenanceRegistrationService.car.customer.btwnumber}" /></div>
+                                </h:panelGroup>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-12">
-                <div class="form-group">
-                    <h:selectOneMenu styleClass="form-control" id="selectCar"
-                                     value="#{maintenanceRegistrationService.car.vehicleNumber}" >
-                        <f:selectItems styleClass="form-control"
-                                       value="#{maintenanceRegistrationService.carService.getAllCars()}"
-                                       var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.driverName} : #{c.vehicleNumber}" />
-
-                    </h:selectOneMenu>
-                </div>
-            </div>
-
-        </h:form>
     </ui:define>
 </ui:composition>
 </html>

@@ -50,7 +50,6 @@ public class SetMaintenanceData {
         maintenance.setMechanic(henk);
         maintenance.setCar(car);
         maintenance.present();
-        maintenance.setType(MaintenanceType.APKKEURING);
         maintenanceService.add(maintenance);
 
         Maintenance maintenance2 = new Maintenance();
@@ -59,7 +58,6 @@ public class SetMaintenanceData {
         maintenance2.setMechanic(henk);
         maintenance2.setCar(car);
         maintenance2.present();
-        maintenance.setType(MaintenanceType.APKKEURING);
         maintenanceService.add(maintenance2);
     }
 }
