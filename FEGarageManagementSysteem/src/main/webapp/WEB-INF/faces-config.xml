@@ -46,11 +46,6 @@
             <from-outcome>maintenance</from-outcome>
             <to-view-id>/maintenance.xhtml</to-view-id>
         </navigation-case>
-        <navigation-case>
-            <from-outcome>maintenance_registration</from-outcome>
-            <to-view-id>/maintenance_registration</to-view-id>
-        </navigation-case>
-
 
     </navigation-rule>
 </faces-config>

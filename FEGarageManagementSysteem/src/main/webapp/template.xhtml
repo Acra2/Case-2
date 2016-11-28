@@ -37,17 +37,15 @@
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="#">Garage Management System</a>
                             </div>
-                            <ul class="nav navbar-nav">
-                                <li><h:link value="Home" outcome="home" /></li>
-                                <li><h:link value="Klanten" outcome="customerIndex" /></li>
-                                <li><h:link value="Auto's" outcome="car" /></li>
-                                <li><h:link value="Onderhoud" outcome="maintenance"/></li>
-                                <li>
-                                    <h:form>
-                                        <h:commandLink value="Aanmelden onderhoud" action="maintenance_registration"/>
-                                    </h:form>
-                                </li>
-                            </ul>
+                                <h:form>
+                                    <ul class="nav navbar-nav">
+                                        <li><h:link value="Home" outcome="home" /></li>
+                                        <li><h:link value="Klanten" outcome="customerIndex" /></li>
+                                        <li><h:link value="Auto's" outcome="car" /></li>
+                                        <li><h:link value="Onderhoud" outcome="maintenance"/></li>
+                                        <li><h:commandLink value="Aanmelden onderhoud" action="maintenance_registration"/></li>
+                                    </ul>
+                                </h:form>
                         </div>
                     </nav>
             </div>

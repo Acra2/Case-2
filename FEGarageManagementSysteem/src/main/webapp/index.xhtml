@@ -10,11 +10,11 @@
 <ui:composition template="template.xhtml">
 
    <ui:define name="title">
-      Garage Management System
+      Garage beheer systeem
    </ui:define>
 
    <ui:define name="header">
-      Garage Management System
+       Garage beheer systeem
    </ui:define>
 
     <ui:define name="content">
@@ -40,9 +40,11 @@
                 </h:link>
             </div>
             <div class=" col-sm-4">
-                <h:link styleClass="btn btn-default main_menu" outcome="maintenance_registration">
-                    <i class="fa fa-wrench fa-4x"></i><br /><span>Aanmelden onderhoud</span>
-                </h:link>
+                <h:form>
+                    <h:commandLink styleClass="btn btn-default main_menu" action="maintenance_registration">
+                        <i class="fa fa-wrench fa-4x"></i><br /><span>Aanmelden onderhoud</span>
+                    </h:commandLink>
+                </h:form>
             </div>
         </div>
     </ui:define>
