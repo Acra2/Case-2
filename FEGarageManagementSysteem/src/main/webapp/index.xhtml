@@ -4,27 +4,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+>
 
 <ui:composition template="template.xhtml">
 
-   <ui:define name="title">
-      Garage Management System
-   </ui:define>
+    <ui:define name="title">
+        Garage Management System
+    </ui:define>
 
-   <ui:define name="header">
-      Garage Management System
-   </ui:define>
+    <ui:define name="header">
+        Garage Management System
+    </ui:define>
 
-   <ui:define name="content">
+    <ui:define name="content">
+        <div class="container">
+            <div class=" col-sm-4">
+                <h:link styleClass="btn btn-default main_menu" outcome="car">
+                    <i class="fa fa-car fa-4x"></i><br /><span>Car management</span>
+                </h:link>
+            </div>
+            <div class=" col-sm-4">
+                <h:link styleClass="btn btn-default main_menu" outcome="maintenance">
+                    <i class="fa fa-wrench fa-4x"></i><br /><span>Mechanic Maintenance</span>
+                </h:link>
 
-      <h:link styleClass="btn btn-default main_menu" outcome="car" value="Car management"/>
-      <h:link styleClass="btn btn-default main_menu" outcome="maintenance" value="Mechanic Maintenance " />
-      <h:link styleClass="btn btn-default main_menu" outcome="customerIndex" value="Car management" />
-      <h:link styleClass="btn btn-default main_menu" outcome="#" value="Maintenance jobs" />
-
-   </ui:define>
+            </div>
+            <div class=" col-sm-4">
+                <h:link styleClass="btn btn-default main_menu" outcome="customerIndex">
+                    <i class="fa  fa-users fa-4x"></i><br /><span>Customer management</span>
+                </h:link>
+            </div>
+            <div class=" col-sm-4">
+                <h:link styleClass="btn btn-default main_menu" outcome="BrandModel">
+                    <i class="fa  fa-industry fa-4x"></i><br /><span>Brands and Models</span>
+                </h:link>
+            </div>
+            <div class=" col-sm-4">
+                <h:link styleClass="btn btn-default main_menu" outcome="#">
+                    <i class="fa fa-user fa-4x"></i><br /><span>Mechanics</span>
+                </h:link>
+            </div>
+            <div class=" col-sm-4">
+                <h:link styleClass="btn btn-default main_menu col-sm-4" outcome="#" value="Maintenance jobs"/>
+            </div>
+        </div>
+    </ui:define>
 
 </ui:composition>
 </html>

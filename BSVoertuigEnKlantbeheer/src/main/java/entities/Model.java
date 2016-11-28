@@ -23,7 +23,7 @@ public class Model implements Serializable {
     private Long id;
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Brand brand;
 
