@@ -1,4 +1,4 @@
-/**
+package services; /**
  * Created by Gebruiker on 23-11-2016.
  */
 
@@ -64,7 +64,7 @@ public class CustomerService implements Serializable {
                         for (Car car : customer.getCars()) {
                             if (car.getMaintenanceList().size() > 0)
                                 for (Maintenance m : car.getMaintenanceList()) {
-                                    if (m.getStartDateTime().toLocalDate().isAfter(LocalDate.now())) {
+                                    if (m.getStartDateTime().toLocalDate().isAfter(LocalDateTime.now().toLocalDate())) {
                                         tempCustomers.add(customer);
                                     }
                                 }
@@ -84,7 +84,7 @@ public class CustomerService implements Serializable {
             for (Car car : customer.getCars()) {
                 if (car.getMaintenanceList().size() > 0)
                     for (Maintenance m : car.getMaintenanceList()) {
-                        if (m.getStartDateTime().toLocalDate().equals(LocalDateTime.now())) {
+                        if (m.getStartDateTime().toLocalDate().isEqual(LocalDateTime.now().toLocalDate())) {
                             return true;
                         }
                     }

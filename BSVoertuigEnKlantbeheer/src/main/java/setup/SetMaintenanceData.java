@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import javax.interceptor.InterceptorBinding;
 import java.time.LocalDateTime;
 
 /**
@@ -28,7 +29,7 @@ public class SetMaintenanceData {
     private IMechanicService mechanicService;
 
     @PostConstruct
-    public void setData() {
+    public void setData(){
         Mechanic henk = Mechanic.builder().Name("henk").build();
         mechanicService.add(henk);
 

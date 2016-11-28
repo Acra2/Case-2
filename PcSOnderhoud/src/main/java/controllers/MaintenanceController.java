@@ -1,18 +1,14 @@
+package controllers;
+
 import entities.Maintenance;
 import entities.MaintenanceType;
 import entities.Mechanic;
 import services.IMaintenanceService;
 import services.IMechanicService;
-import services.impl.MaintenanceService;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.NamedQuery;
-import java.rmi.RemoteException;
-import java.util.Arrays;
 
 /**
  * Created by Sander on 23-11-2016.

@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="stylesheet.css"/>
+    <h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
 
     <title><ui:insert name="title">title</ui:insert></title>
 </h:head>
@@ -37,9 +39,9 @@
                             </div>
                             <ul class="nav navbar-nav">
                                 <li><h:link value="Home" outcome="home" /></li>
-                                <li><h:link value="Customer management" outcome="customerIndex" /></li>
-                                <li><h:link value="Car management" outcome="car" /></li>
-                                <li><h:link value="Mechanic Maintenance" outcome="maintenance"/></li>
+                                <li><h:link value="Klanten" outcome="customerIndex" /></li>
+                                <li><h:link value="Auto's" outcome="car" /></li>
+                                <li><h:link value="Onderhoud" outcome="maintenance"/></li>
                             </ul>
                         </div>
                     </nav>
