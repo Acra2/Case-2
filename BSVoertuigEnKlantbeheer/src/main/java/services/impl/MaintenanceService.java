@@ -55,4 +55,9 @@ public class MaintenanceService implements IMaintenanceService {
                 .getResultList();
         return resultList;
     }
+
+    @Override
+    public List getCarsInMaintenance() {
+        return em.createNamedQuery("CarsInMaintenance").getResultList();
+    }
 }

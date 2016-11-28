@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="template.xhtml">
+
+   <ui:define name="title">
+      Garage Management System
+   </ui:define>
+
+   <ui:define name="header">
+      Garage Management System
+   </ui:define>
+
+    <ui:define name="content">
+        <h:dataTable id="car_table"
+                     value="#{carService.getCarsInMaintenance()}"
+                     var="m"
+                     styleClass="table table-bordered table-responsive table-striped">
+            <h:column>
+                <f:facet name="header">Nummerbord</f:facet>
+                #{m.car.licensePlate}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Klant naam</f:facet>
+                #{m.car.customer.name}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{m.state.toString()}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Wijzigen</f:facet>
+                <h:link value="Wijzigen" outcome="updateCar" includeViewParams="true">
+                    <f:param name="id" value="#{m.car.vehicleNumber}" />
+                </h:link>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Details</f:facet>
+                <h:link value="Details" outcome="details" includeViewParams="true">
+                    <f:param name="id" value="#{m.car.vehicleNumber}" />
+                </h:link>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

@@ -17,7 +17,8 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(name = "getAllMaintenance", query = "SELECT m from maintenance m"),
         @NamedQuery(name = "getMaintenanceForMechanicAndState", query = "SELECT m from maintenance m WHERE m.mechanic.id = :mechanicId and m.state = entities.MaintenanceState.INMAINTENANCE"),
-        @NamedQuery(name = "getMaintenanceForCar", query = "SELECT m from maintenance m WHERE m.car.vehicleNumber = :vehiclenumber")
+        @NamedQuery(name = "getMaintenanceForCar", query = "SELECT m from maintenance m WHERE m.car.vehicleNumber = :vehiclenumber"),
+        @NamedQuery(name = "CarsInMaintenance", query = "SELECT  m from maintenance m where m.state = entities.MaintenanceState.INMAINTENANCE or m.state = entities.MaintenanceState.PAUSED or m.state = entities.MaintenanceState.READYFORSAMPLE")
 })
 @Builder
 @AllArgsConstructor
@@ -32,7 +33,7 @@ public class Maintenance implements Serializable {
     @Enumerated(EnumType.STRING)
     private MaintenanceState state = MaintenanceState.PLANNED;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private MaintenanceType type;
 
     @ManyToOne
