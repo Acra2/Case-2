@@ -27,10 +27,6 @@
             <to-view-id>/car.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>add_car</from-outcome>
-            <to-view-id>/add_car.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>updateCar</from-outcome>
             <to-view-id>/update_car.xhtml</to-view-id>
         </navigation-case>
@@ -50,6 +46,11 @@
             <from-outcome>maintenance</from-outcome>
             <to-view-id>/maintenance.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
+        <navigation-case>
+            <from-outcome>maintenance_registration</from-outcome>
+            <to-view-id>/maintenance_registration</to-view-id>
+        </navigation-case>
 
+
+    </navigation-rule>
 </faces-config>

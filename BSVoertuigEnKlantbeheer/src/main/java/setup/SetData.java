@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @Startup
 public class SetData implements Serializable {
 
-
     @EJB
     private ICarService carService;
 

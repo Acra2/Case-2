@@ -14,7 +14,7 @@
     </context-param>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>/car_registration/carRegistration-flow.xml</param-value>
+        <param-value>/car_registration/carRegistration-flow.xml,/maintenance_registration/maintenanceRegistration-flow.xml</param-value>
     </context-param>
 
     <servlet>
