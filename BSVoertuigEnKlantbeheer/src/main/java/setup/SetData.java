@@ -195,7 +195,7 @@ public class SetData implements Serializable {
 //        Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").customer(c5).build();
 //        carService.addCar(a6);
 
-        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).mechanic(h1).car(a2).type(maintenanceType1).state(MaintenanceState.READYFORPICKUP).description("Remschoenen vervangen").build();
+        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).mechanic(h1).car(a2).type(maintenanceType1).state(MaintenanceState.PRESENT).description("Remschoenen vervangen").build();
         m1 = maintenanceService.add(m1);
 
         Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  8,  5, 10, 40)).car(a2).mechanic(h2).type(maintenanceType2).state(MaintenanceState.PRESENT).type(maintenanceType1).description("Linker zijruit vervangen").build();
