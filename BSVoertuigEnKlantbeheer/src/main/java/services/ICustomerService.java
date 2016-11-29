@@ -11,7 +11,7 @@ import java.util.List;
 @Remote
 public interface ICustomerService {
 
-    void addCustomer(Customer customer);
+    Customer addCustomer(Customer customer);
 
     Customer getCustomer(Long CustomerNumber);
 

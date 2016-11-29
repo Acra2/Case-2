@@ -6,6 +6,7 @@ import services.IMechanicService;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by paisanrietbroek on 23/11/2016.
  */
-@Stateful
+@Stateless
 @Remote(IMechanicService.class)
 @LogInterceptorBinding
 public class MechanicService implements IMechanicService {
@@ -22,8 +23,13 @@ public class MechanicService implements IMechanicService {
     private EntityManager em;
 
     @Override
-    public void add(Mechanic mechanic) {
-        em.persist(mechanic);
+    public Mechanic add(Mechanic mechanic) {
+        if (mechanic.getId() != null)
+            em.merge(mechanic);
+        else
+            em.persist(mechanic);
+
+        return mechanic;
     }
 
     @Override

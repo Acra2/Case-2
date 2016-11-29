@@ -8,6 +8,7 @@ import services.ICarService;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.interceptor.Interceptor;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
@@ -20,7 +21,7 @@ import java.util.List;
  * Created by paisanrietbroek on 22/11/2016.
  */
 
-@Stateful
+@Stateless
 @Remote(ICarService.class)
 @LogInterceptorBinding
 public class CarService implements ICarService {

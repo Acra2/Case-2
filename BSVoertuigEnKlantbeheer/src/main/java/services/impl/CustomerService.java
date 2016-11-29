@@ -1,13 +1,11 @@
 package services.impl;
 
-import entities.Car;
 import entities.Customer;
 import interceptors.LogInterceptorBinding;
-import services.ICarService;
 import services.ICustomerService;
 
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -16,7 +14,7 @@ import java.util.List;
  * Created by Gebruiker on 22-11-2016.
  */
 
-@Stateful
+@Stateless
 @Remote(ICustomerService.class)
 @LogInterceptorBinding
 public class CustomerService implements ICustomerService {
@@ -25,8 +23,13 @@ public class CustomerService implements ICustomerService {
     private EntityManager em;
 
     @Override
-    public void addCustomer(Customer customer) {
-        em.persist(customer);
+    public Customer addCustomer(Customer customer) {
+        if (customer.getId() != null)
+            em.merge(customer);
+        else
+            em.persist(customer);
+
+        return customer;
     }
 
     @Override

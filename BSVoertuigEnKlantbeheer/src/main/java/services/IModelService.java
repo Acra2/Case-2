@@ -11,6 +11,6 @@ import java.util.List;
 
 @Remote
 public interface IModelService {
-    public void add(Model model);
+    public Model add(Model model);
     public List getAllModels();
 }
