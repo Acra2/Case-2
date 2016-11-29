@@ -71,19 +71,15 @@ public class MaintenanceRegistrationService implements Serializable {
         maintenanceType = maintenanceTypeService.getOneType(maintenanceType.getId());
     }
 
-    public String goToConfirmPage() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        localDateTime = LocalDateTime.parse(date + " " + time, formatter);
-        return "confirm_maintenance";
-    }
-
     public String goToMaintenanceRegisterPage() {
-        return "maintenance_registration";
+        return "maintenance _registration";
     }
 
     public String confirm() {
 
         // date is still missing, need a fix
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        localDateTime = LocalDateTime.parse(date + " " + time, formatter);
 
         Maintenance maintenance = Maintenance.builder()
                 .car(car)
@@ -94,8 +90,8 @@ public class MaintenanceRegistrationService implements Serializable {
                 .startDateTime(localDateTime)
                 .build();
 
-        maintenanceService.add(maintenance);
-        id = maintenance.getId();
+        maintenance = maintenanceService.add(maintenance);
+        id= maintenance.getId();
         return "detail_maintenance";
     }
 }
