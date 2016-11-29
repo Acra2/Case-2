@@ -88,7 +88,6 @@
             </div>
         </div>
         <script type="text/javascript">
-            /* <![CDATA[ */
             function get_object(id) {
                 var object = null;
                 if (document.layers) {
@@ -100,8 +99,7 @@
                 }
                 return object;
             }
-            get_object("inputdata").innerHTML=DrawCode39Barcode(get_object("inputdata").innerHTML,1);
-            /* ]]> */
+            get_object("inputdata").innerHTML=DrawCode39Barcode(get_object("inputdata").innerHTML,0);
         </script>
     </ui:define>
 </ui:composition>
