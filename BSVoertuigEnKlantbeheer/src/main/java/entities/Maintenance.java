@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 public class Maintenance implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime startDateTime;
     private String description;

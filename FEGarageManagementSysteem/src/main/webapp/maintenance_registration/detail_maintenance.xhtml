@@ -74,6 +74,25 @@
                     <div class="panel-heading">Beschrijving</div>
                     <div class="panel-body">
                         <p>#{maintenanceRegistrationService.description}</p>
+                        <p id="inputdata">#{maintenanceRegistrationService.id}</p>
+                        <br />
+                        <h:outputScript name="js/code39.js" target="#{param.location}" />
+                        <script type="text/javascript">
+                            /* <![CDATA[ */
+                            function get_object(id) {
+                                var object = null;
+                                if (document.layers) {
+                                    object = document.layers[id];
+                                } else if (document.all) {
+                                    object = document.all[id];
+                                } else if (document.getElementById) {
+                                    object = document.getElementById(id);
+                                }
+                                return object;
+                            }
+                            get_object("inputdata").innerHTML=DrawCode39Barcode(get_object("inputdata").innerHTML,1);
+                            /* ]]> */
+                        </script>
                     </div>
                 </div>
             </div>
@@ -84,20 +103,6 @@
                         <p>#{maintenanceRegistrationService.localDateTime}</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h:form styleClass="form-horizontal">
-                    <div class="form-group">
-                        <div class="btn-group">
-                            <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
-                            <h:commandLink styleClass="btn btn-primary" value="terug" action="#{maintenanceRegistrationService.goToMaintenanceRegisterPage()}" />
-                            <h:commandLink styleClass="btn btn-success" value="bevestigen"
-                                           action="#{maintenanceRegistrationService.confirm()}" />
-                        </div>
-                    </div>
-                </h:form>
             </div>
         </div>
     </ui:define>

@@ -100,9 +100,9 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="btn-group">
-                            <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index"/>
-                            <h:commandLink styleClass="btn btn-primary" value="volgende"
-                                           action="#{maintenanceRegistrationService.goToConfirmPage()}"/>
+                            <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
+                            <h:commandLink styleClass="btn btn-success" value="bevestigen"
+                                           action="#{maintenanceRegistrationService.confirm()}" />
                         </div>
                     </div>
                 </div>
