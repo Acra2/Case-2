@@ -39,7 +39,7 @@ public class MaintenanceRegistrationService implements Serializable {
     @EJB
     private IMaintenanceService maintenanceService;
 
-    private long id;
+    private long id = 999L;
     private Car car;
 
     private String description;
@@ -77,7 +77,6 @@ public class MaintenanceRegistrationService implements Serializable {
 
     public String confirm() {
 
-        // date is still missing, need a fix
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         localDateTime = LocalDateTime.parse(date + " " + time, formatter);
 
@@ -91,7 +90,7 @@ public class MaintenanceRegistrationService implements Serializable {
                 .build();
 
         maintenance = maintenanceService.add(maintenance);
-        id= maintenance.getId();
-        return "detail_maintenance";
+        id = maintenance.getId();
+        return "/detail_maintenance";
     }
 }

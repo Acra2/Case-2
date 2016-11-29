@@ -7,14 +7,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
-<ui:composition template="/template.xhtml">
+<f:metadata>
+    <f:viewParam name="id" value="#{maintenanceDetailsService.maintenanceId}"/>
+    <f:event type="preRenderView" listener="#{maintenanceDetailsService.setMaintenance()}" />
+</f:metadata>
 
+<ui:composition template="template.xhtml">
     <ui:define name="title">
-        Aanmelden onderhoud
+        Details onderhoud
     </ui:define>
 
     <ui:define name="header">
-        Bevestigen onderhoud
+        Details onderhoud
     </ui:define>
 
     <ui:define name="content">
@@ -23,13 +27,13 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Auto</div>
                     <div class="panel-body">
-                        <p>Auto-nummer: #{maintenanceRegistrationService.car.vehicleNumber} </p>
-                        <p>Nummerbord: #{maintenanceRegistrationService.car.licensePlate} </p>
-                        <p>Kilometers: #{maintenanceRegistrationService.car.mileage} </p>
-                        <p>Model: #{maintenanceRegistrationService.car.model.name} </p>
-                        <p>Bestuurder: #{maintenanceRegistrationService.car.driverName} </p>
-                        <p>Bestuurder e-mail: #{maintenanceRegistrationService.car.driverEmail} </p>
-                        <p>Bestuurder telefoon: #{maintenanceRegistrationService.car.driverPhoneNumber} </p>
+                        <p>Auto-nummer: #{maintenanceDetailsService.maintenance.car.vehicleNumber} </p>
+                        <p>Nummerbord: #{maintenanceDetailsService.maintenance.car.licensePlate} </p>
+                        <p>Kilometers: #{maintenanceDetailsService.maintenance.car.mileage} </p>
+                        <p>Model: #{maintenanceDetailsService.maintenance.car.model.name} </p>
+                        <p>Bestuurder: #{maintenanceDetailsService.maintenance.car.driverName} </p>
+                        <p>Bestuurder e-mail: #{maintenanceDetailsService.maintenance.car.driverEmail} </p>
+                        <p>Bestuurder telefoon: #{maintenanceDetailsService.maintenance.car.driverPhoneNumber} </p>
                     </div>
                 </div>
             </div>
@@ -37,12 +41,12 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Klant</div>
                     <div class="panel-body">
-                        <p>ID: #{maintenanceRegistrationService.car.customer.id} </p>
-                        <p>Naam: #{maintenanceRegistrationService.car.customer.name} </p>
-                        <p>Adres: #{maintenanceRegistrationService.car.customer.adress} </p>
-                        <p>E-mail: #{maintenanceRegistrationService.car.customer.email} </p>
-                        <p>Telefoon: #{maintenanceRegistrationService.car.customer.phonenumber} </p>
-                        <p>BTW-nummer: #{maintenanceRegistrationService.car.customer.btwnumber} </p>
+                        <p>ID: #{maintenanceDetailsService.maintenance.car.customer.id} </p>
+                        <p>Naam: #{maintenanceDetailsService.maintenance.car.customer.name} </p>
+                        <p>Adres: #{maintenanceDetailsService.maintenance.car.customer.adress} </p>
+                        <p>E-mail: #{maintenanceDetailsService.maintenance.car.customer.email} </p>
+                        <p>Telefoon: #{maintenanceDetailsService.maintenance.car.customer.phonenumber} </p>
+                        <p>BTW-nummer: #{maintenanceDetailsService.maintenance.car.customer.btwnumber} </p>
                     </div>
                 </div>
             </div>
@@ -50,8 +54,8 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Monteur</div>
                     <div class="panel-body">
-                        <p>ID: #{maintenanceRegistrationService.mechanic.id} </p>
-                        <p>Naam: #{maintenanceRegistrationService.mechanic.name} </p>
+                        <p>ID: #{maintenanceDetailsService.maintenance.mechanic.id} </p>
+                        <p>Naam: #{maintenanceDetailsService.maintenance.mechanic.name} </p>
                     </div>
                 </div>
             </div>
@@ -61,11 +65,11 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Onderhoudstype</div>
                     <div class="panel-body">
-                        <p>ID: #{maintenanceRegistrationService.maintenanceType.id} </p>
-                        <p>Naam: #{maintenanceRegistrationService.maintenanceType.name} </p>
-                        <p>Taken: #{maintenanceRegistrationService.maintenanceType.tasks} </p>
-                        <p>Tijd: #{maintenanceRegistrationService.maintenanceType.time} </p>
-                        <p>Prijs: #{maintenanceRegistrationService.maintenanceType.price} </p>
+                        <p>ID: #{maintenanceDetailsService.maintenance.type.id} </p>
+                        <p>Naam: #{maintenanceDetailsService.maintenance.type.name} </p>
+                        <p>Taken: #{maintenanceDetailsService.maintenance.type.tasks} </p>
+                        <p>Tijd: #{maintenanceDetailsService.maintenance.type.time} </p>
+                        <p>Prijs: #{maintenanceDetailsService.maintenance.type.price} </p>
                     </div>
                 </div>
             </div>
@@ -73,8 +77,8 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Beschrijving</div>
                     <div class="panel-body">
-                        <p>#{maintenanceRegistrationService.description}</p>
-                        <p id="inputdata">#{maintenanceRegistrationService.id}</p>
+                        <p>#{maintenanceDetailsService.maintenance.description}</p>
+                        <p id="inputdata">#{maintenanceDetailsService.maintenance.id}</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +86,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Datum</div>
                     <div class="panel-body">
-                        <p>#{maintenanceRegistrationService.localDateTime}</p>
+                        <p>#{maintenanceDetailsService.maintenance.startDateTime}</p>
                     </div>
                 </div>
             </div>
