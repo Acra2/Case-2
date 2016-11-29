@@ -23,9 +23,6 @@ public class Brand implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Model> modellist;
-
     public Brand() {
     }
 }

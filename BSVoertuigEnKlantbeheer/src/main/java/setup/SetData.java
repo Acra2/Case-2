@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * Created by Gebruiker on 24-11-2016.
@@ -181,26 +182,27 @@ public class SetData implements Serializable {
         Customer c5 = Customer.builder().name("Dilara Martha").email("DilaraMartha@jourrapide.com").phonenumber("0684566780").adress("Doctor Plesmanstraat 53 3331 KG  Zwijndrecht").build();
         c5 = customerService.addCustomer(c5);
 
-        Car a1 = Car.builder().vehicleNumber("1G6DC5E52C0154792").licensePlate("G-546-GA").mileage(4953939).driverEmail("SenadvanGalen@jourrapide.com").driverName("Senad").driverPhoneNumber("0667043888").customer(c1).build();
+        Car a1 = Car.builder().vehicleNumber("1G6DC5E52C0154792").licensePlate("G-546-GA").mileage(4953939).driverEmail("SenadvanGalen@jourrapide.com").driverName("Senad").driverPhoneNumber("0667043888").customer(c1).model(m1a).build();
         carService.addCar(a1);
-        Car a2 = Car.builder().vehicleNumber("JH2HE07C76K308145").licensePlate("KE-90-PA").mileage(4254368).driverEmail("").driverName("").driverPhoneNumber("").customer(c1).build();
-        carService.addCar(a2);
-        Car a3 = Car.builder().vehicleNumber("3C6JR6EG6FG570826").licensePlate("850-PLA").mileage(6965445).driverEmail("").driverName("").driverPhoneNumber("").customer(c4).build();
-        carService.addCar(a3);
-        Car a4 = Car.builder().vehicleNumber("1GTH6BEA5F1184515").licensePlate("26-01-LW").mileage(798403).driverEmail("TamaravanGaal@rhyta.com").driverName("Tamara").driverPhoneNumber("0664790103").customer(c3).build();
-        carService.addCar(a4);
-        Car a5 = Car.builder().vehicleNumber("1M8PDMRA6WP012046").licensePlate("139-POT").mileage(482574).driverEmail("JolandavanderTuin@jourrapide.com").driverName("Jolanda").driverPhoneNumber("0636833009").customer(c3).build();
-        carService.addCar(a5);
-        Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").customer(c5).build();
-        carService.addCar(a6);
-//
-//        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).car(a2).mechanic(h1).state(MaintenanceState.READYFORPICKUP).type(maintenanceType1).description("Remschoenen vervangen").build();
-//        maintenanceService.add(m1);
-//        Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  8,  5, 10, 40)).car(a2).mechanic(h2).state(MaintenanceState.PRESENT).type(maintenanceType1).description("Linker zijruit vervangen").build();
-//        maintenanceService.add(m2);
-//        Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2015, 12, 18, 16, 35)).car(a1).mechanic(h3).state(MaintenanceState.PAUSED).type(maintenanceType2).description("Accu vervangen").build();
+        Car a2 = Car.builder().vehicleNumber("JH2HE07C76K308145").licensePlate("KE-90-PA").mileage(4254368).driverEmail("").driverName("").driverPhoneNumber("").customer(c1).model(m1a).build();
+        a2 = carService.addCar(a2);
+//        Car a3 = Car.builder().vehicleNumber("3C6JR6EG6FG570826").licensePlate("850-PLA").mileage(6965445).driverEmail("").driverName("").driverPhoneNumber("").customer(c4).build();
+//        carService.addCar(a3);
+//        Car a4 = Car.builder().vehicleNumber("1GTH6BEA5F1184515").licensePlate("26-01-LW").mileage(798403).driverEmail("TamaravanGaal@rhyta.com").driverName("Tamara").driverPhoneNumber("0664790103").customer(c3).build();
+//        carService.addCar(a4);
+//        Car a5 = Car.builder().vehicleNumber("1M8PDMRA6WP012046").licensePlate("139-POT").mileage(482574).driverEmail("JolandavanderTuin@jourrapide.com").driverName("Jolanda").driverPhoneNumber("0636833009").customer(c3).build();
+//        carService.addCar(a5);
+//        Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").customer(c5).build();
+//        carService.addCar(a6);
+
+        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).mechanic(h1).car(a2).type(maintenanceType1).state(MaintenanceState.READYFORPICKUP).description("Remschoenen vervangen").build();
+        m1 = maintenanceService.add(m1);
+
+        Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  8,  5, 10, 40)).car(a2).mechanic(h2).type(maintenanceType2).state(MaintenanceState.PRESENT).type(maintenanceType1).description("Linker zijruit vervangen").build();
+        maintenanceService.add(m2);
+//        Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2015, 12, 18, 16, 35)).car(a1).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PAUSED).type(maintenanceType2).description("Accu vervangen").build();
 //        maintenanceService.add(m3);
-//        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12,  5, 12, 10)).car(a5).mechanic(h3).state(MaintenanceState.PRESENT).type(maintenanceType2).description("Koplampen opnieuw afstellen").build();
+//        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12,  5, 12, 10)).car(a5).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PRESENT).type(maintenanceType2).description("Koplampen opnieuw afstellen").build();
 //        maintenanceService.add(m4);
     }
 }

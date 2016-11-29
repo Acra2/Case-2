@@ -37,13 +37,13 @@ public class Maintenance implements Serializable {
     @Enumerated(EnumType.STRING)
     private MaintenanceState state = MaintenanceState.PLANNED;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     private MaintenanceType type;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Car car;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Mechanic mechanic;
 

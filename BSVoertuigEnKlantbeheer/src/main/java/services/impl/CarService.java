@@ -21,7 +21,7 @@ import java.util.List;
  * Created by paisanrietbroek on 22/11/2016.
  */
 
-@Stateless
+@Stateful
 @Remote(ICarService.class)
 @LogInterceptorBinding
 public class CarService implements ICarService {
@@ -30,13 +30,18 @@ public class CarService implements ICarService {
     private EntityManager em;
 
     @Override
-    public void addCar(Car car) {
-        em.merge(car);
+    public Car addCar(Car car) {
+        if ( car.getId() != null){
+            em.merge(car);
+        }else{
+            em.persist(car);
+        }
+        return car;
     }
 
     @Override
     public Car getCar(String vehicleNumber) {
-        return em.find(Car.class, vehicleNumber);
+        return (Car) em.createNamedQuery("getOneCar").setParameter("vehicleNumber",vehicleNumber).getSingleResult();
     }
 
     @Override

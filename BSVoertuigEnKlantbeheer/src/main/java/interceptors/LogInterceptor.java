@@ -27,9 +27,9 @@ public class LogInterceptor {
             result = context.proceed();
         } catch (Exception e) {
             ErrorLog errorLog = new ErrorLog();
-            errorLog.setMessage(context.getMethod().toString());
+            errorLog.setMessage(e.getMessage());
             errorLog.setDateTime(LocalDateTime.now());
-
+            System.out.println(e.getMessage());
             logService.log(errorLog);
         }
         return result;
