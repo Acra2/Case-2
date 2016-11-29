@@ -35,6 +35,7 @@ public class MaintenanceService implements IMaintenanceService {
 
     public void add(Maintenance maintenance) {
         em.merge(maintenance);
+        em.flush();
 
     }
 
