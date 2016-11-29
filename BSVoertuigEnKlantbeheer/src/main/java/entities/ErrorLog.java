@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class ErrorLog implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private String id;
+    private long id;
 
     private String Message;
 

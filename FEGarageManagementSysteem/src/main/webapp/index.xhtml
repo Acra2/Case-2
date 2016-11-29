@@ -21,17 +21,17 @@
         <div class="container">
             <div class=" col-sm-4">
                 <h:link styleClass="btn btn-default main_menu" outcome="car">
-                    <i class="fa fa-car fa-4x"></i><br /><span>Car management</span>
+                    <i class="fa fa-car fa-4x" /><br /><span>Auto beheer</span>
                 </h:link>
             </div>
             <div class=" col-sm-4">
                 <h:link styleClass="btn btn-default main_menu" outcome="maintenance">
-                    <i class="fa fa-wrench fa-4x"></i><br /><span>Mechanic Maintenance</span>
+                    <i class="fa fa-wrench fa-4x" /><br /><span>Monteur Onderhoud</span>
                 </h:link>
             </div>
             <div class=" col-sm-4">
                 <h:link styleClass="btn btn-default main_menu" outcome="customerIndex">
-                    <i class="fa fa-users fa-4x"></i><br /><span>Customer management</span>
+                    <i class="fa fa-users fa-4x"></i><br /><span>Klant Beheer</span>
                 </h:link>
             </div>
             <div class=" col-sm-4">
@@ -39,6 +39,13 @@
                     <i class="fa fa-inbox fa-4x"></i><br /><span>Auto's in onderhoud</span>
                 </h:link>
             </div>
+            <div class=" col-sm-4">
+                <h:form>
+                    <h:commandLink styleClass="btn btn-default main_menu" action="maintenance_registration">
+                        <i class="fa fa-wrench fa-4x" /><i class="fa fa-plus fa-4x" /><br /><span>Aanmelden onderhoud</span>
+                    </h:commandLink>
+                </h:form>
+                </div>
             <div class=" col-sm-4">
                 <h:link styleClass="btn btn-default main_menu" outcome="maintenanceTypes">
                     <i class="fa fa-gears fa-4x"></i><br /><span>Onderhouds types</span>

@@ -1,5 +1,8 @@
+package services;
+
 import entities.Car;
 import entities.Customer;
+import entities.Mechanic;
 import lombok.Data;
 import services.ICarService;
 import services.ICustomerService;
@@ -30,6 +33,8 @@ public class CarRegistrationService implements Serializable {
     private Long customerID;
     private Customer customer;
     private List<Customer> customerList;
+
+
 
     @PostConstruct
     public void init() {
