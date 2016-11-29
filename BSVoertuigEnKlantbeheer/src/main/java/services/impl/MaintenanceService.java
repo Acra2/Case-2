@@ -26,7 +26,7 @@ public class MaintenanceService implements IMaintenanceService {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Maintenance> getAll() {
+    public List getAll() {
         return em.createNamedQuery("getAllMaintenance").getResultList();
     }
 
