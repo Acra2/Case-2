@@ -4,6 +4,7 @@ import entities.*;
 import lombok.Data;
 
 import javax.ejb.EJB;
+import javax.faces.convert.DateTimeConverter;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -48,6 +49,9 @@ public class MaintenanceRegistrationService implements Serializable {
 
     private Mechanic mechanic;
 
+    private Date date;
+    private DateTimeConverter dateTimeConverter;
+
     public MaintenanceRegistrationService() {
         this.car = new Car();
         this.maintenanceType = new MaintenanceType();
@@ -87,5 +91,10 @@ public class MaintenanceRegistrationService implements Serializable {
 
         maintenanceService.add(maintenance);
         return "/index";
+    }
+
+    public void setDateTimeConverter(DateTimeConverter convertDate) {
+        convertDate.setPattern("EEEEEEEE, MMM dd, yyyy");
+        this.dateTimeConverter = convertDate;
     }
 }
