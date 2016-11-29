@@ -16,7 +16,7 @@ import java.util.List;
 public interface IMaintenanceService {
     List<Maintenance> getAll();
     Maintenance getOne(Long id);
-    void add(Maintenance maintenance);
+    Maintenance add(Maintenance maintenance);
     Maintenance getInMaintenanceForMechanic(Mechanic mechanic);
 
     List getMaintenanceForCar(Car car);

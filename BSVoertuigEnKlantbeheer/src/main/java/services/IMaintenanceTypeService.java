@@ -12,6 +12,6 @@ import java.util.List;
 @Remote
 public interface IMaintenanceTypeService {
     List<MaintenanceType> getAllTypes();
-    void add(MaintenanceType maintenanceType);
+    MaintenanceType add(MaintenanceType maintenanceType);
     MaintenanceType getOneType(Long id);
 }

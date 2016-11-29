@@ -10,6 +10,7 @@ import services.IMaintenanceService;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by Sander on 22-11-2016.
  */
-@Stateful
+@Stateless
 @Remote(IMaintenanceService.class)
 @LogInterceptorBinding
 public class MaintenanceService implements IMaintenanceService {
@@ -33,9 +34,13 @@ public class MaintenanceService implements IMaintenanceService {
        return em.find(Maintenance.class, id);
     }
 
-    public void add(Maintenance maintenance) {
-        em.merge(maintenance);
-        em.flush();
+    public Maintenance add(Maintenance maintenance) {
+        if (maintenance.getId() != null)
+            em.merge(maintenance);
+        else
+            em.persist(maintenance);
+
+        return maintenance;
 
     }
 

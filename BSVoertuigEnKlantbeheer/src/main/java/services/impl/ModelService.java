@@ -6,6 +6,7 @@ import services.IModelService;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by paisanrietbroek on 23/11/2016.
  */
-@Stateful
+@Stateless
 @Remote(IModelService.class)
 @LogInterceptorBinding
 public class ModelService implements IModelService {
@@ -22,8 +23,13 @@ public class ModelService implements IModelService {
     private EntityManager em;
 
     @Override
-    public void add(Model model) {
-        em.persist(model);
+    public Model add(Model model) {
+        if (model.getId() != null)
+            em.merge(model);
+        else
+            em.persist(model);
+
+        return model;
     }
 
     @Override
