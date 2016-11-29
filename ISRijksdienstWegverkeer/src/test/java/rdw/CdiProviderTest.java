@@ -1,4 +1,4 @@
-package mypackage;
+package rdw;
 
 import org.junit.Test;
 

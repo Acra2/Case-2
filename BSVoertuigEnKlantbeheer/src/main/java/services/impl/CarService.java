@@ -8,6 +8,7 @@ import services.ICarService;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.interceptor.Interceptor;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
@@ -29,13 +30,18 @@ public class CarService implements ICarService {
     private EntityManager em;
 
     @Override
-    public void addCar(Car car) {
-        em.merge(car);
+    public Car addCar(Car car) {
+        if ( car.getId() != null){
+            em.merge(car);
+        }else{
+            em.persist(car);
+        }
+        return car;
     }
 
     @Override
     public Car getCar(String vehicleNumber) {
-        return em.find(Car.class, vehicleNumber);
+        return (Car) em.createNamedQuery("getOneCar").setParameter("vehicleNumber",vehicleNumber).getSingleResult();
     }
 
     @Override

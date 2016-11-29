@@ -4,13 +4,13 @@ import entities.*;
 import lombok.Data;
 
 import javax.ejb.EJB;
-import javax.faces.convert.DateTimeConverter;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import static entities.MaintenanceState.INMAINTENANCE;
@@ -39,6 +39,7 @@ public class MaintenanceRegistrationService implements Serializable {
     @EJB
     private IMaintenanceService maintenanceService;
 
+    private long id;
     private Car car;
 
     private String description;
@@ -49,8 +50,9 @@ public class MaintenanceRegistrationService implements Serializable {
 
     private Mechanic mechanic;
 
-    private Date date;
-    private DateTimeConverter dateTimeConverter;
+    private String date;
+    private String time;
+    private LocalDateTime localDateTime;
 
     public MaintenanceRegistrationService() {
         this.car = new Car();
@@ -70,6 +72,8 @@ public class MaintenanceRegistrationService implements Serializable {
     }
 
     public String goToConfirmPage() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        localDateTime = LocalDateTime.parse(date + " " + time, formatter);
         return "confirm_maintenance";
     }
 
@@ -87,14 +91,11 @@ public class MaintenanceRegistrationService implements Serializable {
                 .type(maintenanceType)
                 .mechanic(mechanic)
                 .state(INMAINTENANCE.PLANNED)
+                .startDateTime(localDateTime)
                 .build();
 
         maintenanceService.add(maintenance);
-        return "/index";
-    }
-
-    public void setDateTimeConverter(DateTimeConverter convertDate) {
-        convertDate.setPattern("EEEEEEEE, MMM dd, yyyy");
-        this.dateTimeConverter = convertDate;
+        id = maintenance.getId();
+        return "detail_maintenance";
     }
 }

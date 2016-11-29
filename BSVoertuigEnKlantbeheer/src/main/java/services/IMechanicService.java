@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Remote
 public interface IMechanicService {
-    void add(Mechanic mechanic);
+    Mechanic add(Mechanic mechanic);
     Mechanic getMechanic(Long id);
     List<Mechanic> getAllMechanics();
 

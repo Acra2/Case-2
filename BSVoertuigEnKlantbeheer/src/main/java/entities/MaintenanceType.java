@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class MaintenanceType implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private int time;
     private String tasks;

@@ -5,9 +5,9 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package mypackage;
+package rdw;
 
-public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.client.Service implements mypackage.RDWSteekproefWebService_Service {
+public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.client.Service implements rdw.RDWSteekproefWebService_Service {
 
     public RDWSteekproefWebService_ServiceLocator() {
     }
@@ -39,7 +39,7 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
         RDWSteekproefWebServicePortWSDDServiceName = name;
     }
 
-    public mypackage.RDWSteekproefWebService_PortType getRDWSteekproefWebServicePort() throws javax.xml.rpc.ServiceException {
+    public rdw.RDWSteekproefWebService_PortType getRDWSteekproefWebServicePort() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(RDWSteekproefWebServicePort_address);
@@ -50,9 +50,9 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
         return getRDWSteekproefWebServicePort(endpoint);
     }
 
-    public mypackage.RDWSteekproefWebService_PortType getRDWSteekproefWebServicePort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public rdw.RDWSteekproefWebService_PortType getRDWSteekproefWebServicePort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            mypackage.RDWSteekproefWebServicePortBindingStub _stub = new mypackage.RDWSteekproefWebServicePortBindingStub(portAddress, this);
+            rdw.RDWSteekproefWebServicePortBindingStub _stub = new rdw.RDWSteekproefWebServicePortBindingStub(portAddress, this);
             _stub.setPortName(getRDWSteekproefWebServicePortWSDDServiceName());
             return _stub;
         }
@@ -72,8 +72,8 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (mypackage.RDWSteekproefWebService_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                mypackage.RDWSteekproefWebServicePortBindingStub _stub = new mypackage.RDWSteekproefWebServicePortBindingStub(new java.net.URL(RDWSteekproefWebServicePort_address), this);
+            if (rdw.RDWSteekproefWebService_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
+                rdw.RDWSteekproefWebServicePortBindingStub _stub = new rdw.RDWSteekproefWebServicePortBindingStub(new java.net.URL(RDWSteekproefWebServicePort_address), this);
                 _stub.setPortName(getRDWSteekproefWebServicePortWSDDServiceName());
                 return _stub;
             }

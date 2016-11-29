@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NamedQueries({
         @NamedQuery(name = "getAll", query = "SELECT c from car c"),
+        @NamedQuery(name = "getOneCar", query = "SELECT c from car c where c.vehicleNumber = :vehicleNumber"),
         @NamedQuery(name = "update", query = "UPDATE car  c " +
                 "SET " +
                 "c.driverEmail = :mail," +
@@ -30,6 +31,8 @@ import java.util.List;
 public class Car implements Serializable {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
     private String vehicleNumber;
     private String licensePlate;
     private Integer mileage;
@@ -37,10 +40,10 @@ public class Car implements Serializable {
     private String driverEmail;
     private String driverPhoneNumber;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Model model;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn
     private Customer customer;
 

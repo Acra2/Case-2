@@ -81,26 +81,9 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Datum</div>
                     <div class="panel-body">
-                        <h:outputText value="#{maintenanceRegistrationService.date}">
-                            <f:convertDateTime type="both" binding="#{maintenanceRegistrationService.dateTimeConverter}"/>
-                        </h:outputText>
+                        <p>#{maintenanceRegistrationService.localDateTime}</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h:form styleClass="form-horizontal">
-                    <div class="form-group">
-                        <div class="btn-group">
-                            <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
-                            <h:commandLink styleClass="btn btn-primary" value="terug"
-                                           action="#{maintenanceRegistrationService.goToMaintenanceRegisterPage()}" />
-                            <h:commandLink styleClass="btn btn-success" value="bevestigen"
-                                           action="#{maintenanceRegistrationService.confirm()}" />
-                        </div>
-                    </div>
-                </h:form>
             </div>
         </div>
     </ui:define>
