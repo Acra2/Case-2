@@ -3,12 +3,16 @@ package controllers;
 import entities.Maintenance;
 import entities.MaintenanceType;
 import entities.Mechanic;
+import rdw.CdiProvider;
+import rdw.RDWSteekproefWebService_PortType;
 import services.IMaintenanceService;
 import services.IMechanicService;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.enterprise.inject.spi.CDI;
+import javax.enterprise.inject.spi.CDIProvider;
 
 /**
  * Created by Sander on 23-11-2016.
@@ -23,8 +27,7 @@ public class MaintenanceController implements IMaintenanceController {
     @EJB
     private IMechanicService mechanicService;
 
-    //@Inject
-    //private RDWSteekproefWebService_PortType rdwSteekproefWebService_portType;
+    private CdiProvider provider = new CdiProvider();
 
     @Override
     public Maintenance getMaintenance(Long id) {
@@ -82,8 +85,7 @@ public class MaintenanceController implements IMaintenanceController {
             try {
                 Boolean steekproef = false;
 
-                //TODO fix wsdl
-                //steekproef = rdwSteekproefWebService_portType.steekproef(maintenance.getCar().getLicensePlate());
+                steekproef = provider.provide().steekproef(maintenance.getCar().getLicensePlate());
 
                 if (steekproef) {
                     maintenance.needInspections();

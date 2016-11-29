@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Remote
 public interface ICarService {
-    void addCar(Car car);
+    Car addCar(Car car);
 
     Car getCar(String vehicleNumber);
 
