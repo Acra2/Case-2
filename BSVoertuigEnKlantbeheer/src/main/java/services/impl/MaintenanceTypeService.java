@@ -23,11 +23,12 @@ public class MaintenanceTypeService implements IMaintenanceTypeService {
     @PersistenceContext
     private EntityManager em;
 
-    public List<MaintenanceType> getAllTypes() {
-        List resultList = em.createNamedQuery("getAllMaintenanceTypes").getResultList();
-        return resultList;
+    @Override
+    public List getAllTypes() {
+        return em.createNamedQuery("getAllMaintenanceTypes").getResultList();
     }
 
+<<<<<<< HEAD
     public MaintenanceType add(MaintenanceType maintenanceType){
         if (maintenanceType.getId() != null)
             em.merge(maintenanceType);
@@ -35,6 +36,11 @@ public class MaintenanceTypeService implements IMaintenanceTypeService {
             em.persist(maintenanceType);
 
         return maintenanceType;
+=======
+    @Override
+    public void add(MaintenanceType maintenanceType){
+        em.merge(maintenanceType);
+>>>>>>> 24e0604426f1d61240e441586ba516a48dd8a2a5
     }
 
     @Override
