@@ -38,6 +38,7 @@ public class MaintenanceRegistrationService implements Serializable {
     @EJB
     private IMaintenanceService maintenanceService;
 
+    private long id;
     private Car car;
 
     private String description;
@@ -86,6 +87,7 @@ public class MaintenanceRegistrationService implements Serializable {
                 .build();
 
         maintenanceService.add(maintenance);
-        return "/index";
+        id = maintenance.getId();
+        return "detail_maintenance";
     }
 }
