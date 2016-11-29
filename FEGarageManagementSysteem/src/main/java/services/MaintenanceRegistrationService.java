@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import static entities.MaintenanceState.INMAINTENANCE;
@@ -48,6 +49,10 @@ public class MaintenanceRegistrationService implements Serializable {
 
     private Mechanic mechanic;
 
+    private String date;
+    private String time;
+    private LocalDateTime localDateTime;
+
     public MaintenanceRegistrationService() {
         this.car = new Car();
         this.maintenanceType = new MaintenanceType();
@@ -66,6 +71,8 @@ public class MaintenanceRegistrationService implements Serializable {
     }
 
     public String goToConfirmPage() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        localDateTime = LocalDateTime.parse(date + " " + time, formatter);
         return "confirm_maintenance";
     }
 
@@ -83,6 +90,7 @@ public class MaintenanceRegistrationService implements Serializable {
                 .type(maintenanceType)
                 .mechanic(mechanic)
                 .state(INMAINTENANCE.PLANNED)
+                .startDateTime(localDateTime)
                 .build();
 
         maintenanceService.add(maintenance);
