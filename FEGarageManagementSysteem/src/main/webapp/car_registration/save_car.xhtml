@@ -19,49 +19,45 @@
     <ui:define name="content">
 
         <div class="row">
-            <div class="col-md-4">
-                <h:outputLabel value="Bestuurder"/>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Auto</div>
+                    <div class="panel-body">
+                        <p>Auto-nummer: #{carRegisterService.car.vehicleNumber} </p>
+                        <p>Nummerbord: #{carRegisterService.car.licensePlate} </p>
+                        <p>Kilometers: #{carRegisterService.car.mileage} </p>
+                        <p>Model: #{carRegisterService.car.model.name} </p>
+                        <p>Bestuurder: #{carRegisterService.car.driverName} </p>
+                        <p>Bestuurder e-mail: #{carRegisterService.car.driverEmail} </p>
+                        <p>Bestuurder telefoon: #{carRegisterService.car.driverPhoneNumber} </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8">
-                <h:outputLabel value="#{carRegisterService.car.driverName}"/>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Klant</div>
+                    <div class="panel-body">
+                        <p>ID: #{carRegisterService.customer.id} </p>
+                        <p>Naam: #{carRegisterService.customer.name} </p>
+                        <p>Adres: #{carRegisterService.customer.adress} </p>
+                        <p>E-mail: #{carRegisterService.customer.email} </p>
+                        <p>Telefoon: #{carRegisterService.customer.phonenumber} </p>
+                        <p>BTW-nummer: #{carRegisterService.customer.btwnumber} </p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4">
-                <h:outputLabel value="Nummerbord"/>
-            </div>
-            <div class="col-md-8">
-                <h:outputLabel value="#{carRegisterService.car.licensePlate}"/>
-            </div>
+            <h:form styleClass="form-horizontal">
+                <div class="btn-group">
+                    <h:commandLink styleClass="btn btn-danger" value="beeindigen" action="/car"/>
+                    <h:commandLink styleClass="btn btn-primary" value="terug"
+                                   action="#{carRegisterService.selectCustomer()}"/>
+                    <h:commandLink styleClass="btn btn-success" value="Opslaan" action="#{carRegisterService.done()}"/>
+                </div>
+            </h:form>
         </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <h:outputLabel value="Bestuurder e-mail"/>
-            </div>
-            <div class="col-md-8">
-                <h:outputLabel value="#{carRegisterService.car.driverEmail}"/>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <h:outputLabel value="Auto nummer"/>
-            </div>
-            <div class="col-md-8">
-                <h:outputLabel value="#{carRegisterService.car.vehicleNumber}"/>
-            </div>
-        </div>
-
-        <h:form>
-            <div class="btn-group">
-                <h:commandLink styleClass="btn btn-danger" value="beeindigen" action="/car"/>
-                <h:commandLink styleClass="btn btn-primary" value="terug"
-                               action="#{carRegisterService.selectCustomer()}"/>
-                <h:commandLink styleClass="btn btn-success" value="Opslaan" action="#{carRegisterService.done()}"/>
-            </div>
-        </h:form>
 
     </ui:define>
 

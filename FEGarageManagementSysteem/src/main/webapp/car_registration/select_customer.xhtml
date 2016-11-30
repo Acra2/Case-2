@@ -18,10 +18,10 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="col-md-3">
-            <h:form styleClass="form-horizontal">
-                <div class="row">
-
+        <h:form styleClass="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectCustomer"
                                          value="#{carRegisterService.customerID}">
@@ -33,52 +33,33 @@
                         </h:selectOneMenu>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="btn-group">
-                        <h:commandLink styleClass="btn btn-danger" value="beeindigen" action="/car"/>
-                        <h:commandLink styleClass="btn btn-primary" value="terug"
-                                       action="#{carRegisterService.goToCarRegistration()}"/>
-                        <h:commandLink styleClass="btn btn-primary" value="verder"
-                                       action="#{carRegisterService.saveCar()}"/>
+            </div>
+            <div class="col-md-12">
+                <h:panelGroup id="customerInformation">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Klant</div>
+                        <div class="panel-body">
+                            <p>ID: #{carRegisterService.customer.id} </p>
+                            <p>Naam: #{carRegisterService.customer.name} </p>
+                            <p>Adres: #{carRegisterService.customer.adress} </p>
+                            <p>E-mail: #{carRegisterService.customer.email} </p>
+                            <p>Telefoon: #{carRegisterService.customer.phonenumber} </p>
+                            <p>BTW-nummer: #{carRegisterService.customer.btwnumber} </p>
+                        </div>
                     </div>
+                </h:panelGroup>
+            </div>
+            <div class="col-md-12">
+                <div class="btn-group">
+                    <h:commandLink styleClass="btn btn-danger" value="beeindigen" action="/car"/>
+                    <h:commandLink styleClass="btn btn-primary" value="terug"
+                                   action="#{carRegisterService.goToCarRegistration()}"/>
+                    <h:commandLink styleClass="btn btn-primary" value="verder"
+                                   action="#{carRegisterService.saveCar()}"/>
                 </div>
-            </h:form>
+            </div>
         </div>
-
-        <div class="col-md-9">
-            <h:panelGroup id="customerInformation">
-
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <h:outputLabel value="ID: #{carRegisterService.customer.id}"/>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h:outputLabel value="Naam: #{carRegisterService.customer.name}"/>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h:outputLabel value="E-mail: #{carRegisterService.customer.email}"/>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h:outputLabel value="Telefoon: #{carRegisterService.customer.phonenumber}"/>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h:outputLabel value="Adres: #{carRegisterService.customer.adress}"/>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h:outputLabel value="BTW-nummer: #{carRegisterService.customer.btwnumber}"/>
-                    </div>
-
-                </div>
-
-            </h:panelGroup>
-
-        </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>

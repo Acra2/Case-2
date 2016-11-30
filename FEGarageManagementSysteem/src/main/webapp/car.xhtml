@@ -18,67 +18,80 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form><h:outputLabel value="Filteren:"></h:outputLabel>
-            <h:selectOneMenu value="#{carService.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
-                <f:selectItem itemLabel="Allemaal" itemValue="-9"/>
-                <f:selectItem itemLabel="Gisteren" itemValue="-1"/>
-                <f:selectItem itemLabel="Vandaag" itemValue="0"/>
-                <f:selectItem itemLabel="Binnenkort" itemValue="1"/>
-            </h:selectOneMenu>
-        </h:form>
-        <h:dataTable id="car_table"
-                     value="#{carService.getAllCars()}"
-                     var="c"
-                     styleClass="table table-bordered table-responsive table-striped">
+        <div class="row">
+            <div class="col-md-12">
+                <h:form styleClass="form-horizontal">
+                    <h:outputLabel value="Filter:" />
+                    <h:selectOneMenu value="#{carService.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
+                        <f:selectItem styleClass="form-control" itemLabel="Allemaal" itemValue="-9"/>
+                        <f:selectItem styleClass="form-control" itemLabel="Gisteren" itemValue="-1"/>
+                        <f:selectItem styleClass="form-control" itemLabel="Vandaag" itemValue="0"/>
+                        <f:selectItem styleClass="form-control" itemLabel="Binnenkort" itemValue="1"/>
+                    </h:selectOneMenu>
+                </h:form>
+            </div>
+        </div>
+<hr />
+        <div class="row">
+            <div class="col-md-12">
+                <h:dataTable id="car_table"
+                             value="#{carService.getAllCars()}"
+                             var="c"
+                             styleClass="table table-bordered table-responsive table-striped">
 
-            <h:column>
-                <f:facet name="header">Auto #</f:facet>
-                #{c.vehicleNumber}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Auto #</f:facet>
+                        #{c.vehicleNumber}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">Nummerbord</f:facet>
-                #{c.licensePlate}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Nummerbord</f:facet>
+                        #{c.licensePlate}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">Bestuurders-naam</f:facet>
-                #{c.driverName}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Bestuurders-naam</f:facet>
+                        #{c.driverName}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">Bestuurders e-mail</f:facet>
-                #{c.driverEmail}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Bestuurders-telefoonnummer</f:facet>
-                #{c.driverPhoneNumber}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Bestuurders e-mail</f:facet>
+                        #{c.driverEmail}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Bestuurders-telefoonnummer</f:facet>
+                        #{c.driverPhoneNumber}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">Klant e-mail</f:facet>
-                #{c.customer.email}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Klant e-mail</f:facet>
+                        #{c.customer.email}
+                    </h:column>
 
-            <h:column>
-                <f:facet name="header">Wijzigen</f:facet>
-                <h:link value="Wijzigen" outcome="updateCar" includeViewParams="true">
-                    <f:param name="id" value="#{c.vehicleNumber}"/>
-                </h:link>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Details</f:facet>
-                <h:link value="Details" outcome="details" includeViewParams="true">
-                    <f:param name="id" value="#{c.vehicleNumber}"/>
-                </h:link>
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Wijzigen</f:facet>
+                        <h:link value="Wijzigen" outcome="updateCar" includeViewParams="true">
+                            <f:param name="id" value="#{c.vehicleNumber}"/>
+                        </h:link>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Details</f:facet>
+                        <h:link value="Details" outcome="details" includeViewParams="true">
+                            <f:param name="id" value="#{c.vehicleNumber}"/>
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
 
-        </h:dataTable>
-
-        <h:form>
-            <h:commandLink styleClass="btn btn-primary" value="Toevoegen" action="car_registration"/>
-        </h:form>
-
+        <div class="row">
+            <div class="col-md-12">
+                <h:form styleClass="form-horizontal">
+                    <h:commandLink styleClass="btn btn-primary"
+                                   value="Toevoegen" action="car_registration" />
+                </h:form>
+            </div>
+        </div>
     </ui:define>
 
 </ui:composition>

@@ -2,6 +2,7 @@ package services;
 
 import entities.Car;
 import entities.Customer;
+import entities.Model;
 import lombok.Data;
 
 import javax.annotation.PostConstruct;
@@ -26,10 +27,15 @@ public class CarRegistrationService implements Serializable {
     @EJB
     private ICarService carService;
 
+    @EJB
+    private IModelService modelService;
+
     private Car car;
     private Long customerID;
     private Customer customer;
     private List<Customer> customerList;
+
+    private Long modelID;
 
 
     public CarRegistrationService() {
@@ -70,6 +76,10 @@ public class CarRegistrationService implements Serializable {
 
     public void setCustomer() {
         customer = customerService.getCustomer(customerID);
+    }
+    public void setModel() {
+        Model model = modelService.getModel(modelID);
+        car.setModel(model);
     }
 
 }

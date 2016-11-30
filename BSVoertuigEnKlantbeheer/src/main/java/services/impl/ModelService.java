@@ -35,4 +35,9 @@ public class ModelService implements IModelService {
     public List getAllModels() {
         return em.createNamedQuery("getAllModels", Model.class).getResultList();
     }
+
+    @Override
+    public Model getModel(long id) {
+        return em.find(Model.class, id);
+    }
 }
