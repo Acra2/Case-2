@@ -1,13 +1,11 @@
 $(function () {
     $(".datepicker").datepicker({
         format: 'dd-mm-yyyy',
-        autoclose: true,
-        startDate: '0'
+        autoclose: true
     });
     $(".timepicker").clockpicker({
         autoclose: true,
         'default': 'now'
-
     });
 
 });
