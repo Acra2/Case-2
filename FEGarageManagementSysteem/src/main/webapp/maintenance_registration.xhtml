@@ -28,7 +28,8 @@
                                           itemLabel="-- Selecteer nummerbord en email --"/>
                             <f:selectItems styleClass="form-control"
                                            value="#{maintenanceRegistrationService.carService.getAllCars()}"
-                                           var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.licensePlate} - #{c.driverEmail}"/>
+                                           var="c" itemValue="#{c.vehicleNumber}"
+                                           itemLabel="#{c.licensePlate} - #{c.driverEmail}"/>
                             <f:ajax event="change" execute="@form" render="result"
                                     listener="#{maintenanceRegistrationService.setCarData()}"/>
                         </h:selectOneMenu>

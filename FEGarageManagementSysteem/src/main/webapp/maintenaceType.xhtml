@@ -18,49 +18,49 @@
     </ui:define>
 
     <ui:define name="content">
-            <h:dataTable id="car_table"
-                         value="#{maintenancetype.all()}"
-                         var="t"
-                         styleClass="table table-bordered table-responsive table-striped">
+        <h:dataTable id="car_table"
+                     value="#{maintenancetype.all()}"
+                     var="t"
+                     styleClass="table table-bordered table-responsive table-striped">
 
-                <h:column>
-                    <f:facet name="header">Naam</f:facet>
-                    #{t.name}
-                </h:column>
+            <h:column>
+                <f:facet name="header">Naam</f:facet>
+                #{t.name}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Tijd in minuten</f:facet>
-                    #{t.time}
-                </h:column>
+            <h:column>
+                <f:facet name="header">Tijd in minuten</f:facet>
+                #{t.time}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Taken</f:facet>
-                    #{t.tasks}
-                </h:column>
+            <h:column>
+                <f:facet name="header">Taken</f:facet>
+                #{t.tasks}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Price</f:facet>
-                    #{t.price}
-                </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{t.price}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Keuring</f:facet>
-                    <h:form>
-                        <h:selectBooleanCheckbox id="sample" value="#{t.sample}" disabled="true"/>
-                    </h:form>
-                </h:column>
+            <h:column>
+                <f:facet name="header">Keuring</f:facet>
+                <h:form>
+                    <h:selectBooleanCheckbox id="sample" value="#{t.sample}" disabled="true"/>
+                </h:form>
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Wijzigen</f:facet>
-                    <h:link value="Wijzigen" outcome="updateMaintenanceType" includeViewParams="true">
-                        <f:param name="id" value="#{t.id}"/>
-                    </h:link>
-                </h:column>
-            </h:dataTable>
-            <h:form>
-                <h:commandLink styleClass="btn btn-primary" value="Add" action="update_maintenancetype"
-                               actionListener="#{maintenancetype.clearType()}"/>
-            </h:form>
+            <h:column>
+                <f:facet name="header">Wijzigen</f:facet>
+                <h:link value="Wijzigen" outcome="updateMaintenanceType" includeViewParams="true">
+                    <f:param name="id" value="#{t.id}"/>
+                </h:link>
+            </h:column>
+        </h:dataTable>
+        <h:form>
+            <h:commandLink styleClass="btn btn-primary" value="Add" action="update_maintenancetype"
+                           actionListener="#{maintenancetype.clearType()}"/>
+        </h:form>
     </ui:define>
 </ui:composition>
 </html>

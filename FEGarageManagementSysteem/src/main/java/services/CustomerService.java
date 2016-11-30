@@ -30,6 +30,7 @@ public class CustomerService implements Serializable {
     private List<Customer> allCustomers;
     @EJB
     private ICarService carService;
+
     private CustomerService() {
         customer = new Customer();
     }

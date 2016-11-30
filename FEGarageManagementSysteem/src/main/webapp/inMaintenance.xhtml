@@ -18,38 +18,38 @@
     </ui:define>
 
     <ui:define name="content">
-            <h:dataTable id="car_table"
-                         value="#{carService.getCarsInMaintenance()}"
-                         var="m"
-                         styleClass="table table-bordered table-responsive table-striped">
-                <h:column>
-                    <f:facet name="header">Nummerbord</f:facet>
-                    #{m.car.licensePlate}
-                </h:column>
+        <h:dataTable id="car_table"
+                     value="#{carService.getCarsInMaintenance()}"
+                     var="m"
+                     styleClass="table table-bordered table-responsive table-striped">
+            <h:column>
+                <f:facet name="header">Nummerbord</f:facet>
+                #{m.car.licensePlate}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Klant naam</f:facet>
-                    #{m.car.customer.name}
-                </h:column>
+            <h:column>
+                <f:facet name="header">Klant naam</f:facet>
+                #{m.car.customer.name}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Status</f:facet>
-                    #{m.state.toString()}
-                </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                #{m.state.toString()}
+            </h:column>
 
-                <h:column>
-                    <f:facet name="header">Wijzigen</f:facet>
-                    <h:link value="Wijzigen" outcome="updateCar" includeViewParams="true">
-                        <f:param name="id" value="#{m.car.vehicleNumber}"/>
-                    </h:link>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Details</f:facet>
-                    <h:link value="Details" outcome="details" includeViewParams="true">
-                        <f:param name="id" value="#{m.car.vehicleNumber}"/>
-                    </h:link>
-                </h:column>
-            </h:dataTable>
+            <h:column>
+                <f:facet name="header">Wijzigen</f:facet>
+                <h:link value="Wijzigen" outcome="updateCar" includeViewParams="true">
+                    <f:param name="id" value="#{m.car.vehicleNumber}"/>
+                </h:link>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Details</f:facet>
+                <h:link value="Details" outcome="details" includeViewParams="true">
+                    <f:param name="id" value="#{m.car.vehicleNumber}"/>
+                </h:link>
+            </h:column>
+        </h:dataTable>
     </ui:define>
 </ui:composition>
 </html>
