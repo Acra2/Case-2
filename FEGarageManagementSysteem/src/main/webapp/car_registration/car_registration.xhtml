@@ -20,8 +20,9 @@
 
         <h:form styleClass="form-horizontal">
             <div class="col-md-12">
+                <h:messages for="vehincleNumber" autoUpdate="true"/>
                 <div class="form-group">
-                    <h:inputText styleClass="form-control" id="vehincleNumber"
+                    <h:inputText styleClass="form-control" id="vehincleNumber" required="true" requiredMessage="Auto nummer is verplicht"
                                  value="#{carRegisterService.car.vehicleNumber}" p:placeholder="Auto nummer"/>
                 </div>
 
@@ -38,8 +39,9 @@
                                  value="#{carRegisterService.car.driverPhoneNumber}"
                                  p:placeholder="Bestuurders telefoon"/>
                 </div>
+                <h:messages for="licenseplate" autoUpdate="true"/>
                 <div class="form-group">
-                    <h:inputText styleClass="form-control" id="licenseplate"
+                    <h:inputText styleClass="form-control" id="licenseplate" required="true" requiredMessage="Nummerbord is verplicht"
                                  value="#{carRegisterService.car.licensePlate}" p:placeholder="Nummerbord"/>
                 </div>
                 <div class="form-group">
@@ -55,7 +57,7 @@
                         <f:selectItems styleClass="form-control"
                                        value="#{carRegisterService.modelService.getAllModels()}"
                                        var="m" itemValue="#{m.id}"
-                                       itemLabel="#{m.name}"/>
+                                       itemLabel="#{m.brand.name} #{m.name}"/>
                         <f:ajax event="change" execute="@form"
                                 listener="#{carRegisterService.setModel()}" />
                     </h:selectOneMenu>

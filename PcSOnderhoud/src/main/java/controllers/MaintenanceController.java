@@ -35,7 +35,8 @@ public class MaintenanceController implements IMaintenanceController {
 
     @Override
     public Maintenance changeMechanic(Maintenance maintenance, String id) {
-        Mechanic mechanic = mechanicService.getMechanic(Long.parseLong(id));
+        long l = Long.parseLong(id);
+        Mechanic mechanic = mechanicService.getMechanic(l);
         if (mechanic != null) {
             maintenance.setMechanic(mechanic);
             maintenanceService.add(maintenance);
