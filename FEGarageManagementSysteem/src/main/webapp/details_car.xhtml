@@ -23,69 +23,64 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="container">
-            <div class="col-sm-6">
-                <h4>Auto</h4>
-                <div class="col-sm-6">
-                    Klant
-                </div>
-                <div class="col-sm-6">
-                    <h:outputLabel value="#{carService.car.customer.name}"></h:outputLabel>
-                </div>
-                <div class="col-sm-6">
-                    Bestuurder e-mail:
-                </div>
-                <div class="col-sm-6">
-                    <h:outputLabel value="#{carService.car.driverEmail}"></h:outputLabel>
-                </div>
-                <div class="col-sm-6">
-                    Bestuurder telefoon nummer:
-                </div>
-                <div class="col-sm-6">
-                    <h:outputLabel value="#{carService.car.driverPhoneNumber}"></h:outputLabel>
-                </div>
-                <div class="col-sm-6">
-                    Bestuurder naam:
-                </div>
-                <div class="col-sm-6">
-                    <h:outputLabel value="#{carService.car.driverName}"></h:outputLabel>
-                </div>
-                <div class="col-sm-6">
-                    kentekenplaat:
-                </div>
-                <div class="col-sm-6">
-                    <h:outputLabel value="#{carService.car.licensePlate}"></h:outputLabel>
-                </div>
-                <div class="col-sm-6">
-                    Kilometerstand:
-                </div>
-                <div class="col-sm-6">
-                    <h:outputLabel value="#{carService.car.mileage}"></h:outputLabel>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Auto</div>
+                    <div class="panel-body">
+                        <p>ID: #{carService.car.id} </p>
+                        <p>Auto nummer: #{carService.car.vehicleNumber} </p>
+                        <p>Model: #{carService.car.model.name} </p>
+                        <p>Kilometers: #{carService.car.mileage} </p>
+                        <p>Nummerbord: #{carService.car.licensePlate} </p>
+                        <p>Bestuurder e-mail: #{carService.car.driverEmail} </p>
+                        <p>Telefoon: #{carService.car.driverPhoneNumber} </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <h4>Onderhoud</h4>
-                <h:dataTable value="#{carService.getMaintenceForCar()}" var="m"
-                             styleClass="table table-bordered table-responsive">
-                    <h:column>
-                        <f:facet name="header">Beschrijving</f:facet>
-                        #{m.description}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Datum</f:facet>
-                        <h:outputLabel
-                                value="#{m.startDateTime.dayOfMonth}-#{m.startDateTime.monthValue}-#{m.startDateTime.year}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Details</f:facet>
-                        <h:link value="details"
-                                outcome="maintenanceDetails">
-                            <f:param name="id" value="#{m.id}"/>
-                        </h:link>
-                    </h:column>
-                </h:dataTable>
+
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Klant</div>
+                    <div class="panel-body">
+                        <p>ID: #{carService.car.customer.id} </p>
+                        <p>Naam: #{carService.car.customer.name} </p>
+                        <p>Telefoon: #{carService.car.customer.phonenumber} </p>
+                        <p>E-mail: #{carService.car.customer.email} </p>
+                        <p>Adres: #{carService.car.customer.adress} </p>
+                        <p>BTW: #{carService.car.customer.btwnumber} </p>
+                    </div>
+                </div>
             </div>
         </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Onderhoud</h4>
+                    <h:dataTable value="#{carService.getMaintenceForCar()}" var="m"
+                                 styleClass="table table-bordered table-responsive table-striped">
+                        <h:column>
+                            <f:facet name="header">Beschrijving</f:facet>
+                            #{m.description}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Datum</f:facet>
+                            <h:outputLabel
+                                    value="#{m.startDateTime.dayOfMonth}-#{m.startDateTime.monthValue}-#{m.startDateTime.year}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Details</f:facet>
+                            <h:link value="details"
+                                    outcome="maintenanceDetails">
+                                <f:param name="id" value="#{m.id}"/>
+                            </h:link>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+
+            </div>
+
     </ui:define>
 
 </ui:composition>

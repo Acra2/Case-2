@@ -13,5 +13,7 @@ import java.util.List;
 public interface IModelService {
     public Model add(Model model);
 
+    public Model getModel(long id);
+
     public List getAllModels();
 }
