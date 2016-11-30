@@ -2,6 +2,7 @@ package services;
 
 import entities.Car;
 import entities.Customer;
+import interceptors.LogInterceptorBinding;
 import lombok.Data;
 
 import javax.annotation.PostConstruct;

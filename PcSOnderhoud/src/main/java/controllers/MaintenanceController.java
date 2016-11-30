@@ -30,17 +30,11 @@ public class MaintenanceController implements IMaintenanceController {
 
     @Override
     public Maintenance getMaintenance(Long id) {
-        for (Maintenance m : maintenanceService.getAll()) {
-            System.out.println("Maintenances:" + m.getId());
-        }
         return maintenanceService.getOne(id);
     }
 
     @Override
     public Maintenance changeMechanic(Maintenance maintenance, String id) {
-        for (Mechanic m : mechanicService.getAllMechanics()) {
-            System.out.println("mechanics: " + m.getId());
-        }
         Mechanic mechanic = mechanicService.getMechanic(Long.parseLong(id));
         if (mechanic != null) {
             maintenance.setMechanic(mechanic);

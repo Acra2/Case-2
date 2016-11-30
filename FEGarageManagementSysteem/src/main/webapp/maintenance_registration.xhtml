@@ -20,6 +20,12 @@
     <ui:define name="content">
         <div class="col-md-3">
             <h:form styleClass="form-horizontal">
+                <div class="col-md-12" style="margin-bottom: 15px">
+                    <div class="btn-group">
+                        <h:link styleClass="btn btn-primary" outcome="customerCreate" value="Nieuwe klant"></h:link>
+                        <h:commandLink styleClass="btn btn-primary" value="Nieuwe auto" action="car_registration"/>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectCar"

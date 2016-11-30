@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 
 @Interceptor
 @LogInterceptorBinding
-public class LogInterceptor {
+public class    LogInterceptor {
 
     @EJB
     private ILogService logService;
