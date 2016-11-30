@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h:form styleClass="form-horizontal">
-                    <h:outputLabel value="Filter:" />
+                    <h:outputLabel value="Filter:"/>
 
                     <h:selectOneMenu value="#{customerService.filterIndex}" onchange="this.form.submit();"
                                      styleClass="form-control">
@@ -33,7 +33,7 @@
                 </h:form>
             </div>
         </div>
-<hr />
+        <hr/>
         <div class="row">
             <div class="col-md-12">
                 <h:dataTable value="#{customerService.getData()}"
@@ -89,7 +89,8 @@
             <div class="col-md-12">
                 <h:form styleClass="form-horizontal">
                     <h:commandLink styleClass="btn btn-primary"
-                                   value="Toevoegen" action="customerCreate" actionListener="#{customerService.clearCustomer()}"/>
+                                   value="Toevoegen" action="customerCreate"
+                                   actionListener="#{customerService.clearCustomer()}"/>
                 </h:form>
             </div>
         </div>

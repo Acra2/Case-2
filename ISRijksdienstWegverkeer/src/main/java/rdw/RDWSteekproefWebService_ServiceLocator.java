@@ -1,6 +1,6 @@
 /**
  * RDWSteekproefWebService_ServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -9,9 +9,14 @@ package rdw;
 
 public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.client.Service implements rdw.RDWSteekproefWebService_Service {
 
+    // Use to get a proxy class for RDWSteekproefWebServicePort
+    private java.lang.String RDWSteekproefWebServicePort_address = "http://localhost:23011/rdw/RDWSteekproefWebService";
+    // The WSDD service name defaults to the port name.
+    private java.lang.String RDWSteekproefWebServicePortWSDDServiceName = "RDWSteekproefWebServicePort";
+    private java.util.HashSet ports = null;
+
     public RDWSteekproefWebService_ServiceLocator() {
     }
-
 
     public RDWSteekproefWebService_ServiceLocator(org.apache.axis.EngineConfiguration config) {
         super(config);
@@ -21,15 +26,9 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
         super(wsdlLoc, sName);
     }
 
-    // Use to get a proxy class for RDWSteekproefWebServicePort
-    private java.lang.String RDWSteekproefWebServicePort_address = "http://localhost:23011/rdw/RDWSteekproefWebService";
-
     public java.lang.String getRDWSteekproefWebServicePortAddress() {
         return RDWSteekproefWebServicePort_address;
     }
-
-    // The WSDD service name defaults to the port name.
-    private java.lang.String RDWSteekproefWebServicePortWSDDServiceName = "RDWSteekproefWebServicePort";
 
     public java.lang.String getRDWSteekproefWebServicePortWSDDServiceName() {
         return RDWSteekproefWebServicePortWSDDServiceName;
@@ -40,11 +39,10 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
     }
 
     public rdw.RDWSteekproefWebService_PortType getRDWSteekproefWebServicePort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(RDWSteekproefWebServicePort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getRDWSteekproefWebServicePort(endpoint);
@@ -55,8 +53,7 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
             rdw.RDWSteekproefWebServicePortBindingStub _stub = new rdw.RDWSteekproefWebServicePortBindingStub(portAddress, this);
             _stub.setPortName(getRDWSteekproefWebServicePortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -77,8 +74,7 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
                 _stub.setPortName(getRDWSteekproefWebServicePortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -96,8 +92,7 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
         java.lang.String inputPortName = portName.getLocalPart();
         if ("RDWSteekproefWebServicePort".equals(inputPortName)) {
             return getRDWSteekproefWebServicePort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -108,8 +103,6 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
         return new javax.xml.namespace.QName("http://steekproef.rdw/", "RDWSteekproefWebService");
     }
 
-    private java.util.HashSet ports = null;
-
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
@@ -119,22 +112,20 @@ public class RDWSteekproefWebService_ServiceLocator extends org.apache.axis.clie
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("RDWSteekproefWebServicePort".equals(portName)) {
+
+        if ("RDWSteekproefWebServicePort".equals(portName)) {
             setRDWSteekproefWebServicePortEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

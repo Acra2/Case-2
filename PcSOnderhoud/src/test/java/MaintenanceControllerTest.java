@@ -13,15 +13,10 @@ import rdw.RDWSteekproefMock;
 import services.impl.MaintenanceService;
 import services.impl.MechanicService;
 
-import javax.enterprise.inject.spi.CDIProvider;
-
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 /**
  * Created by Sander on 30-11-2016.
  */
@@ -44,18 +39,18 @@ public class MaintenanceControllerTest {
     MaintenanceController controller;
 
     @Test
-    public void changeMechanicCorrect(){
+    public void changeMechanicCorrect() {
         Maintenance maintenance = TestBuilder.maintenance1().build();
-        Mechanic mechanic2  = TestBuilder.mechanic2().build();
+        Mechanic mechanic2 = TestBuilder.mechanic2().build();
         when(mechanicService.getMechanic(2L)).thenReturn(mechanic2);
         controller.changeMechanic(maintenance, "2");
         assertThat(maintenance.getMechanic(), is(mechanic2));
     }
 
     @Test
-    public void changeMechanicInCorrectId(){
+    public void changeMechanicInCorrectId() {
         Maintenance maintenance = TestBuilder.maintenance1().build();
-        Mechanic mechanic1  = TestBuilder.mechanic1().build();
+        Mechanic mechanic1 = TestBuilder.mechanic1().build();
         when(mechanicService.getMechanic(3L)).thenReturn(null);
         controller.changeMechanic(maintenance, "3");
         assertThat(maintenance.getMechanic(), is(mechanic1));

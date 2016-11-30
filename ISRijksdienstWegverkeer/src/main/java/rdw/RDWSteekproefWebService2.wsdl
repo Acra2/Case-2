@@ -3,10 +3,10 @@
         xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:tns="http://steekproef.rdw/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
         targetNamespace="http://steekproef.rdw/"
         name="RDWSteekproefWebService"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.w3.org/2007/05/addressing/metadata ">
     <types>
         <xs:schema xmlns:tns="http://steekproef.rdw/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"

@@ -21,8 +21,9 @@
         <div class="row">
             <div class="col-md-12">
                 <h:form styleClass="form-horizontal">
-                    <h:outputLabel value="Filter:" />
-                    <h:selectOneMenu value="#{carService.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
+                    <h:outputLabel value="Filter:"/>
+                    <h:selectOneMenu value="#{carService.filterIndex}" onchange="this.form.submit();"
+                                     styleClass="form-control">
                         <f:selectItem styleClass="form-control" itemLabel="Allemaal" itemValue="-9"/>
                         <f:selectItem styleClass="form-control" itemLabel="Gisteren" itemValue="-1"/>
                         <f:selectItem styleClass="form-control" itemLabel="Vandaag" itemValue="0"/>
@@ -31,7 +32,7 @@
                 </h:form>
             </div>
         </div>
-<hr />
+        <hr/>
         <div class="row">
             <div class="col-md-12">
                 <h:dataTable id="car_table"
@@ -88,7 +89,7 @@
             <div class="col-md-12">
                 <h:form styleClass="form-horizontal">
                     <h:commandLink styleClass="btn btn-primary"
-                                   value="Toevoegen" action="car_registration" />
+                                   value="Toevoegen" action="car_registration"/>
                 </h:form>
             </div>
         </div>

@@ -36,6 +36,7 @@ public class CarRegistrationService implements Serializable {
     private List<Customer> customerList;
 
     private Long modelID;
+
     public CarRegistrationService() {
         car = new Car();
         customer = new Customer();
@@ -75,6 +76,7 @@ public class CarRegistrationService implements Serializable {
     public void setCustomer() {
         customer = customerService.getCustomer(customerID);
     }
+
     public void setModel() {
         Model model = modelService.getModel(modelID);
         car.setModel(model);

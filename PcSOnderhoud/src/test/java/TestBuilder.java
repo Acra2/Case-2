@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
  */
 public class TestBuilder {
 
-    public static MaintenanceType.MaintenanceTypeBuilder maintenanceType1(){
+    public static MaintenanceType.MaintenanceTypeBuilder maintenanceType1() {
         return MaintenanceType.builder().name("apk-keuring").sample(true);
     }
 
-    public static MaintenanceType.MaintenanceTypeBuilder maintenanceType2(){
+    public static MaintenanceType.MaintenanceTypeBuilder maintenanceType2() {
         return MaintenanceType.builder().name("grote-beurt").sample(false);
     }
 

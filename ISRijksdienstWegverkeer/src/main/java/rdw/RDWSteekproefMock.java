@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class RDWSteekproefMock implements RDWSteekproefWebService_PortType {
 
-    private  List<String> licenseplates = new ArrayList<String>(){{
+    private List<String> licenseplates = new ArrayList<String>() {{
         add("G-546-GA");
         add("KE-90-PA");
     }};

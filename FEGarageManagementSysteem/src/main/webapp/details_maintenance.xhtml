@@ -68,31 +68,31 @@
         </div>
 
         <div id="printArea">
-<div class="row">
-    <div class="col-xs-6">
-        <div class="panel panel-info">
-            <div class="panel-heading">Auto</div>
-            <div class="panel-body">
-                <p>Auto-nummer: #{maintenanceDetailsService.maintenance.car.vehicleNumber} </p>
-                <p>Nummerbord: #{maintenanceDetailsService.maintenance.car.licensePlate} </p>
-                <p>Kilometers: #{maintenanceDetailsService.maintenance.car.mileage} </p>
-                <p>Model: #{maintenanceDetailsService.maintenance.car.model.name} </p>
-                <p>Bestuurder: #{maintenanceDetailsService.maintenance.car.driverName} </p>
-                <p>Bestuurder e-mail: #{maintenanceDetailsService.maintenance.car.driverEmail} </p>
-                <p>Bestuurder telefoon: #{maintenanceDetailsService.maintenance.car.driverPhoneNumber} </p>
-            </div>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Auto</div>
+                        <div class="panel-body">
+                            <p>Auto-nummer: #{maintenanceDetailsService.maintenance.car.vehicleNumber} </p>
+                            <p>Nummerbord: #{maintenanceDetailsService.maintenance.car.licensePlate} </p>
+                            <p>Kilometers: #{maintenanceDetailsService.maintenance.car.mileage} </p>
+                            <p>Model: #{maintenanceDetailsService.maintenance.car.model.name} </p>
+                            <p>Bestuurder: #{maintenanceDetailsService.maintenance.car.driverName} </p>
+                            <p>Bestuurder e-mail: #{maintenanceDetailsService.maintenance.car.driverEmail} </p>
+                            <p>Bestuurder telefoon: #{maintenanceDetailsService.maintenance.car.driverPhoneNumber} </p>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="col-xs-6">
-        <div class="panel panel-info">
-            <div class="panel-heading">Barcode</div>
-            <div class="panel-body">
-                <p id="inputdata">#{maintenanceDetailsService.maintenance.id}</p>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Barcode</div>
+                        <div class="panel-body">
+                            <p id="inputdata">#{maintenanceDetailsService.maintenance.id}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    </div>
             <div class="row">
                 <div class="col-xs-6">
                     <div class="panel panel-info">
@@ -106,39 +106,39 @@
                         </div>
                     </div>
                 </div>
-    <div class="col-xs-6">
-        <div class="panel panel-info">
-            <div class="panel-heading">Monteur</div>
-            <div class="panel-body">
-                <p>Monteurs nummer: #{maintenanceDetailsService.maintenance.mechanic.id} </p>
-                <p>Naam: #{maintenanceDetailsService.maintenance.mechanic.name} </p>
-            </div>
-        </div>
-    </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Monteur</div>
+                        <div class="panel-body">
+                            <p>Monteurs nummer: #{maintenanceDetailsService.maintenance.mechanic.id} </p>
+                            <p>Naam: #{maintenanceDetailsService.maintenance.mechanic.name} </p>
+                        </div>
+                    </div>
+                </div>
 
-                </div>
+            </div>
             <div class="row">
-            <div class="col-xs-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Onderhoudstype</div>
-                    <div class="panel-body">
-                        <p>Naam: #{maintenanceDetailsService.maintenance.type.name} </p>
-                        <p>Taken: #{maintenanceDetailsService.maintenance.type.tasks} </p>
-                        <p>Tijd: #{maintenanceDetailsService.maintenance.type.time} </p>
-                        <p>Prijs: #{maintenanceDetailsService.maintenance.type.price} </p>
-                        <p>Beschrijving: #{maintenanceDetailsService.maintenance.description} </p>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Onderhoudstype</div>
+                        <div class="panel-body">
+                            <p>Naam: #{maintenanceDetailsService.maintenance.type.name} </p>
+                            <p>Taken: #{maintenanceDetailsService.maintenance.type.tasks} </p>
+                            <p>Tijd: #{maintenanceDetailsService.maintenance.type.time} </p>
+                            <p>Prijs: #{maintenanceDetailsService.maintenance.type.price} </p>
+                            <p>Beschrijving: #{maintenanceDetailsService.maintenance.description} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Datum</div>
+                        <div class="panel-body">
+                            <p>#{maintenanceDetailsService.maintenance.startDateTime.dayOfMonth}-#{maintenanceDetailsService.maintenance.startDateTime.monthValue}-#{maintenanceDetailsService.maintenance.startDateTime.year} #{maintenanceDetailsService.maintenance.startDateTime.hour}:#{maintenanceDetailsService.maintenance.startDateTime.minute}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Datum</div>
-                    <div class="panel-body">
-                        <p>#{maintenanceDetailsService.maintenance.startDateTime.dayOfMonth}-#{maintenanceDetailsService.maintenance.startDateTime.monthValue}-#{maintenanceDetailsService.maintenance.startDateTime.year} #{maintenanceDetailsService.maintenance.startDateTime.hour}:#{maintenanceDetailsService.maintenance.startDateTime.minute}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
 
         <script type="text/javascript">
