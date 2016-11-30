@@ -2,10 +2,7 @@ package services;
 
 import entities.Car;
 import entities.Customer;
-import entities.Mechanic;
 import lombok.Data;
-import services.ICarService;
-import services.ICustomerService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -35,15 +32,14 @@ public class CarRegistrationService implements Serializable {
     private List<Customer> customerList;
 
 
+    public CarRegistrationService() {
+        car = new Car();
+        customer = new Customer();
+    }
 
     @PostConstruct
     public void init() {
         customerList = customerService.getAllCustomers();
-    }
-
-    public CarRegistrationService() {
-        car = new Car();
-        customer = new Customer();
     }
 
     public List getCustomerList() {

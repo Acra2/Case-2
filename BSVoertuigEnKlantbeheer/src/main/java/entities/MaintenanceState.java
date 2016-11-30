@@ -7,18 +7,18 @@ import entities.states.*;
  */
 public enum MaintenanceState {
 
-    PLANNED (new PlannedState()),
-    PRESENT (new PresentState()),
-    INMAINTENANCE (new InMaintenanceState()),
-    PAUSED (new PausedState()),
-    READYFORSAMPLE (new ReadyForSampleState()),
-    READYFORPICKUP (new ReadyForPickUpState()),
-    WAITFORINSPECTION (new WaitForInspectionState()),
+    PLANNED(new PlannedState()),
+    PRESENT(new PresentState()),
+    INMAINTENANCE(new InMaintenanceState()),
+    PAUSED(new PausedState()),
+    READYFORSAMPLE(new ReadyForSampleState()),
+    READYFORPICKUP(new ReadyForPickUpState()),
+    WAITFORINSPECTION(new WaitForInspectionState()),
     PICKEDUP(new PickedUpState());
 
     private final AbstractState state;
 
-    MaintenanceState(AbstractState state){
+    MaintenanceState(AbstractState state) {
         this.state = state;
     }
 
@@ -49,11 +49,12 @@ public enum MaintenanceState {
     public void pickedUp(Maintenance maintenance) throws StateException {
         state.pickedUp(maintenance);
     }
-    public String[] getOperations(){
+
+    public String[] getOperations() {
         return state.getOperations();
     }
 
-    public String toString(){
+    public String toString() {
         return state.toString();
     }
 

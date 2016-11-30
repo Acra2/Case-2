@@ -1,12 +1,11 @@
 package services.impl;
 
 import entities.ErrorLog;
-import interceptors.LogInterceptorBinding;
 import services.ILogService;
+import javax.persistence.EntityManager;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
-import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**

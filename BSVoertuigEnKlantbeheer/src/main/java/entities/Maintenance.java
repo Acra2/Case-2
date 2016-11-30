@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @LogInterceptorBinding
-@SequenceGenerator(name="seq", initialValue=100000, allocationSize=1)
+@SequenceGenerator(name = "seq", initialValue = 100000, allocationSize = 1)
 public class Maintenance implements Serializable {
 
     @Id
@@ -71,6 +71,7 @@ public class Maintenance implements Serializable {
     public void readyForPickUp() throws StateException {
         state.readyForPickUp(this);
     }
+
     public void pickUp() throws StateException {
         state.pickedUp(this);
     }

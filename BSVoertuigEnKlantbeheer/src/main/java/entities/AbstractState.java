@@ -32,7 +32,8 @@ public abstract class AbstractState {
     public void pickedUp(Maintenance maintenance) throws StateException {
         throw new StateException("Invalid state transition");
     }
-    public String[] getOperations(){
+
+    public String[] getOperations() {
         return new String[]{};
     }
 

@@ -2,7 +2,6 @@ package services;
 
 import controllers.IMaintenanceController;
 import entities.Maintenance;
-import entities.StateException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,8 +37,8 @@ public class MaintenanceDetailsService implements Serializable {
         return maintenanceController.showButton(maintenance, state);
     }
 
-    public void changeState(String state) throws Exception{
-        switch (state.toLowerCase()){
+    public void changeState(String state) throws Exception {
+        switch (state.toLowerCase()) {
             case "present":
                 maintenanceController.present(maintenance);
                 break;

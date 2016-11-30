@@ -8,7 +8,7 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <f:metadata>
     <f:viewParam name="id" value="#{customerService.customer.id}"/>
-    <f:event type="preRenderComponent" listener="#{customerService.setSpecificCustomer(customerService.customer.id)}" />
+    <f:event type="preRenderComponent" listener="#{customerService.setSpecificCustomer(customerService.customer.id)}"/>
 </f:metadata>
 <ui:composition template="template.xhtml">
 

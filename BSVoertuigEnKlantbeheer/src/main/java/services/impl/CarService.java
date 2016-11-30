@@ -2,20 +2,14 @@ package services.impl;
 
 import entities.Car;
 import entities.Customer;
-import interceptors.LogInterceptor;
-import interceptors.LogInterceptorBinding;
 import services.ICarService;
+import javax.persistence.EntityManager;
+import java.util.List;
 
+import interceptors.LogInterceptorBinding;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
-import javax.interceptor.Interceptor;
-import javax.interceptor.Interceptors;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 /**
  * Created by paisanrietbroek on 22/11/2016.
@@ -31,9 +25,9 @@ public class CarService implements ICarService {
 
     @Override
     public Car addCar(Car car) {
-        if ( car.getId() != null){
+        if (car.getId() != null) {
             em.merge(car);
-        }else{
+        } else {
             em.persist(car);
         }
         return car;
@@ -41,7 +35,7 @@ public class CarService implements ICarService {
 
     @Override
     public Car getCar(String vehicleNumber) {
-        return (Car) em.createNamedQuery("getOneCar").setParameter("vehicleNumber",vehicleNumber).getSingleResult();
+        return (Car) em.createNamedQuery("getOneCar").setParameter("vehicleNumber", vehicleNumber).getSingleResult();
     }
 
     @Override

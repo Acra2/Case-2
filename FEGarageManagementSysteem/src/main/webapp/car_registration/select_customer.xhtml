@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+>
 
 <ui:composition template="/template.xhtml">
 
@@ -22,22 +22,26 @@
             <h:form styleClass="form-horizontal">
                 <div class="row">
 
-                        <div class="form-group">
-                            <h:selectOneMenu styleClass="form-control" id="selectCustomer"
-                                             value="#{carRegisterService.customerID}" >
-                                <f:selectItems styleClass="form-control"
-                                        value="#{carRegisterService.customerList}" var="c" itemValue="#{c.id}" itemLabel="#{c.email}" />
-                                <f:ajax event="change" execute="selectCustomer" render="customerInformation" listener="#{carRegisterService.setCustomer()}" />
-                            </h:selectOneMenu>
-                        </div>
+                    <div class="form-group">
+                        <h:selectOneMenu styleClass="form-control" id="selectCustomer"
+                                         value="#{carRegisterService.customerID}">
+                            <f:selectItems styleClass="form-control"
+                                           value="#{carRegisterService.customerList}" var="c" itemValue="#{c.id}"
+                                           itemLabel="#{c.email}"/>
+                            <f:ajax event="change" execute="selectCustomer" render="customerInformation"
+                                    listener="#{carRegisterService.setCustomer()}"/>
+                        </h:selectOneMenu>
+                    </div>
                 </div>
-            <div class="row">
-                <div class="btn-group">
-                    <h:commandLink styleClass="btn btn-danger" value="beeindigen" action="/car" />
-                    <h:commandLink styleClass="btn btn-primary" value="terug" action="#{carRegisterService.goToCarRegistration()}" />
-                    <h:commandLink styleClass="btn btn-primary" value="verder" action="#{carRegisterService.saveCar()}" />
+                <div class="row">
+                    <div class="btn-group">
+                        <h:commandLink styleClass="btn btn-danger" value="beeindigen" action="/car"/>
+                        <h:commandLink styleClass="btn btn-primary" value="terug"
+                                       action="#{carRegisterService.goToCarRegistration()}"/>
+                        <h:commandLink styleClass="btn btn-primary" value="verder"
+                                       action="#{carRegisterService.saveCar()}"/>
+                    </div>
                 </div>
-            </div>
             </h:form>
         </div>
 
@@ -47,27 +51,27 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        <h:outputLabel value="ID: #{carRegisterService.customer.id}" />
+                        <h:outputLabel value="ID: #{carRegisterService.customer.id}"/>
                     </div>
 
                     <div class="col-md-12">
-                        <h:outputLabel value="Naam: #{carRegisterService.customer.name}" />
+                        <h:outputLabel value="Naam: #{carRegisterService.customer.name}"/>
                     </div>
 
                     <div class="col-md-12">
-                        <h:outputLabel value="E-mail: #{carRegisterService.customer.email}" />
+                        <h:outputLabel value="E-mail: #{carRegisterService.customer.email}"/>
                     </div>
 
                     <div class="col-md-12">
-                        <h:outputLabel value="Telefoon: #{carRegisterService.customer.phonenumber}" />
+                        <h:outputLabel value="Telefoon: #{carRegisterService.customer.phonenumber}"/>
                     </div>
 
                     <div class="col-md-12">
-                        <h:outputLabel value="Adres: #{carRegisterService.customer.adress}" />
+                        <h:outputLabel value="Adres: #{carRegisterService.customer.adress}"/>
                     </div>
 
                     <div class="col-md-12">
-                        <h:outputLabel value="BTW-nummer: #{carRegisterService.customer.btwnumber}" />
+                        <h:outputLabel value="BTW-nummer: #{carRegisterService.customer.btwnumber}"/>
                     </div>
 
                 </div>

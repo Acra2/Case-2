@@ -13,9 +13,10 @@ public class WaitForInspectionState extends AbstractState {
         maintenance.setState(MaintenanceState.READYFORPICKUP);
     }
 
-    public String[] getOperations(){
+    public String[] getOperations() {
         return new String[]{"readyforpickup"};
     }
+
     public String toString() {
         return "Wacht op keuring";
     }

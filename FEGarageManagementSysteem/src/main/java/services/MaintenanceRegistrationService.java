@@ -1,19 +1,17 @@
 package services;
 
-import entities.*;
+import entities.Car;
+import entities.Maintenance;
+import entities.MaintenanceType;
+import entities.Mechanic;
 import lombok.Data;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static entities.MaintenanceState.INMAINTENANCE;
 
@@ -65,6 +63,7 @@ public class MaintenanceRegistrationService implements Serializable {
     public void setCarData() {
         car = carService.getCar(car.getVehicleNumber());
     }
+
     public void setMechanicData() {
         mechanic = mechanicService.getMechanic(mechanicID);
     }

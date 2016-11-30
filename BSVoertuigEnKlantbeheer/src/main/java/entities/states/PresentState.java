@@ -12,9 +12,11 @@ public class PresentState extends AbstractState {
     public void startMaintenace(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.INMAINTENANCE);
     }
-    public String[] getOperations(){
+
+    public String[] getOperations() {
         return new String[]{"start"};
     }
+
     public String toString() {
         return "Aanwezig";
     }

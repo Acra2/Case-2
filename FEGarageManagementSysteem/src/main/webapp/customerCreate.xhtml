@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
@@ -21,29 +20,28 @@
         <h:form>
             <div class="form-group">
                 Naam:
-                <h:inputText value="#{customerService.customer.name}" />
+                <h:inputText value="#{customerService.customer.name}"/>
             </div>
             <div class="form-group">
                 Adres:
-                <h:inputText value="#{customerService.customer.adress}" />
+                <h:inputText value="#{customerService.customer.adress}"/>
             </div>
             <div class="form-group">
                 BTW-nr.:
-                <h:inputText value="#{customerService.customer.btwnumber}" />
+                <h:inputText value="#{customerService.customer.btwnumber}"/>
             </div>
             <div class="form-group">
                 Telefoon:
-                <h:inputText value="#{customerService.customer.phonenumber}" />
+                <h:inputText value="#{customerService.customer.phonenumber}"/>
             </div>
             <div class="form-group">
                 Email:
-                <h:inputText value="#{customerService.customer.email}" />
+                <h:inputText value="#{customerService.customer.email}"/>
             </div>
 
             <h:commandLink value="Toevoegen" p:class="btn btn-primary"
-                           action="customerService" actionListener="#{customerService.addCustomer()}" />
+                           action="customerIndex" actionListener="#{customerService.addCustomer()}"/>
         </h:form>
     </ui:define>
-
 </ui:composition>
 </html>

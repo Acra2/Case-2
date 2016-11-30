@@ -5,7 +5,7 @@ package entities;
  */
 public class StateException extends Exception {
 
-    public StateException(String msg){
+    public StateException(String msg) {
         super(msg);
     }
 }

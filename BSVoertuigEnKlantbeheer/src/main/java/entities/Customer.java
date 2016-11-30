@@ -1,6 +1,9 @@
 package entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,14 +26,14 @@ import java.util.List;
                 "c.email = :email, " +
                 "c.name = :name, " +
                 "c.phonenumber = :phonenumber " +
-                "WHERE c.id = :id") ,
+                "WHERE c.id = :id"),
         @NamedQuery(name = "getCustomerByEmail", query = "SELECT c FROM customer  c WHERE c.email = :email")
 })
 @AllArgsConstructor
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;

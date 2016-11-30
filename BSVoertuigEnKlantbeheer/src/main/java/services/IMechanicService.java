@@ -11,7 +11,9 @@ import java.util.List;
 @Remote
 public interface IMechanicService {
     Mechanic add(Mechanic mechanic);
+
     Mechanic getMechanic(Long id);
+
     List<Mechanic> getAllMechanics();
 
 }

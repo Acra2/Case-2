@@ -2,18 +2,15 @@ package services.impl;
 
 import entities.Car;
 import entities.Maintenance;
-import entities.MaintenanceState;
 import entities.Mechanic;
-import interceptors.LogInterceptorBinding;
-import services.ICarService;
+import java.util.List;
+import javax.persistence.EntityManager;
 import services.IMaintenanceService;
 
+import interceptors.LogInterceptorBinding;
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 /**
  * Created by Sander on 22-11-2016.
@@ -31,7 +28,7 @@ public class MaintenanceService implements IMaintenanceService {
     }
 
     public Maintenance getOne(Long id) {
-       return em.find(Maintenance.class, id);
+        return em.find(Maintenance.class, id);
     }
 
     public Maintenance add(Maintenance maintenance) {

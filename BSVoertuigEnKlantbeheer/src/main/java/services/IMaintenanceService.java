@@ -3,7 +3,6 @@ package services;
 import entities.Car;
 import entities.Maintenance;
 import entities.Mechanic;
-import sun.applet.Main;
 
 import javax.ejb.Remote;
 import java.util.List;
@@ -15,10 +14,14 @@ import java.util.List;
 @Remote
 public interface IMaintenanceService {
     List<Maintenance> getAll();
+
     Maintenance getOne(Long id);
+
     Maintenance add(Maintenance maintenance);
+
     Maintenance getInMaintenanceForMechanic(Mechanic mechanic);
 
     List getMaintenanceForCar(Car car);
+
     List getCarsInMaintenance();
 }

@@ -3,11 +3,11 @@ package controllers;
 import entities.Maintenance;
 import entities.Mechanic;
 import entities.StateException;
-import interceptors.LogInterceptorBinding;
 import rdw.CdiProvider;
 import services.IMaintenanceService;
 import services.IMechanicService;
 
+import interceptors.LogInterceptorBinding;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;

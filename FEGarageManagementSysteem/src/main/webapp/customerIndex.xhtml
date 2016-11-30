@@ -19,7 +19,8 @@
 
     <ui:define name="content">
         <h:form><h:outputLabel value="Show:"></h:outputLabel>
-            <h:selectOneMenu value="#{customerService.filterIndex}" onchange="this.form.submit();" styleClass="form-control">
+            <h:selectOneMenu value="#{customerService.filterIndex}" onchange="this.form.submit();"
+                             styleClass="form-control">
                 <f:selectItem itemLabel="Allemaal" itemValue="-9"/>
                 <f:selectItem itemLabel="Gisteren" itemValue="-1"/>
                 <f:selectItem itemLabel="Vanddag" itemValue="0"/>
@@ -62,13 +63,13 @@
             <h:column>
                 <f:facet name="header">Wijzigen</f:facet>
                 <h:link value="Edit" outcome="updateCustomer" includeViewParams="true">
-                    <f:param name="id" value="#{c.id}" />
+                    <f:param name="id" value="#{c.id}"/>
                 </h:link>
             </h:column>
 
             <h:column>
                 <h:link value="Details" outcome="customerOverview" includeViewParams="true">
-                    <f:param name="id" value="#{c.id}" />
+                    <f:param name="id" value="#{c.id}"/>
                 </h:link>
             </h:column>
 

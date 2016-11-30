@@ -14,11 +14,11 @@ public class PlannedState extends AbstractState {
         maintenance.setState(MaintenanceState.PRESENT);
     }
 
-    public String[] getOperations(){
+    public String[] getOperations() {
         return new String[]{"present"};
     }
 
-    public String toString(){
+    public String toString() {
         return "Gepland";
     }
 }
