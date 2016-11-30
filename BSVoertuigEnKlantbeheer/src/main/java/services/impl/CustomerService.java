@@ -63,7 +63,7 @@ public class CustomerService implements ICustomerService {
             return singleResult;
         } catch (Exception ex) {
             System.out.println("customer not found: " + ex.getMessage());
+            throw ex;
         }
-        return null;
     }
 }

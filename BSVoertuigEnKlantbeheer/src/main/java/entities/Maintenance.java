@@ -49,30 +49,58 @@ public class Maintenance implements Serializable {
     }
 
     public void present() throws StateException {
-        state.present(this);
+        try {
+            state.present(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 
     public void start() throws StateException {
-        state.startMaintenace(this);
+        try {
+            state.startMaintenace(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 
     public void pause() throws StateException {
-        state.pauseMaintenace(this);
+        try {
+            state.pauseMaintenace(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 
     public void finish() throws StateException {
-        state.finishMaintenace(this);
+        try {
+            state.finishMaintenace(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 
     public void needInspections() throws StateException {
-        state.needInspections(this);
+        try {
+            state.needInspections(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 
     public void readyForPickUp() throws StateException {
-        state.readyForPickUp(this);
+        try {
+            state.readyForPickUp(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 
     public void pickUp() throws StateException {
-        state.pickedUp(this);
+        try {
+            state.pickedUp(this);
+        } catch (StateException e) {
+            throw e;
+        }
     }
 }
