@@ -32,7 +32,6 @@ public class CarRegistrationService implements Serializable {
     private Customer customer;
     private List<Customer> customerList;
 
-
     public CarRegistrationService() {
         car = new Car();
         customer = new Customer();

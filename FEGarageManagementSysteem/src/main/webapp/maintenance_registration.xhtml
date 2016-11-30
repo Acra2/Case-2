@@ -71,23 +71,27 @@
                 </div>
 
                 <div class="col-md-12">
+                    <h:messages for="date" autoUpdate="true"/>
                     <div class="form-group">
                         <div class="col-sm-4">
                             Datum:
                         </div>
                         <div class="col-sm-8">
-                            <h:inputText value="#{maintenanceRegistrationService.date}"
-                                         styleClass="datepicker form-control">
+                            <h:inputText value="#{maintenanceRegistrationService.date}" id="date"
+                                         styleClass="datepicker form-control" required="true"
+                                         requiredMessage="Datum is verplicht">
                             </h:inputText>
                         </div>
                     </div>
+                    <h:messages for="time" autoUpdate="true"/>
                     <div class="form-group">
                         <div class="col-sm-4">
                             Tijd:
                         </div>
                         <div class="col-sm-8">
-                            <h:inputText value="#{maintenanceRegistrationService.time}"
-                                         styleClass="timepicker form-control">
+                            <h:inputText value="#{maintenanceRegistrationService.time}" id="time"
+                                         styleClass="timepicker form-control" required="true"
+                                         requiredMessage="Tijd is verplicht">
                             </h:inputText>
                         </div>
                     </div>
