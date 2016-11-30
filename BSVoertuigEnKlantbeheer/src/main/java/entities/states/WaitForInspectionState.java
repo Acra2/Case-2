@@ -12,7 +12,11 @@ public class WaitForInspectionState extends AbstractState {
     public void readyForPickUp(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.READYFORPICKUP);
     }
+
+    public String[] getOperations(){
+        return new String[]{"readyforpickup"};
+    }
     public String toString() {
-        return "Wacht op keuren";
+        return "Wacht op keuring";
     }
 }

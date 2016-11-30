@@ -45,6 +45,10 @@
                     <label for="driverName">Taken</label>
                     <h:inputTextarea styleClass="form-control" id="driverName" value="#{maintenancetype.type.tasks}"/>
                 </div>
+                <div class="form-group">
+                    <label for="driverName">Keuring</label>
+                    <h:selectBooleanCheckbox id="sample" value="#{maintenancetype.type.sample}"/>
+                </div>
 
                 <div class="col-sm-offset-2 col-sm-10">
                     <h:commandLink styleClass="btn btn-primary" action="maintenaceType" value="update"

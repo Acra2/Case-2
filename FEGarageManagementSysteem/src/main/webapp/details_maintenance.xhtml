@@ -5,11 +5,11 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+>
 
 <f:metadata>
     <f:viewParam name="id" value="#{maintenanceDetailsService.maintenanceId}"/>
-    <f:event type="preRenderView" listener="#{maintenanceDetailsService.setMaintenance()}" />
+    <f:event type="preRenderView" listener="#{maintenanceDetailsService.setMaintenance()}"/>
 </f:metadata>
 
 <ui:composition template="template.xhtml">
@@ -22,71 +22,115 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Auto</div>
-                    <div class="panel-body">
-                        <p>Auto-nummer: #{maintenanceDetailsService.maintenance.car.vehicleNumber} </p>
-                        <p>Nummerbord: #{maintenanceDetailsService.maintenance.car.licensePlate} </p>
-                        <p>Kilometers: #{maintenanceDetailsService.maintenance.car.mileage} </p>
-                        <p>Model: #{maintenanceDetailsService.maintenance.car.model.name} </p>
-                        <p>Bestuurder: #{maintenanceDetailsService.maintenance.car.driverName} </p>
-                        <p>Bestuurder e-mail: #{maintenanceDetailsService.maintenance.car.driverEmail} </p>
-                        <p>Bestuurder telefoon: #{maintenanceDetailsService.maintenance.car.driverPhoneNumber} </p>
-                    </div>
-                </div>
+        <div class="container" style="margin-bottom: 15px">
+            <div class="pull-left">
+                <p>Huidige status: #{maintenanceDetailsService.maintenance.state.toString()}</p>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Klant</div>
-                    <div class="panel-body">
-                        <p>ID: #{maintenanceDetailsService.maintenance.car.customer.id} </p>
-                        <p>Naam: #{maintenanceDetailsService.maintenance.car.customer.name} </p>
-                        <p>Adres: #{maintenanceDetailsService.maintenance.car.customer.adress} </p>
-                        <p>E-mail: #{maintenanceDetailsService.maintenance.car.customer.email} </p>
-                        <p>Telefoon: #{maintenanceDetailsService.maintenance.car.customer.phonenumber} </p>
-                        <p>BTW-nummer: #{maintenanceDetailsService.maintenance.car.customer.btwnumber} </p>
+            <div class="pull-right">
+                <h:form>
+                    <div class="btn-group">
+                        <h:panelGroup rendered="#{maintenanceDetailsService.showButton('present')}">
+                            <h:commandButton value="aanwezig"
+                                             action="#{maintenanceDetailsService.changeState('present')}"
+                                             styleClass="btn btn-success"></h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{maintenanceDetailsService.showButton('start')}">
+                            <h:commandButton value="Start Onderhoud"
+                                             action="#{maintenanceDetailsService.changeState('start')}"
+                                             styleClass="btn btn-success"></h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{maintenanceDetailsService.showButton('pause')}">
+                            <h:commandButton value="Pauzeer Onderhoud"
+                                             action="#{maintenanceDetailsService.changeState('pause')}"
+                                             styleClass="btn btn-success"></h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{maintenanceDetailsService.showButton('finish')}">
+                            <h:commandButton value="Klaarmelden"
+                                             action="#{maintenanceDetailsService.changeState('finish')}"
+                                             styleClass="btn btn-success"></h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{maintenanceDetailsService.showButton('pickup')}">
+                            <h:commandButton value="Opgehaald"
+                                             action="#{maintenanceDetailsService.changeState('pickup')}"
+                                             styleClass="btn btn-success"></h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{maintenanceDetailsService.showButton('readyforpickup')}">
+                            <h:commandButton value="Klaar voor ophalen"
+                                             action="#{maintenanceDetailsService.changeState('readyforpickup')}"
+                                             styleClass="btn btn-success"></h:commandButton>
+                        </h:panelGroup>
+                        <button class="btn btn-warning" onclick="printDiv('printArea')">Print</button>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Monteur</div>
-                    <div class="panel-body">
-                        <p>ID: #{maintenanceDetailsService.maintenance.mechanic.id} </p>
-                        <p>Naam: #{maintenanceDetailsService.maintenance.mechanic.name} </p>
-                    </div>
-                </div>
+                </h:form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Onderhoudstype</div>
-                    <div class="panel-body">
-                        <p>ID: #{maintenanceDetailsService.maintenance.type.id} </p>
-                        <p>Naam: #{maintenanceDetailsService.maintenance.type.name} </p>
-                        <p>Taken: #{maintenanceDetailsService.maintenance.type.tasks} </p>
-                        <p>Tijd: #{maintenanceDetailsService.maintenance.type.time} </p>
-                        <p>Prijs: #{maintenanceDetailsService.maintenance.type.price} </p>
+        <div class="container" id="printArea">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Auto</div>
+                        <div class="panel-body">
+                            <p>Auto-nummer: #{maintenanceDetailsService.maintenance.car.vehicleNumber} </p>
+                            <p>Nummerbord: #{maintenanceDetailsService.maintenance.car.licensePlate} </p>
+                            <p>Kilometers: #{maintenanceDetailsService.maintenance.car.mileage} </p>
+                            <p>Model: #{maintenanceDetailsService.maintenance.car.model.name} </p>
+                            <p>Bestuurder: #{maintenanceDetailsService.maintenance.car.driverName} </p>
+                            <p>Bestuurder e-mail: #{maintenanceDetailsService.maintenance.car.driverEmail} </p>
+                            <p>Bestuurder telefoon: #{maintenanceDetailsService.maintenance.car.driverPhoneNumber} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Barcode</div>
+                        <div class="panel-body">
+                            <p id="inputdata">#{maintenanceDetailsService.maintenance.id}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Beschrijving</div>
-                    <div class="panel-body">
-                        <p>#{maintenanceDetailsService.maintenance.description}</p>
-                        <p id="inputdata">#{maintenanceDetailsService.maintenance.id}</p>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Klant</div>
+                        <div class="panel-body">
+                            <p>Naam: #{maintenanceDetailsService.maintenance.car.customer.name} </p>
+                            <p>Adres: #{maintenanceDetailsService.maintenance.car.customer.adress} </p>
+                            <p>E-mail: #{maintenanceDetailsService.maintenance.car.customer.email} </p>
+                            <p>Telefoon: #{maintenanceDetailsService.maintenance.car.customer.phonenumber} </p>
+                            <p>BTW-nummer: #{maintenanceDetailsService.maintenance.car.customer.btwnumber} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Monteur</div>
+                        <div class="panel-body">
+                            <p>Monteurs nummer: #{maintenanceDetailsService.maintenance.mechanic.id} </p>
+                            <p>Naam: #{maintenanceDetailsService.maintenance.mechanic.name} </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Datum</div>
-                    <div class="panel-body">
-                        <p>#{maintenanceDetailsService.maintenance.startDateTime}</p>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Onderhoudstype</div>
+                        <div class="panel-body">
+                            <p>Naam: #{maintenanceDetailsService.maintenance.type.name} </p>
+                            <p>Taken: #{maintenanceDetailsService.maintenance.type.tasks} </p>
+                            <p>Tijd: #{maintenanceDetailsService.maintenance.type.time} </p>
+                            <p>Prijs: #{maintenanceDetailsService.maintenance.type.price} </p>
+                            <p>Beschrijving: #{maintenanceDetailsService.maintenance.description} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Datum</div>
+                        <div class="panel-body">
+                            <p>#{maintenanceDetailsService.maintenance.startDateTime.dayOfMonth}-#{maintenanceDetailsService.maintenance.startDateTime.monthValue}-#{maintenanceDetailsService.maintenance.startDateTime.year} #{maintenanceDetailsService.maintenance.startDateTime.hour}:#{maintenanceDetailsService.maintenance.startDateTime.minute}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +147,7 @@
                 }
                 return object;
             }
-            get_object("inputdata").innerHTML=DrawCode39Barcode(get_object("inputdata").innerHTML,0);
+            get_object("inputdata").innerHTML = DrawCode39Barcode(get_object("inputdata").innerHTML, 0);
         </script>
     </ui:define>
 </ui:composition>

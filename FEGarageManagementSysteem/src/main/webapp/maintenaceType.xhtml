@@ -5,17 +5,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+>
 
 <ui:composition template="template.xhtml">
 
-   <ui:define name="title">
-      Garage Management System
-   </ui:define>
+    <ui:define name="title">
+        Garage Management System
+    </ui:define>
 
-   <ui:define name="header">
-      Garage Management System
-   </ui:define>
+    <ui:define name="header">
+        Garage Management System
+    </ui:define>
 
     <ui:define name="content">
         <div class="container">
@@ -45,9 +45,16 @@
                 </h:column>
 
                 <h:column>
+                    <f:facet name="header">Keuring</f:facet>
+                    <h:form>
+                        <h:selectBooleanCheckbox id="sample" value="#{t.sample}" disabled="true"/>
+                    </h:form>
+                </h:column>
+
+                <h:column>
                     <f:facet name="header">Wijzigen</f:facet>
                     <h:link value="Wijzigen" outcome="updateMaintenanceType" includeViewParams="true">
-                        <f:param name="id" value="#{t.id}" />
+                        <f:param name="id" value="#{t.id}"/>
                     </h:link>
                 </h:column>
             </h:dataTable>

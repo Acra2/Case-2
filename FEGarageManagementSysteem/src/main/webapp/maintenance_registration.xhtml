@@ -34,7 +34,6 @@
                         </h:selectOneMenu>
                     </div>
                 </div>
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectMechanic"
@@ -49,7 +48,6 @@
                         </h:selectOneMenu>
                     </div>
                 </div>
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectMaintenanceType"
@@ -101,16 +99,16 @@
                     <div class="form-group">
                         <div class="btn-group">
                             <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
-                            <h:commandButton styleClass="btn btn-success" value="bevestigen"
-                                           action="#{maintenanceRegistrationService.confirm()}" >
-<f:param name="id" value="#{maintenanceRegistrationService.id}"></f:param>
-                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-success"  value="bevestigen" action="#{maintenanceRegistrationService.confirm()}"></h:commandButton>
+
                         </div>
                     </div>
                 </div>
+
+
+
             </h:form>
         </div>
-
         <div class="col-md-9">
             <h:panelGroup id="result">
                 <div class="row">
@@ -175,6 +173,8 @@
                 </div>
             </h:panelGroup>
         </div>
+
+
     </ui:define>
 </ui:composition>
 </html>

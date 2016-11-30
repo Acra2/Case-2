@@ -58,5 +58,9 @@
             <from-outcome>maintenanceDetails</from-outcome>
             <to-view-id>/details_maintenance.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>maintenanceRegistration</from-outcome>
+            <to-view-id>/maintenance_registration.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

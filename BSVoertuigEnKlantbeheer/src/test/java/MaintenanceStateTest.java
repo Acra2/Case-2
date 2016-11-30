@@ -43,28 +43,28 @@ public class MaintenanceStateTest {
     }
 
     @Test
-    public void inCorrectEarlyFinish() {
+    public void inCorrectEarlyFinish() throws StateException {
+        thrown.expect(StateException.class);
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.finish();
-        assertThat(maintenance.getState(), is(MaintenanceState.PRESENT));
     }
 
     @Test
-    public void inCorrectEarlyPickup() {
+    public void inCorrectEarlyPickup() throws StateException {
+        thrown.expect(java.lang.Exception.class);
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.readyForPickUp();
-        assertThat(maintenance.getState(), is(MaintenanceState.PRESENT));
     }
 
     @Test
-    public void inCorrectLatePause() throws Exception {
+    public void inCorrectLatePause() throws StateException {
+        thrown.expect(StateException.class);
         Maintenance maintenance = TestBuilder.maintenance().build();
         maintenance.present();
         maintenance.start();
         maintenance.finish();
         maintenance.pause();
-        assertThat(maintenance.getState(), is(MaintenanceState.READYFORSAMPLE));
     }
 }

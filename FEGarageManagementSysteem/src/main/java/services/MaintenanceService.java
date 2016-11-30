@@ -2,6 +2,7 @@ package services;
 
 import controllers.IMaintenanceController;
 import entities.Maintenance;
+import entities.StateException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -80,22 +81,20 @@ public class MaintenanceService implements Serializable {
         if (checkMechanic()) {
             otherMaintenance = maintenanceController.checkInMaintenance(mainte.getMechanic());
             if (otherMaintenance == null) {
-                mainte.start();
-                maintenanceController.persistMaintenace(mainte);
+                maintenanceController.start(mainte);
                 clearView();
             }
         }
     }
 
-    public void pause() {
+    public void pause() throws Exception {
         if (checkMechanic()) {
-            mainte.pause();
-            maintenanceController.persistMaintenace(mainte);
+            maintenanceController.pause(mainte);
             clearView();
         }
     }
 
-    public void finish() {
+    public void finish() throws Exception {
         if (checkMechanic()) {
             maintenanceController.finish(mainte);
             clearView();

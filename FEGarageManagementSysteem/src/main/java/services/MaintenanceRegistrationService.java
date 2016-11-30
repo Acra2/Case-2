@@ -4,6 +4,8 @@ import entities.*;
 import lombok.Data;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -21,7 +23,7 @@ import static entities.MaintenanceState.INMAINTENANCE;
 
 @Data
 @Named("maintenanceRegistrationService")
-@FlowScoped("maintenance_registration")
+@SessionScoped()
 public class MaintenanceRegistrationService implements Serializable {
 
     @EJB
@@ -71,10 +73,6 @@ public class MaintenanceRegistrationService implements Serializable {
         maintenanceType = maintenanceTypeService.getOneType(maintenanceType.getId());
     }
 
-    public String goToMaintenanceRegisterPage() {
-        return "maintenance _registration";
-    }
-
     public String confirm() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
@@ -91,6 +89,6 @@ public class MaintenanceRegistrationService implements Serializable {
 
         maintenance = maintenanceService.add(maintenance);
         id = maintenance.getId();
-        return "/detail_maintenance";
+        return "details_maintenance.xhtml?faces-redirect=true&id=" + id;
     }
 }

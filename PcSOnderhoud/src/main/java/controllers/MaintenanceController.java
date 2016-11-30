@@ -1,24 +1,23 @@
 package controllers;
 
 import entities.Maintenance;
-import entities.MaintenanceType;
 import entities.Mechanic;
+import entities.StateException;
+import interceptors.LogInterceptorBinding;
 import rdw.CdiProvider;
-import rdw.RDWSteekproefWebService_PortType;
 import services.IMaintenanceService;
 import services.IMechanicService;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
-import javax.enterprise.inject.spi.CDI;
-import javax.enterprise.inject.spi.CDIProvider;
 
 /**
  * Created by Sander on 23-11-2016.
  */
 @Stateful
 @Remote(IMaintenanceController.class)
+@LogInterceptorBinding
 public class MaintenanceController implements IMaintenanceController {
 
     @EJB
@@ -31,7 +30,7 @@ public class MaintenanceController implements IMaintenanceController {
 
     @Override
     public Maintenance getMaintenance(Long id) {
-        for(Maintenance m : maintenanceService.getAll()){
+        for (Maintenance m : maintenanceService.getAll()) {
             System.out.println("Maintenances:" + m.getId());
         }
         return maintenanceService.getOne(id);
@@ -39,15 +38,15 @@ public class MaintenanceController implements IMaintenanceController {
 
     @Override
     public Maintenance changeMechanic(Maintenance maintenance, String id) {
-        for(Mechanic m : mechanicService.getAllMechanics()){
-            System.out.println("mechanics: "+m.getId());
+        for (Mechanic m : mechanicService.getAllMechanics()) {
+            System.out.println("mechanics: " + m.getId());
         }
         Mechanic mechanic = mechanicService.getMechanic(Long.parseLong(id));
         if (mechanic != null) {
             maintenance.setMechanic(mechanic);
             maintenanceService.add(maintenance);
             return maintenance;
-        }else
+        } else
             return null;
     }
 
@@ -72,16 +71,34 @@ public class MaintenanceController implements IMaintenanceController {
     }
 
     @Override
-    public Maintenance checkInMaintenance(Mechanic mechanic ){
+    public Maintenance checkInMaintenance(Mechanic mechanic) {
         Maintenance inMaintenanceForMechanic = maintenanceService.getInMaintenanceForMechanic(mechanic);
         return inMaintenanceForMechanic;
     }
 
     @Override
-    public void finish(Maintenance maintenance) {
+    public void present(Maintenance maintenance) throws StateException {
+        maintenance.present();
+        persistMaintenace(maintenance);
+    }
+
+    @Override
+    public void start(Maintenance maintenance) throws StateException {
+        maintenance.start();
+        persistMaintenace(maintenance);
+    }
+
+    @Override
+    public void pause(Maintenance maintenance) throws StateException {
+        maintenance.pause();
+        persistMaintenace(maintenance);
+    }
+
+    @Override
+    public void finish(Maintenance maintenance) throws Exception {
         maintenance.finish();
         persistMaintenace(maintenance);
-        if (maintenance.getType().getName().toLowerCase().equals("apk-keuring")){
+        if (maintenance.getType().getSample()) {
             try {
                 Boolean steekproef = false;
 
@@ -89,13 +106,29 @@ public class MaintenanceController implements IMaintenanceController {
 
                 if (steekproef) {
                     maintenance.needInspections();
-                }else{
+                } else {
                     maintenance.readyForPickUp();
                 }
+                persistMaintenace(maintenance);
             } catch (Exception e) {
-                e.printStackTrace();
+                throw e;
             }
+        } else {
+            maintenance.readyForPickUp();
+            persistMaintenace(maintenance);
         }
+    }
+
+    @Override
+    public void readyForPickup(Maintenance maintenance) throws StateException {
+        maintenance.readyForPickUp();
+        persistMaintenace(maintenance);
+    }
+
+    @Override
+    public void pickup(Maintenance maintenance) throws StateException {
+        maintenance.pickUp();
+        persistMaintenace(maintenance);
     }
 
 }

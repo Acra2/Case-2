@@ -8,14 +8,11 @@ import entities.StateException;
 /**
  * Created by Sander on 22-11-2016.
  */
-public class ReadyForPickUpState extends AbstractState {
-    public void pickedUp(Maintenance maintenance) throws StateException {
-        maintenance.setState(MaintenanceState.PICKEDUP);
-    }
+public class PickedUpState extends AbstractState {
     public String[] getOperations(){
-        return new String[]{"pickup"};
+        return new String[]{};
     }
     public String toString() {
-        return "Klaar voor uitleveren";
+        return "Opgehaald";
     }
 }
