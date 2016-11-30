@@ -1,14 +1,14 @@
 package services.impl;
 
 import entities.Customer;
-import interceptors.LogInterceptorBinding;
+import javax.persistence.EntityManager;
 import services.ICustomerService;
+import java.util.List;
 
+import interceptors.LogInterceptorBinding;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 /**
  * Created by Gebruiker on 22-11-2016.

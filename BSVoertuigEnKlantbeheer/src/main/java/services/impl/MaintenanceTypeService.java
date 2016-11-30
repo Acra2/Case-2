@@ -2,18 +2,20 @@ package services.impl;
 
 import entities.MaintenanceType;
 import services.IMaintenanceTypeService;
+import javax.persistence.EntityManager;
+import java.util.List;
 
+import interceptors.LogInterceptorBinding;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 /**
  * Created by Sander on 28-11-2016.
  */
 @Stateless
 @Remote(IMaintenanceTypeService.class)
+@LogInterceptorBinding
 public class MaintenanceTypeService implements IMaintenanceTypeService {
 
     @PersistenceContext

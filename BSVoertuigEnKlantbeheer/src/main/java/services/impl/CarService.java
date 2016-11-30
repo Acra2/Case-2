@@ -2,14 +2,14 @@ package services.impl;
 
 import entities.Car;
 import entities.Customer;
-import interceptors.LogInterceptorBinding;
 import services.ICarService;
+import javax.persistence.EntityManager;
+import java.util.List;
 
+import interceptors.LogInterceptorBinding;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
-import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 /**
  * Created by paisanrietbroek on 22/11/2016.
