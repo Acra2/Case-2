@@ -19,14 +19,16 @@
 
     <ui:define name="content">
         <div class="col-md-3">
-            <h:form styleClass="form-horizontal">
                 <div class="col-md-12" style="margin-bottom: 15px">
-                    <div class="btn-group">
-                        <h:link styleClass="btn btn-primary" outcome="customerCreate" value="Nieuwe klant"></h:link>
-                        <h:commandLink styleClass="btn btn-primary" value="Nieuwe auto" action="car_registration"/>
-                    </div>
+                    <h:form styleClass="form-horizontal">
+                        <div class="btn-group">
+                            <h:link styleClass="btn btn-primary" outcome="customerCreate" value="Nieuwe klant"></h:link>
+                            <h:commandLink styleClass="btn btn-primary" value="Nieuwe auto" action="car_registration"/>
+                        </div>
+                    </h:form>
                 </div>
-                <div class="col-md-12">
+            <h:form styleClass="form-horizontal">
+            <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectCar"
                                          value="#{maintenanceRegistrationService.car.vehicleNumber}">
@@ -141,7 +143,6 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">Klant</div>
                             <div class="panel-body">
-                                <p>ID: #{maintenanceRegistrationService.car.customer.id} </p>
                                 <p>Naam: #{maintenanceRegistrationService.car.customer.name} </p>
                                 <p>Adres: #{maintenanceRegistrationService.car.customer.adress} </p>
                                 <p>E-mail: #{maintenanceRegistrationService.car.customer.email} </p>
@@ -156,7 +157,6 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">Monteur</div>
                             <div class="panel-body">
-                                <p>ID: #{maintenanceRegistrationService.mechanic.id} </p>
                                 <p>Naam: #{maintenanceRegistrationService.mechanic.name} </p>
                             </div>
                         </div>
@@ -165,7 +165,6 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">Onderhoudstype</div>
                             <div class="panel-body">
-                                <p>ID: #{maintenanceRegistrationService.maintenanceType.id} </p>
                                 <p>Naam: #{maintenanceRegistrationService.maintenanceType.name} </p>
                                 <p>Taken: #{maintenanceRegistrationService.maintenanceType.tasks} </p>
                                 <p>Tijd: #{maintenanceRegistrationService.maintenanceType.time} </p>
