@@ -114,23 +114,23 @@ public class SetData implements Serializable {
         Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").model(m2g).customer(c5).build();
         a6 = carService.addCar(a6);
 
-        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 13, 5)).car(a2).mechanic(h1).type(maintenanceType1).state(MaintenanceState.INMAINTENANCE).description("Remschoenen vervangen").build();
+        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 11, 30, 13, 5)).car(a2).mechanic(h1).type(maintenanceType1).state(MaintenanceState.INMAINTENANCE).description("Remschoenen vervangen").build();
         maintenanceService.add(m1);
         Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 10, 40)).car(a2).mechanic(h2).type(maintenanceType2).state(MaintenanceState.PRESENT).description("Linker zijruit vervangen").build();
         maintenanceService.add(m2);
         Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 16, 35)).car(a1).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PLANNED).description("Accu vervangen").build();
         maintenanceService.add(m3);
-        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 12, 10)).car(a5).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PLANNED).description("Koplampen opnieuw afstellen").build();
+        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 11, 30, 12, 10)).car(a5).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PLANNED).description("Koplampen opnieuw afstellen").build();
         maintenanceService.add(m4);
-        Maintenance m5 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 14, 20)).car(a4).mechanic(h2).type(maintenanceType3).state(MaintenanceState.PLANNED).description("Winterbanden aanbrengen").build();
+        Maintenance m5 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 2, 14, 20)).car(a4).mechanic(h2).type(maintenanceType3).state(MaintenanceState.PLANNED).description("Winterbanden aanbrengen").build();
         maintenanceService.add(m5);
         Maintenance m6 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 13, 13)).car(a3).mechanic(h1).type(maintenanceType3).state(MaintenanceState.PLANNED).description("lekkeband links").build();
         maintenanceService.add(m6);
-        Maintenance m7 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 14, 30)).car(a6).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PLANNED).description("-").build();
+        Maintenance m7 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 4, 14, 30)).car(a6).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PLANNED).description("-").build();
         maintenanceService.add(m7);
         Maintenance m8 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 15, 40)).car(a1).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PLANNED).description("kapotte voorruit").build();
         maintenanceService.add(m8);
-        Maintenance m9 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 16, 45)).car(a2).mechanic(h2).type(maintenanceType1).state(MaintenanceState.PAUSED).description("Wachten op onderdeel").build();
+        Maintenance m9 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 3, 16, 45)).car(a2).mechanic(h2).type(maintenanceType1).state(MaintenanceState.PAUSED).description("Wachten op onderdeel").build();
         maintenanceService.add(m9);
         Maintenance m10 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 16, 10)).car(a3).mechanic(h2).type(maintenanceType3).state(MaintenanceState.INMAINTENANCE).description("Airco is kapot").build();
         maintenanceService.add(m10);

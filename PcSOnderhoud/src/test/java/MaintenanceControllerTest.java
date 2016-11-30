@@ -29,6 +29,9 @@ import static org.mockito.Mockito.when;
 public class MaintenanceControllerTest {
 
     @Mock
+    MaintenanceService maintenanceService;
+
+    @Mock
     MechanicService mechanicService;
 
     @Mock

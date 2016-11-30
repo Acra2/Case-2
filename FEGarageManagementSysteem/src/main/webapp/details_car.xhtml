@@ -50,36 +50,41 @@
                         <p>E-mail: #{carService.car.customer.email} </p>
                         <p>Adres: #{carService.car.customer.adress} </p>
                         <p>BTW: #{carService.car.customer.btwnumber} </p>
+                        <p>
+                            <h:link value="Details" outcome="customerOverview" includeViewParams="true">
+                                <f:param name="id" value="#{carService.car.customer.id}"/>
+                            </h:link>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Onderhoud</h4>
-                    <h:dataTable value="#{carService.getMaintenceForCar()}" var="m"
-                                 styleClass="table table-bordered table-responsive table-striped">
-                        <h:column>
-                            <f:facet name="header">Beschrijving</f:facet>
-                            #{m.description}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Datum</f:facet>
-                            <h:outputLabel
-                                    value="#{m.startDateTime.dayOfMonth}-#{m.startDateTime.monthValue}-#{m.startDateTime.year}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Details</f:facet>
-                            <h:link value="details"
-                                    outcome="maintenanceDetails">
-                                <f:param name="id" value="#{m.id}"/>
-                            </h:link>
-                        </h:column>
-                    </h:dataTable>
-                </div>
-
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Onderhoud</h4>
+                <h:dataTable value="#{carService.getMaintenceForCar()}" var="m"
+                             styleClass="table table-bordered table-responsive table-striped">
+                    <h:column>
+                        <f:facet name="header">Beschrijving</f:facet>
+                        #{m.description}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Datum</f:facet>
+                        <h:outputLabel
+                                value="#{m.startDateTime.dayOfMonth}-#{m.startDateTime.monthValue}-#{m.startDateTime.year}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Details</f:facet>
+                        <h:link value="details"
+                                outcome="maintenanceDetails">
+                            <f:param name="id" value="#{m.id}"/>
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
             </div>
+
+        </div>
 
     </ui:define>
 

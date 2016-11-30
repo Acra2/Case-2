@@ -57,7 +57,7 @@
                         <f:selectItems styleClass="form-control"
                                        value="#{carRegisterService.modelService.getAllModels()}"
                                        var="m" itemValue="#{m.id}"
-                                       itemLabel="#{m.name}"/>
+                                       itemLabel="#{m.brand.name} #{m.name}"/>
                         <f:ajax event="change" execute="@form"
                                 listener="#{carRegisterService.setModel()}" />
                     </h:selectOneMenu>
