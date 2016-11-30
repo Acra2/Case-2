@@ -24,72 +24,64 @@
 
     <ui:define name="content">
 
-        <div class="col-md-12">
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="col-md-12">
-                        <h:outputLabel value="Naam: #{customerService.customer.name}" />
-                    </div>
-                    <div class="col-md-12">
-                        <h:outputLabel value="E-mail: #{customerService.customer.email}" />
-                    </div>
-                    <div class="col-md-12">
-                        <h:outputLabel value="Adres: #{customerService.customer.adress}" />
-                    </div>
-                    <div class="col-md-12">
-                        <h:outputLabel value="Telefoon nummer: #{customerService.customer.phonenumber}" />
-                    </div>
-                    <div class="col-md-12">
-                        <h:outputLabel value="BTW-nummer: #{customerService.customer.btwnumber}" />
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="col-md-12">
-                        <h:dataTable id="carTable"
-                                     styleClass="table table-bordered table-responsive"
-                                     value="#{customerService.carListOfSpecificCustomer}" var="c">
-                            <h:column>
-                                <f:facet name="header">auto-nummer</f:facet>
-                                #{c.vehicleNumber}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">bestuurders-email</f:facet>
-                                #{c.driverEmail}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">bestuurder</f:facet>
-                                #{c.driverName}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">bestuurders-telefoon</f:facet>
-                                #{c.driverPhoneNumber}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">nummer-bord</f:facet>
-                                #{c.licensePlate}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">kilometers</f:facet>
-                                #{c.mileage}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">model</f:facet>
-                                #{c.model}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Details</f:facet>
-                                <h:link value="Details" outcome="details" includeViewParams="true">
-                                    <f:param name="id" value="#{c.vehicleNumber}" />
-                                </h:link>
-                            </h:column>
-                        </h:dataTable>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Klant</div>
+                    <div class="panel-body">
+                        <p>Nummerbord: #{customerService.customer.id} </p>
+                        <p>Auto-nummer: #{customerService.customer.name} </p>
+                        <p>Kilometers: #{customerService.customer.email} </p>
+                        <p>Model: #{customerService.customer.adress} </p>
+                        <p>Bestuurder: #{customerService.customer.phonenumber} </p>
+                        <p>Bestuurder e-mail: #{customerService.customer.btwnumber} </p>
                     </div>
                 </div>
             </div>
-
         </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <h:dataTable id="carTable"
+                     styleClass="table table-bordered table-responsive"
+                     value="#{customerService.carListOfSpecificCustomer}" var="c">
+            <h:column>
+                <f:facet name="header">auto-nummer</f:facet>
+                #{c.vehicleNumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">bestuurders-email</f:facet>
+                #{c.driverEmail}
+            </h:column>
+            <h:column>
+                <f:facet name="header">bestuurder</f:facet>
+                #{c.driverName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">bestuurders-telefoon</f:facet>
+                #{c.driverPhoneNumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nummer-bord</f:facet>
+                #{c.licensePlate}
+            </h:column>
+            <h:column>
+                <f:facet name="header">kilometers</f:facet>
+                #{c.mileage}
+            </h:column>
+            <h:column>
+                <f:facet name="header">model</f:facet>
+                #{c.model.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Details</f:facet>
+                <h:link value="Details" outcome="details" includeViewParams="true">
+                    <f:param name="id" value="#{c.vehicleNumber}" />
+                </h:link>
+            </h:column>
+        </h:dataTable>
+    </div>
+</div>
     </ui:define>
 
 </ui:composition>

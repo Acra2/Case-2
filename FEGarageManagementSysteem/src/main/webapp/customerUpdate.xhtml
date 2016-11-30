@@ -21,32 +21,66 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:outputLabel value="#{customerService.customer.id}" />
-        <h:form>
-            <div class="form-group">
-                Naam:
-                <h:inputText value="#{customerService.customer.name}" />
-            </div>
-            <div class="form-group">
-                Adres:
-                <h:inputText value="#{customerService.customer.adress}" />
-            </div>
-            <div class="form-group">
-                BTW-nr.:
-                <h:inputText value="#{customerService.customer.btwnumber}" />
-            </div>
-            <div class="form-group">
-                Telefoon:
-                <h:inputText value="#{customerService.customer.phonenumber}" />
-            </div>
-            <div class="form-group">
-                Email:
-                <h:inputText value="#{customerService.customer.email}" />
-            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h:form styleClass="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-1">
+                            <h:outputLabel styleClass="control-label" value="ID" />
+                        </div>
+                        <div class="col-md-11">
+                            <h:inputText styleClass="form-control" disabled="true" value="#{customerService.customer.id}" />
+                        </div>
+                    </div>
 
-            <h:commandLink type="submit" value="Klant aanpassen" p:class="btn btn-primary"
-                           action="customerIndex" actionListener="#{customerService.updateCustomer()}" />
-        </h:form>
+                    <div class="form-group">
+                        <div class="col-md-1">
+                            <h:outputLabel styleClass="control-label" value="Naam" />
+                        </div>
+                        <div class="col-md-11">
+                            <h:inputText styleClass="form-control" value="#{customerService.customer.name}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1">
+                            <h:outputLabel styleClass="control-label" value="Adres" />
+                        </div>
+                        <div class="col-md-11">
+                            <h:inputText styleClass="form-control" value="#{customerService.customer.adress}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1">
+                            <h:outputLabel styleClass="control-label" value="BTW" />
+                        </div>
+                        <div class="col-md-11">
+                            <h:inputText styleClass="form-control" value="#{customerService.customer.btwnumber}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1">
+                            <h:outputLabel styleClass="control-label" value="Telefoon" />
+                        </div>
+                        <div class="col-md-11">
+                            <h:inputText styleClass="form-control" value="#{customerService.customer.phonenumber}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1">
+                            <h:outputLabel styleClass="control-label" value="E-mail" />
+                        </div>
+                        <div class="col-md-11">
+                            <h:inputText styleClass="form-control" value="#{customerService.customer.email}" />
+                        </div>
+                    </div>
+                    <div class="col-md-offset-1 col-md-11">
+                        <h:commandLink styleClass="form-control" type="submit" value="Klant aanpassen" p:class="btn btn-primary"
+                                       action="customerIndex" actionListener="#{customerService.updateCustomer()}" />
+                    </div>
+
+                </h:form>
+            </div>
+        </div>
 
     </ui:define>
 

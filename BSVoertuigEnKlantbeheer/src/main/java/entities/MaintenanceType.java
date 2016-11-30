@@ -25,6 +25,7 @@ public class MaintenanceType implements Serializable {
     private int time;
     private String tasks;
     private double price;
+    private Boolean sample;
 
     public MaintenanceType() {
     }

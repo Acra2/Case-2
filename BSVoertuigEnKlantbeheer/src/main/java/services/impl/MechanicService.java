@@ -24,7 +24,11 @@ public class MechanicService implements IMechanicService {
 
     @Override
     public Mechanic add(Mechanic mechanic) {
-        em.merge(mechanic);
+        if (mechanic.getId() != null) {
+            em.merge(mechanic);
+        } else {
+            em.persist(mechanic);
+        }
         return mechanic;
     }
 

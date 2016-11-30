@@ -13,7 +13,8 @@ public enum MaintenanceState {
     PAUSED (new PausedState()),
     READYFORSAMPLE (new ReadyForSampleState()),
     READYFORPICKUP (new ReadyForPickUpState()),
-    WAITFORINSPECTION (new WaitForInspectionState());
+    WAITFORINSPECTION (new WaitForInspectionState()),
+    PICKEDUP(new PickedUpState());
 
     private final AbstractState state;
 
@@ -45,6 +46,9 @@ public enum MaintenanceState {
         state.readyForPickUp(maintenance);
     }
 
+    public void pickedUp(Maintenance maintenance) throws StateException {
+        state.pickedUp(maintenance);
+    }
     public String[] getOperations(){
         return state.getOperations();
     }

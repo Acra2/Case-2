@@ -1,16 +1,13 @@
 package entities;
 
 import interceptors.LogInterceptorBinding;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
 import javax.persistence.*;
-import javax.swing.plaf.nimbus.State;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Sander on 22-11-2016.
@@ -26,10 +23,11 @@ import java.util.concurrent.ExecutionException;
 @Builder
 @AllArgsConstructor
 @LogInterceptorBinding
+@SequenceGenerator(name="seq", initialValue=100000, allocationSize=1)
 public class Maintenance implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     private Long id;
     private LocalDateTime startDateTime;
     private String description;
@@ -50,51 +48,30 @@ public class Maintenance implements Serializable {
     public Maintenance() {
     }
 
-    public void present() {
-        try {
-            state.present(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void present() throws StateException {
+        state.present(this);
     }
 
-    public void start() throws Exception {
-        try {
-            state.startMaintenace(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void start() throws StateException {
+        state.startMaintenace(this);
     }
 
-    public void pause() {
-        try {
-            state.pauseMaintenace(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void pause() throws StateException {
+        state.pauseMaintenace(this);
     }
 
-    public void finish() {
-        try {
-            state.finishMaintenace(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void finish() throws StateException {
+        state.finishMaintenace(this);
     }
 
-    public void needInspections() {
-        try {
-            state.needInspections(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void needInspections() throws StateException {
+        state.needInspections(this);
     }
 
-    public void readyForPickUp() {
-        try {
-            state.readyForPickUp(this);
-        } catch (StateException e) {
-            e.printStackTrace();
-        }
+    public void readyForPickUp() throws StateException {
+        state.readyForPickUp(this);
+    }
+    public void pickUp() throws StateException {
+        state.pickedUp(this);
     }
 }

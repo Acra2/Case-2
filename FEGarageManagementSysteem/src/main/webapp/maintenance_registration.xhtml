@@ -25,16 +25,15 @@
                         <h:selectOneMenu styleClass="form-control" id="selectCar"
                                          value="#{maintenanceRegistrationService.car.vehicleNumber}">
                             <f:selectItem styleClass="form-control" value="#{null}"
-                                          itemLabel="-- Selecteer een auto-nummer --"/>
+                                          itemLabel="-- Selecteer nummerbord en email --"/>
                             <f:selectItems styleClass="form-control"
                                            value="#{maintenanceRegistrationService.carService.getAllCars()}"
-                                           var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.vehicleNumber}"/>
+                                           var="c" itemValue="#{c.vehicleNumber}" itemLabel="#{c.licensePlate} - #{c.driverEmail}"/>
                             <f:ajax event="change" execute="@form" render="result"
                                     listener="#{maintenanceRegistrationService.setCarData()}"/>
                         </h:selectOneMenu>
                     </div>
                 </div>
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectMechanic"
@@ -49,7 +48,6 @@
                         </h:selectOneMenu>
                     </div>
                 </div>
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:selectOneMenu styleClass="form-control" id="selectMaintenanceType"
@@ -101,14 +99,16 @@
                     <div class="form-group">
                         <div class="btn-group">
                             <h:commandLink styleClass="btn btn-danger" value="cancel" action="/index" />
-                            <h:commandLink styleClass="btn btn-success" value="bevestigen"
-                                           action="#{maintenanceRegistrationService.confirm()}" />
+                            <h:commandButton styleClass="btn btn-success"  value="bevestigen" action="#{maintenanceRegistrationService.confirm()}"></h:commandButton>
+
                         </div>
                     </div>
                 </div>
+
+
+
             </h:form>
         </div>
-
         <div class="col-md-9">
             <h:panelGroup id="result">
                 <div class="row">
@@ -173,6 +173,8 @@
                 </div>
             </h:panelGroup>
         </div>
+
+
     </ui:define>
 </ui:composition>
 </html>

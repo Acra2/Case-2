@@ -5,16 +5,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 <h:head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <h:outputStylesheet library="css" name="bootstrap.css"/>
     <h:outputStylesheet library="css" name="stylesheet.css"/>
     <h:outputStylesheet library="css" name="clockpicker.css"/>
     <h:outputStylesheet library="css" name="datepicker.css"/>
-    <h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
+    <h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css"/>
 
-    <h:outputScript name="js/code39.js" target="#{param.location}" />
+    <h:outputScript name="js/code39.js" target="#{param.location}"/>
 
     <title><ui:insert name="title">title</ui:insert></title>
 </h:head>
@@ -36,46 +36,50 @@
 
         <div class="row">
             <div class="col-md-12">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="navbar-brand" href="#">Garage Management System</a>
-                            </div>
-                                <h:form>
-                                    <ul class="nav navbar-nav">
-                                        <li><h:link value="Home" outcome="home" /></li>
-                                        <li><h:link value="Klanten" outcome="customerIndex" /></li>
-                                        <li><h:link value="Auto's" outcome="car" /></li>
-                                        <li><h:link value="Onderhoud" outcome="maintenance"/></li>
-                                        <li><h:commandLink value="Aanmelden onderhoud" action="maintenance_registration"/></li>
-                                    </ul>
-                                </h:form>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="index.xhtml">Garage Management System</a>
                         </div>
-                    </nav>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel-body">
-                        <ui:insert name="content">Content Section</ui:insert>
+                        <h:form>
+                            <ul class="nav navbar-nav">
+                                <li><h:link value="Klantbeheer" outcome="customerIndex"/></li>
+                                <li><h:link value="Autobeheer" outcome="car"/></li>
+                                <li><h:link value="Auto's in onderhoud" outcome="inMaintenance"/></li>
+                                <li><h:link value="Monteurs onderhoud" outcome="maintenance"/></li>
+                                <li><h:commandLink value="Aanmelden onderhoud" action="maintenance_registration"/></li>
+                                <li><h:link value="Onderhoudtypes" outcome="maintenanceTypes"/></li>
+                            </ul>
+                        </h:form>
                     </div>
-                </div>
+                </nav>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel-footer">Garage Management System</div>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <h:outputScript name="js/jquery.js" target="#{param.location}" />
-    <h:outputScript name="js/bootstrap.js" target="#{param.location}" />
+<div class="container">
+    <div class="panel panel-default">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-body">
+                    <ui:insert name="content">Content Section</ui:insert>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-footer">Garage Management System</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+    <h:outputScript name="js/jquery.js" target="#{param.location}"/>
+    <h:outputScript name="js/bootstrap.js" target="#{param.location}"/>
     <h:outputScript library="js" name="bootstrap-datepicker.js"/>
     <h:outputScript library="js" name="clockpicker.js"/>
     <h:outputScript library="js" name="datepicker.js"/>

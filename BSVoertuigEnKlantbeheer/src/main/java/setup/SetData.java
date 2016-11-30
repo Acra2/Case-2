@@ -45,11 +45,14 @@ public class SetData implements Serializable {
         Mechanic h3 = Mechanic.builder().Name("Lotte").build();
         h3 = mechanicService.add(h3);
 
-        MaintenanceType maintenanceType1 = MaintenanceType.builder().name("apk-keuring").build();
+        MaintenanceType maintenanceType1 = MaintenanceType.builder().name("apk-keuring").sample(true).build();
         maintenanceType1 = maintenanceTypeService.add(maintenanceType1);
 
-        MaintenanceType maintenanceType2 = MaintenanceType.builder().name("grote beurt").build();
+        MaintenanceType maintenanceType2 = MaintenanceType.builder().name("grote beurt").sample(false).build();
         maintenanceType2 = maintenanceTypeService.add(maintenanceType2);
+
+        MaintenanceType maintenanceType3 = MaintenanceType.builder().name("banden").sample(false).build();
+        maintenanceType3 = maintenanceTypeService.add(maintenanceType2);
 
         Brand b1 = Brand.builder().name("Opel").build();
         Brand b2 = Brand.builder().name("Volkswagen").build();
@@ -72,27 +75,27 @@ public class SetData implements Serializable {
         m1d = modelService.add(m1d);
         Model m1e = Model.builder().brand(b1).name("Zafira").build();
         m1e = modelService.add(m1e);
-//
-//        Model m2a = Model.builder().brand(b2).name("Eos").build();
-//        modelService.add(m2a);
-//        Model m2b = Model.builder().brand(b2).name("Passat").build();
-//        modelService.add(m2b);
-//        Model m2c = Model.builder().brand(b2).name("K70").build();
-//        modelService.add(m2c);
-//        Model m2d = Model.builder().brand(b2).name("Kever").build();
-//        modelService.add(m2d);
-//        Model m2e = Model.builder().brand(b2).name("Passat CC").build();
-//        modelService.add(m2e);
-//        Model m2f = Model.builder().brand(b2).name("Polo").build();
-//        modelService.add(m2f);
-//        Model m2g = Model.builder().brand(b2).name("Tiguan").build();
-//        modelService.add(m2g);
-//        Model m2h = Model.builder().brand(b2).name("Jetta").build();
-//        modelService.add(m2h);
-//        Model m2i = Model.builder().brand(b2).name("Golf").build();
-//        modelService.add(m2i);
-//        Model m2j = Model.builder().brand(b2).name("Lupo").build();
-//        modelService.add(m2j);
+
+        Model m2a = Model.builder().brand(b2).name("Eos").build();
+        m2a = modelService.add(m2a);
+        Model m2b = Model.builder().brand(b2).name("Passat").build();
+        m2b = modelService.add(m2b);
+        Model m2c = Model.builder().brand(b2).name("K70").build();
+        m2c = modelService.add(m2c);
+        Model m2d = Model.builder().brand(b2).name("Kever").build();
+        m2d = modelService.add(m2d);
+        Model m2e = Model.builder().brand(b2).name("Passat CC").build();
+        m2e =modelService.add(m2e);
+        Model m2f = Model.builder().brand(b2).name("Polo").build();
+        m2f = modelService.add(m2f);
+        Model m2g = Model.builder().brand(b2).name("Tiguan").build();
+        m2g = modelService.add(m2g);
+        Model m2h = Model.builder().brand(b2).name("Jetta").build();
+        m2h = modelService.add(m2h);
+        Model m2i = Model.builder().brand(b2).name("Golf").build();
+        m2i = modelService.add(m2i);
+        Model m2j = Model.builder().brand(b2).name("Lupo").build();
+        m2j = modelService.add(m2j);
 //
 //        Model m3a = Model.builder().brand(b3).name("Boxter").build();
 //        modelService.add(m3a);
@@ -183,26 +186,37 @@ public class SetData implements Serializable {
         c5 = customerService.addCustomer(c5);
 
         Car a1 = Car.builder().vehicleNumber("1G6DC5E52C0154792").licensePlate("G-546-GA").mileage(4953939).driverEmail("SenadvanGalen@jourrapide.com").driverName("Senad").driverPhoneNumber("0667043888").customer(c1).model(m1a).build();
-        carService.addCar(a1);
+        a1 =carService.addCar(a1);
         Car a2 = Car.builder().vehicleNumber("JH2HE07C76K308145").licensePlate("KE-90-PA").mileage(4254368).driverEmail("").driverName("").driverPhoneNumber("").customer(c1).model(m1a).build();
         a2 = carService.addCar(a2);
-//        Car a3 = Car.builder().vehicleNumber("3C6JR6EG6FG570826").licensePlate("850-PLA").mileage(6965445).driverEmail("").driverName("").driverPhoneNumber("").customer(c4).build();
-//        carService.addCar(a3);
-//        Car a4 = Car.builder().vehicleNumber("1GTH6BEA5F1184515").licensePlate("26-01-LW").mileage(798403).driverEmail("TamaravanGaal@rhyta.com").driverName("Tamara").driverPhoneNumber("0664790103").customer(c3).build();
-//        carService.addCar(a4);
-//        Car a5 = Car.builder().vehicleNumber("1M8PDMRA6WP012046").licensePlate("139-POT").mileage(482574).driverEmail("JolandavanderTuin@jourrapide.com").driverName("Jolanda").driverPhoneNumber("0636833009").customer(c3).build();
-//        carService.addCar(a5);
-//        Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").customer(c5).build();
-//        carService.addCar(a6);
+        Car a3 = Car.builder().vehicleNumber("3C6JR6EG6FG570826").licensePlate("850-PLA").mileage(6965445).driverEmail("").driverName("").driverPhoneNumber("").customer(c4).model(m2j).build();
+        a3= carService.addCar(a3);
+        Car a4 = Car.builder().vehicleNumber("1GTH6BEA5F1184515").licensePlate("26-01-LW").mileage(798403).driverEmail("TamaravanGaal@rhyta.com").driverName("Tamara").driverPhoneNumber("0664790103").model(m1a).customer(c3).build();
+        a4=carService.addCar(a4);
+        Car a5 = Car.builder().vehicleNumber("1M8PDMRA6WP012046").licensePlate("139-POT").mileage(482574).driverEmail("JolandavanderTuin@jourrapide.com").driverName("Jolanda").driverPhoneNumber("0636833009").model(m2h).customer(c3).build();
+        a5=carService.addCar(a5);
+        Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").model(m2g).customer(c5).build();
+        a6=carService.addCar(a6);
 
-        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  7,  1, 13,  5)).mechanic(h1).car(a2).type(maintenanceType1).state(MaintenanceState.PRESENT).description("Remschoenen vervangen").build();
+        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 13,  5)).car(a2).mechanic(h1).type(maintenanceType1).state(MaintenanceState.INMAINTENANCE).description("Remschoenen vervangen").build();
         m1 = maintenanceService.add(m1);
-
-        Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2015,  8,  5, 10, 40)).car(a2).mechanic(h2).type(maintenanceType2).state(MaintenanceState.PRESENT).type(maintenanceType1).description("Linker zijruit vervangen").build();
-        maintenanceService.add(m2);
-//        Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2015, 12, 18, 16, 35)).car(a1).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PAUSED).type(maintenanceType2).description("Accu vervangen").build();
-//        maintenanceService.add(m3);
-//        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12,  5, 12, 10)).car(a5).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PRESENT).type(maintenanceType2).description("Koplampen opnieuw afstellen").build();
-//        maintenanceService.add(m4);
+        Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 10, 40)).car(a2).mechanic(h2).type(maintenanceType2).state(MaintenanceState.PRESENT).description("Linker zijruit vervangen").build();
+        m2 =maintenanceService.add(m2);
+        Maintenance m3 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 16, 35)).car(a1).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PLANNED).description("Accu vervangen").build();
+        m3= maintenanceService.add(m3);
+        Maintenance m4 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 12, 10)).car(a5).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PLANNED).description("Koplampen opnieuw afstellen").build();
+        m4= maintenanceService.add(m4);
+        Maintenance m5 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 14, 20)).car(a4).mechanic(h2).type(maintenanceType3).state(MaintenanceState.PLANNED).description("Winterbanden aanbrengen").build();
+        m5= maintenanceService.add(m5);
+        Maintenance m6 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 13, 13)).car(a3).mechanic(h1).type(maintenanceType3).state(MaintenanceState.PLANNED).description("lekkeband links").build();
+        m6= maintenanceService.add(m6);
+        Maintenance m7 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 14, 30)).car(a6).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PLANNED).description("-").build();
+        m7= maintenanceService.add(m7);
+        Maintenance m8 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 15, 40)).car(a1).mechanic(h3).type(maintenanceType2).state(MaintenanceState.PLANNED).description("kapotte voorruit").build();
+        m8= maintenanceService.add(m8);
+        Maintenance m9 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 16, 45)).car(a2).mechanic(h2).type(maintenanceType1).state(MaintenanceState.PAUSED).description("Wachten op onderdeel").build();
+        m9= maintenanceService.add(m9);
+        Maintenance m10 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 16, 10)).car(a3).mechanic(h2).type(maintenanceType3).state(MaintenanceState.INMAINTENANCE).description("Airco is kapot").build();
+        m10= maintenanceService.add(m10);
     }
 }
