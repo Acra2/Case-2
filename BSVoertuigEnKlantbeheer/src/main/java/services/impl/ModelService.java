@@ -5,7 +5,6 @@ import interceptors.LogInterceptorBinding;
 import services.IModelService;
 
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -16,9 +16,11 @@ public class InMaintenanceState extends AbstractState {
     public void finishMaintenace(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.READYFORSAMPLE);
     }
-    public String[] getOperations(){
-        return new String[]{"pause","finish"};
+
+    public String[] getOperations() {
+        return new String[]{"pause", "finish"};
     }
+
     public String toString() {
         return "In onderhoud";
     }

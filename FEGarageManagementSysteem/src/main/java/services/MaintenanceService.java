@@ -2,7 +2,6 @@ package services;
 
 import controllers.IMaintenanceController;
 import entities.Maintenance;
-import entities.StateException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -67,11 +66,11 @@ public class MaintenanceService implements Serializable {
 
     public void changeMechanic() {
         Maintenance maintenance = maintenanceController.changeMechanic(mainte, changeMechanicInput);
-        if (maintenance == null){
+        if (maintenance == null) {
             FacesMessage message = new FacesMessage("Monteurscode incorrect");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(btChanceMechanicCodeInput.getClientId(context), message);
-        }else{
+        } else {
             mainte = maintenance;
             changeMechanicInput = "";
         }

@@ -1,6 +1,8 @@
 package entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,7 +33,7 @@ import java.util.List;
 public class Car implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String vehicleNumber;
     private String licensePlate;

@@ -5,9 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Sander on 23-11-2016.
@@ -19,7 +21,7 @@ import java.util.List;
 @LogInterceptorBinding
 public class Brand implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String name;
 

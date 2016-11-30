@@ -1,19 +1,22 @@
 .main_menu {
     display: block;
     float: left;
-    width:100%;
+    width: 100%;
     margin: 8px 0;
     height: 150px;
 
 }
-.main_menu > i{
+
+.main_menu > i {
     margin-top: 25px;
 }
-.main_menu>span{
+
+.main_menu > span {
     line-height: 90px;
     -webkit-transition: line-height 0.2s; /* Safari */
     transition: line-height 0.2s;
 }
-.main_menu:hover >span {
+
+.main_menu:hover > span {
     line-height: 60px;
 }

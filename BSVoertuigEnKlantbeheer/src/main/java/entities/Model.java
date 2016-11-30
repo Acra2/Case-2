@@ -6,12 +6,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Sander on 23-11-2016.
  */
-@Entity(name="model")
+@Entity(name = "model")
 @Builder
 @Data
 @AllArgsConstructor
@@ -19,7 +18,7 @@ import java.util.List;
 public class Model implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String name;
 

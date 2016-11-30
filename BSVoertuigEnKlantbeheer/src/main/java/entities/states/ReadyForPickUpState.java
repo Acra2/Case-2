@@ -12,9 +12,11 @@ public class ReadyForPickUpState extends AbstractState {
     public void pickedUp(Maintenance maintenance) throws StateException {
         maintenance.setState(MaintenanceState.PICKEDUP);
     }
-    public String[] getOperations(){
+
+    public String[] getOperations() {
         return new String[]{"pickup"};
     }
+
     public String toString() {
         return "Klaar voor uitleveren";
     }

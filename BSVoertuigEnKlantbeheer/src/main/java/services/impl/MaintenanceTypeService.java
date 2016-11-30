@@ -1,13 +1,9 @@
 package services.impl;
 
-import entities.Maintenance;
 import entities.MaintenanceType;
-import interceptors.LogInterceptorBinding;
-import services.IMaintenanceService;
 import services.IMaintenanceTypeService;
 
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,7 +24,7 @@ public class MaintenanceTypeService implements IMaintenanceTypeService {
         return em.createNamedQuery("getAllMaintenanceTypes").getResultList();
     }
 
-    public MaintenanceType add(MaintenanceType maintenanceType){
+    public MaintenanceType add(MaintenanceType maintenanceType) {
         if (maintenanceType.getId() != null)
             em.merge(maintenanceType);
         else

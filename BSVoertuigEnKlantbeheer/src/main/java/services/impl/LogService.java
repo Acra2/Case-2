@@ -1,7 +1,6 @@
 package services.impl;
 
 import entities.ErrorLog;
-import interceptors.LogInterceptorBinding;
 import services.ILogService;
 
 import javax.ejb.Remote;

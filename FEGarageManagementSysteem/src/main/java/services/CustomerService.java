@@ -5,18 +5,13 @@ package services; /**
 import entities.Car;
 import entities.Customer;
 import entities.Maintenance;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import services.ICarService;
-import services.ICustomerService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,18 +24,16 @@ public class CustomerService implements Serializable {
 
     private Customer customer;
     private List carListOfSpecificCustomer;
-
+    private Integer filterIndex = -9;
+    @EJB
+    private ICustomerService customerService;
+    private List<Customer> allCustomers;
+    @EJB
+    private ICarService carService;
     private CustomerService() {
         customer = new Customer();
     }
 
-    private Integer filterIndex = -9;
-    @EJB
-    private ICustomerService customerService;
-
-    private List<Customer> allCustomers;
-    @EJB
-    private ICarService carService;
     public List getData() {
 
         allCustomers = customerService.getAllCustomers();
@@ -99,20 +92,20 @@ public class CustomerService implements Serializable {
         customerService.updateCustomer(customer);
     }
 
-    public void addCustomer(){
+    public void addCustomer() {
         customerService.addCustomer(customer);
     }
 
-    public void clearCustomer(){
-        customer=new Customer();
+    public void clearCustomer() {
+        customer = new Customer();
     }
 
     public void setSpecificCustomer(Long id) {
 
 
         customer = customerService.getCustomer(id);
-        if (customer == null){
-            customer=new Customer();
+        if (customer == null) {
+            customer = new Customer();
         }
         setCarsForSpecificCustomer(id);
     }
