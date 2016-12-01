@@ -6,8 +6,11 @@ import entities.MaintenanceType;
 import entities.Mechanic;
 import lombok.Data;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -21,7 +24,7 @@ import static entities.MaintenanceState.INMAINTENANCE;
 
 @Data
 @Named("maintenanceRegistrationService")
-@SessionScoped()
+@ViewScoped
 public class MaintenanceRegistrationService implements Serializable {
 
     @EJB
@@ -55,6 +58,12 @@ public class MaintenanceRegistrationService implements Serializable {
     private LocalDateTime localDateTime;
 
     public MaintenanceRegistrationService() {
+        this.car = new Car();
+        this.maintenanceType = new MaintenanceType();
+        this.mechanic = new Mechanic();
+    }
+
+    public void clearData() {
         this.car = new Car();
         this.maintenanceType = new MaintenanceType();
         this.mechanic = new Mechanic();

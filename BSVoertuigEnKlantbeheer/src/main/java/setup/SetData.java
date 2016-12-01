@@ -45,10 +45,14 @@ public class SetData implements Serializable {
         Mechanic h3 = Mechanic.builder().Name("Lotte").build();
         h3 = mechanicService.add(h3);
 
-        MaintenanceType maintenanceType1 = MaintenanceType.builder().name("apk-keuring").sample(true).build();
+        MaintenanceType maintenanceType1 = MaintenanceType.builder().name("apk-keuring").sample(true)
+                .tasks("Onderhoud voor apk").price(80.0).time(2).build();
+
         maintenanceType1 = maintenanceTypeService.add(maintenanceType1);
 
-        MaintenanceType maintenanceType2 = MaintenanceType.builder().name("grote beurt").sample(false).build();
+        MaintenanceType maintenanceType2 = MaintenanceType.builder().name("grote beurt").sample(false)
+                .tasks("Grote beurt omschrijving").price(150.0).time(3).build();
+
         maintenanceType2 = maintenanceTypeService.add(maintenanceType2);
 
         MaintenanceType maintenanceType3 = MaintenanceType.builder().name("banden").sample(false).build();
@@ -114,7 +118,7 @@ public class SetData implements Serializable {
         Car a6 = Car.builder().vehicleNumber("1J8GR48KX5C588036").licensePlate("93-KF-DR").mileage(8796887).driverEmail("").driverName("").driverPhoneNumber("").model(m2g).customer(c5).build();
         a6 = carService.addCar(a6);
 
-        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 11, 30, 13, 5)).car(a4).mechanic(h1).type(maintenanceType1).state(MaintenanceState.INMAINTENANCE).description("Remschoenen vervangen").build();
+        Maintenance m1 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 11, 30, 13, 5)).car(a4).mechanic(h3).type(maintenanceType1).state(MaintenanceState.INMAINTENANCE).description("Remschoenen vervangen").build();
         maintenanceService.add(m1);
         Maintenance m2 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 10, 40)).car(a2).mechanic(h2).type(maintenanceType2).state(MaintenanceState.PRESENT).description("Linker zijruit vervangen").build();
         maintenanceService.add(m2);
@@ -124,7 +128,7 @@ public class SetData implements Serializable {
         maintenanceService.add(m4);
         Maintenance m5 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 2, 14, 20)).car(a4).mechanic(h2).type(maintenanceType3).state(MaintenanceState.PLANNED).description("Winterbanden aanbrengen").build();
         maintenanceService.add(m5);
-        Maintenance m6 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 13, 13)).car(a3).mechanic(h1).type(maintenanceType3).state(MaintenanceState.PLANNED).description("lekkeband links").build();
+        Maintenance m6 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 1, 13, 13)).car(a3).mechanic(h1).type(maintenanceType3).state(MaintenanceState.PRESENT).description("lekkeband links").build();
         maintenanceService.add(m6);
         Maintenance m7 = Maintenance.builder().startDateTime(LocalDateTime.of(2016, 12, 4, 14, 30)).car(a6).mechanic(h3).type(maintenanceType1).state(MaintenanceState.PLANNED).description("-").build();
         maintenanceService.add(m7);

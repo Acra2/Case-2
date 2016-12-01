@@ -62,5 +62,9 @@
             <from-outcome>maintenanceRegistration</from-outcome>
             <to-view-id>/maintenance_registration.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
