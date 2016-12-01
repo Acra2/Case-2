@@ -78,7 +78,7 @@ public class CustomerService implements Serializable {
             for (Car car : customer.getCars()) {
                 if (car.getMaintenanceList().size() > 0)
                     for (Maintenance m : car.getMaintenanceList()) {
-                        if (m.getStartDateTime().toLocalDate().isEqual(LocalDateTime.now().toLocalDate())) {
+                        if (m.getStartDateTime().toLocalDate().isEqual(date.toLocalDate())) {
                             return true;
                         }
                     }

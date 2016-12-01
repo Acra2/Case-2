@@ -30,12 +30,10 @@
     function UTCDate() {
         return new Date(Date.UTC.apply(Date, arguments));
     }
-
     function UTCToday() {
         var today = new Date();
         return UTCDate(today.getFullYear(), today.getMonth(), today.getDate());
     }
-
     function isUTCEquals(date1, date2) {
         return (
             date1.getUTCFullYear() === date2.getUTCFullYear() &&
@@ -43,13 +41,11 @@
             date1.getUTCDate() === date2.getUTCDate()
         );
     }
-
     function alias(method) {
         return function () {
             return this[method].apply(this, arguments);
         };
     }
-
     function isValidDate(d) {
         return d && !isNaN(d.getTime());
     }
@@ -284,7 +280,7 @@
             plc = $.grep(plc, function (word) {
                 return /^auto|left|right|top|bottom$/.test(word);
             });
-            o.orientation = {x: 'auto', y: 'auto'};
+            o.orientation = { x: 'auto', y: 'auto' };
             if (!_plc || _plc === 'auto')
                 ; // no action
             else if (plc.length === 1) {
@@ -623,7 +619,7 @@
         },
 
         setStartDate: function (startDate) {
-            this._process_options({startDate: startDate});
+            this._process_options({ startDate: startDate });
             this.update();
             this.updateNavArrows();
             return this;
@@ -634,26 +630,26 @@
         },
 
         setEndDate: function (endDate) {
-            this._process_options({endDate: endDate});
+            this._process_options({ endDate: endDate });
             this.update();
             this.updateNavArrows();
             return this;
         },
 
         setDaysOfWeekDisabled: function (daysOfWeekDisabled) {
-            this._process_options({daysOfWeekDisabled: daysOfWeekDisabled});
+            this._process_options({ daysOfWeekDisabled: daysOfWeekDisabled });
             this.update();
             return this;
         },
 
         setDaysOfWeekHighlighted: function (daysOfWeekHighlighted) {
-            this._process_options({daysOfWeekHighlighted: daysOfWeekHighlighted});
+            this._process_options({ daysOfWeekHighlighted: daysOfWeekHighlighted });
             this.update();
             return this;
         },
 
         setDatesDisabled: function (datesDisabled) {
-            this._process_options({datesDisabled: datesDisabled});
+            this._process_options({ datesDisabled: datesDisabled });
             this.update();
             return this;
         },
@@ -780,7 +776,8 @@
             }, this));
             dates = $.grep(dates, $.proxy(function (date) {
                 return (
-                    !this.dateWithinRange(date) || !date
+                    !this.dateWithinRange(date) ||
+                    !date
                 );
             }, this), true);
             this.dates.replace(dates);
@@ -938,9 +935,9 @@
                     if (before === undefined) {
                         before = {};
                     } else if (typeof before === 'boolean') {
-                        before = {enabled: before};
+                        before = { enabled: before };
                     } else if (typeof before === 'string') {
-                        before = {classes: before};
+                        before = { classes: before };
                     }
                     if (before.enabled === false) {
                         classes.push('disabled');
@@ -1025,9 +1022,9 @@
                     if (before === undefined)
                         before = {};
                     else if (typeof before === 'boolean')
-                        before = {enabled: before};
+                        before = { enabled: before };
                     else if (typeof before === 'string')
-                        before = {classes: before};
+                        before = { classes: before };
                     if (before.enabled === false)
                         clsName.push('disabled');
                     if (before.classes)
@@ -1083,9 +1080,9 @@
                     if (before === undefined)
                         before = {};
                     else if (typeof before === 'boolean')
-                        before = {enabled: before};
+                        before = { enabled: before };
                     else if (typeof before === 'string')
-                        before = {classes: before};
+                        before = { classes: before };
                     if (before.enabled === false && !$(month).hasClass('disabled'))
                         $(month).addClass('disabled');
                     if (before.classes)
@@ -1592,9 +1589,7 @@
             delete this.updating;
         },
         destroy: function () {
-            $.map(this.pickers, function (p) {
-                p.destroy();
-            });
+            $.map(this.pickers, function (p) { p.destroy(); });
             $(this.inputs).off('changeDate', this.dateUpdated);
             delete this.element.data().datepicker;
         },
@@ -1610,7 +1605,6 @@
         function re_lower(_, a) {
             return a.toLowerCase();
         }
-
         for (var key in data)
             if (prefix.test(key)) {
                 inkey = key.replace(replace, re_lower);
@@ -1791,7 +1785,7 @@
             if (!separators || !separators.length || !parts || parts.length === 0) {
                 throw new Error("Invalid date format.");
             }
-            return {separators: separators, parts: parts};
+            return { separators: separators, parts: parts };
         },
         parseDate: function (date, format, language, assumeNearby) {
             if (!date)
@@ -1887,7 +1881,6 @@
                     p = parts[i].slice(0, m.length);
                 return m.toLowerCase() === p.toLowerCase();
             }
-
             if (parts.length === fparts.length) {
                 var cnt;
                 for (i = 0, cnt = fparts.length; i < cnt; i++) {
